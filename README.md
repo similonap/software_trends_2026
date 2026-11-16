@@ -39,7 +39,7 @@ for d in graphql-slides webassembly-slides webframeworks-slides; do (cd $d/prese
 
 `python3 tools/maak_pdf.py` maakt van elke presentatie een pdf in `pdf/` (één slide per pagina, zonder notities). Je hebt Google Chrome en internet nodig.
 
-Op GitHub doet de workflow *Presentaties als pdf* dat bij elke wijziging aan de slides op `main`. De pdf's staan als artifact `presentaties-pdf` bij de run, onder het tabblad *Actions*.
+Op GitHub doet de workflow *Presentaties als pdf* dat bij elke wijziging aan de slides op `main`. De nieuwste pdf's staan bij de release [Presentaties (pdf)](https://github.com/similonap/software_trends_2026/releases/tag/presentaties), zonder login te downloaden: [web frameworks](https://github.com/similonap/software_trends_2026/releases/download/presentaties/webframeworks.pdf), [WebAssembly](https://github.com/similonap/software_trends_2026/releases/download/presentaties/webassembly.pdf), [GraphQL](https://github.com/similonap/software_trends_2026/releases/download/presentaties/graphql.pdf) en [supply chain](https://github.com/similonap/software_trends_2026/releases/download/presentaties/supply-chain.pdf).
 
 ## Ingesproken video's
 
