@@ -1,0 +1,38 @@
+<section id="npm-audit" data-transition="fade" style="background:#FFFFFF;color:#3C3B40;font-family:'Source Sans 3', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#005078">Laag 5 · npm audit</p>
+<h2 style="font-family:'League Gothic', 'Arial Narrow', sans-serif;font-size:80px;font-weight:400;line-height:1.05;letter-spacing:0;color:#232226">Wat zegt npm audit?</h2>
+</div>
+<div style="display:flex;gap:48px;align-items:flex-start">
+<div style="width:900px;background:#232226;border-radius:16px;padding:24px 32px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.45;color:#F1F1F1;white-space:nowrap"><span style="color:#4FC3D0">$ npm audit</span>&#160;&#160;<span style="color:#9A999F"># ingekort</span><br><span style="color:#FF5A5F">minimist</span>&#160;&#160;1.0.0 - 1.2.5<br>Severity: critical<br>Prototype Pollution in minimist<br>fix available via `npm audit fix`<br><br><span style="color:#FF5A5F">nth-check</span>&#160;&#160;&lt;2.0.1<br>Severity: high<br>Inefficient Regular Expression Complexity in nth-check<br>fix available via `npm audit fix --force`<br>Will install nth-check@3.0.1, which is a breaking change<br><br>2 vulnerabilities (1 high, 1 critical)</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:20px">
+<div style="display:flex;flex-direction:column;gap:8px">
+<h3 style="font-family:'Source Sans 3', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.2;color:#232226">Hoe het werkt</h3>
+<p style="font-size:28px;line-height:1.35">Namen en versies uit je lockfile gaan naar de registry, die ze vergelijkt met de GitHub Advisory Database.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<h3 style="font-family:'Source Sans 3', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.2;color:#232226">Ernst</h3>
+<p style="font-size:28px;line-height:1.35">low, moderate, high of critical. Met --audit-level kies je wanneer CI faalt.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<h3 style="font-family:'Source Sans 3', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.2;color:#E60005">Wat het niet ziet</h3>
+<p style="font-size:28px;line-height:1.35">De malware van vanmiddag: daar bestaat nog geen advisory voor.</p>
+</div>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1440px;font-size:24px;color:#6B6A70">Deel 5 — Verdediging als gebruiker · 0:30–0:36</p>
+<img src="/_blob/4d3eecb01832b6f4111235aa00bb3842" alt="AP Hogeschool" style="position:absolute;right:128px;bottom:52px;height:56px;width:auto">
+<aside>Echte output van een klein testproject dat in zijn lockfile nog minimist 1.2.5 en nth-check 1.0.2 heeft (ingekort: de links naar de advisories zijn weggelaten).
+
+Hoe het werkt: npm audit stuurt de namen en versies van alle packages uit je lockfile naar de registry (het Bulk Advisory-endpoint). De registry vergelijkt ze met de GitHub Advisory Database en stuurt de gepubliceerde kwetsbaarheden terug, met hun ernst. Een package dat alleen kwetsbaar is omdat het een kwetsbare versie van een ander package vereist, heet een meta-vulnerability; npm volgt die ketting tot aan je eigen package.json.
+
+Lees de output samen: per kwetsbaarheid het getroffen versiebereik, de ernst en of er een oplossing is. Minimist kan npm zelf oplossen, nth-check alleen met --force.
+
+Twee kanttekeningen voor de zaal:
+- npm audit kent alleen gepubliceerde advisories. Tegen een kwaadaardige versie van vanmiddag helpt het niet; daarvoor dienen de cooldown en gedragsscanners.
+- Privacy: ook de namen van je interne packages gaan naar de registry.
+
+En de ruis: niet elke “high” is urgent. Een ReDoS in een build-tool die alleen je eigen bestanden leest, is zelden uit te buiten. Dan Abramov schreef daar in 2021 “npm audit: Broken by Design” over. Gebruik --omit=dev om devDependencies weg te filteren.</aside>
+</section>

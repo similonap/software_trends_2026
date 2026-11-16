@@ -1,0 +1,160 @@
+{
+  "v": 4,
+  "createdOnFiles": {
+    "v": 1,
+    "at": "2026-10-20T07:26:32Z"
+  },
+  "lists": "css",
+  "title": "Supply chain security in het npm-ecosysteem",
+  "order": [
+    "cover",
+    "lesplan",
+    "d1",
+    "hook",
+    "reveal",
+    "supplychain",
+    "kwetsbaar",
+    "waarom-npm",
+    "xkcd-dependency",
+    "d2",
+    "spelers",
+    "semver",
+    "demo-express",
+    "lockfile",
+    "scripts",
+    "binding-gyp",
+    "inc-phantom-gyp",
+    "xkcd-authorization",
+    "vier-momenten",
+    "publiceren",
+    "d3",
+    "dreigingsmodel",
+    "meme-thisisfine",
+    "analysekader",
+    "vectoren",
+    "meme-distracted",
+    "depconfusion",
+    "motieven",
+    "kernpunt3",
+    "d4",
+    "fasen",
+    "meme-brain",
+    "inc-left-pad",
+    "inc-crossenv",
+    "inc-eslint-scope",
+    "event-stream",
+    "inc-ua-parser-js",
+    "inc-coa-rc",
+    "inc-colors-faker",
+    "inc-node-ipc",
+    "inc-manifest-confusion",
+    "inc-xz-utils",
+    "inc-polyfill-io",
+    "inc-solana-web3",
+    "inc-tj-actions",
+    "inc-eslint-config-prettier",
+    "nx",
+    "chalk-debug",
+    "shai-hulud",
+    "inc-phantomraven",
+    "shai-hulud-2",
+    "inc-teampcp",
+    "axios",
+    "xkcd-security",
+    "inc-tanstack",
+    "inc-mastra",
+    "inc-chaindrop",
+    "inc-tensorlake",
+    "trucs-2026",
+    "rode-draden",
+    "d5",
+    "lagen",
+    "venster",
+    "meme-buttons",
+    "cooldown",
+    "install-scripts",
+    "npm11-waarschuwing",
+    "inc-joyfill",
+    "bron-scanning",
+    "npm-audit",
+    "npm-audit-fix",
+    "beperken",
+    "xkcd-sandboxing",
+    "matrix",
+    "d6",
+    "twofa",
+    "meme-pigeon",
+    "trusted-publishing",
+    "fout-beter",
+    "ci-regels",
+    "provenance",
+    "inc-slugfest",
+    "d7",
+    "sbom-cra",
+    "ai-agents",
+    "inc-sandworm",
+    "inc-react-codeshift",
+    "toekomst",
+    "xkcd-workflow",
+    "vraag-axios",
+    "afsluiting",
+    "checklist"
+  ],
+  "sections": {
+    "intro": {
+      "description": "Titel en lesplan van het college van 45 minuten.",
+      "start": "cover"
+    },
+    "deel1": {
+      "description": "Deel 1: waarom supply chain security ertoe doet, met de chalk/debug-phishing als opening.",
+      "start": "d1"
+    },
+    "deel2": {
+      "description": "Deel 2: hoe npm dependencies oplost, vastlegt en installeert, en wanneer vreemde code draait.",
+      "start": "d2"
+    },
+    "deel3": {
+      "description": "Deel 3: het dreigingsmodel met zes schakels, vier analysevragen en negen aanvalsvectoren.",
+      "start": "d3"
+    },
+    "deel4": {
+      "description": "Deel 4: tien jaar incidenten in vier fasen en vijf casestudies, van event-stream tot axios.",
+      "start": "d4"
+    },
+    "deel5": {
+      "description": "Deel 5: zes lagen verdediging voor wie packages gebruikt.",
+      "start": "d5"
+    },
+    "deel6": {
+      "description": "Deel 6: verdediging als maintainer en in CI/CD, van passkeys tot trusted publishing.",
+      "start": "d6"
+    },
+    "deel7": {
+      "description": "Deel 7: SBOM, de Cyber Resilience Act, AI-agents en de vooruitblik.",
+      "start": "d7"
+    },
+    "slot": {
+      "description": "Afsluiting: drie kernzinnen en de checklist die openblijft tijdens de vragen.",
+      "start": "afsluiting"
+    }
+  },
+  "faces": {
+    "league-gothic": {
+      "family": "League Gothic",
+      "href": "https://fonts.googleapis.com/css2?family=League+Gothic&display=swap"
+    },
+    "source-sans-3": {
+      "family": "Source Sans 3",
+      "href": "https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap"
+    },
+    "jetbrains-mono": {
+      "family": "JetBrains Mono",
+      "href": "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap"
+    },
+    "anton": {
+      "family": "Anton",
+      "href": "https://fonts.googleapis.com/css2?family=Anton&display=swap"
+    }
+  },
+  "designSystems": []
+}

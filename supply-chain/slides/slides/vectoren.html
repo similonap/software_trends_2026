@@ -1,0 +1,33 @@
+<section id="vectoren" data-transition="fade" style="background:#FFFFFF;color:#3C3B40;font-family:'Source Sans 3', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:24px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#E60005">De aanvalsvectoren</p>
+<h2 style="font-family:'League Gothic', 'Arial Narrow', sans-serif;font-size:80px;font-weight:400;line-height:1.05;letter-spacing:0;color:#232226">Negen manieren om binnen te komen</h2>
+</div>
+<table style="font-size:28px;color:#3C3B40">
+<tr><th style="width:26%;color:#232226">Vector</th><th style="width:46%;color:#232226">Wat er gebeurt</th><th style="width:28%;color:#232226">Voorbeeld</th></tr>
+<tr><td style="color:#232226">Typosquatting</td><td>een naam die op een populaire lijkt</td><td>crossenv (2017)</td></tr>
+<tr><td style="color:#232226">Slopsquatting</td><td>namen die AI-assistenten verzinnen</td><td>PhantomRaven (2025)</td></tr>
+<tr><td style="color:#232226">Dependency confusion</td><td>interne naam publiek, met hogere versie</td><td>Alex Birsan (2021)</td></tr>
+<tr><td style="color:#232226">Accountovername</td><td>wachtwoord, 2FA-code of token gestolen</td><td>chalk/debug (2025)</td></tr>
+<tr><td style="color:#232226">Overname via vertrouwen</td><td>een vermoeide maintainer geeft de sleutels</td><td>event-stream (2018)</td></tr>
+<tr><td style="color:#232226">Protestware</td><td>de maintainer saboteert zijn eigen package</td><td>colors, node-ipc (2022)</td></tr>
+<tr><td style="color:#232226">CI/CD-compromis</td><td>de build-pipeline lekt tokens of publiceert</td><td>Nx s1ngularity (2025)</td></tr>
+<tr><td style="color:#232226">Worm</td><td>gestolen tokens besmetten nieuwe packages</td><td>Shai-Hulud (2025)</td></tr>
+<tr><td style="color:#232226">Beschikbaarheid</td><td>een package waarop iedereen bouwt verdwijnt</td><td>left-pad (2016)</td></tr>
+</table>
+<p style="position:absolute;left:128px;bottom:64px;width:1440px;font-size:24px;color:#6B6A70">Deel 3 — Het dreigingsmodel · 0:12–0:18</p>
+<img src="/_blob/4d3eecb01832b6f4111235aa00bb3842" alt="AP Hogeschool" style="position:absolute;right:128px;bottom:52px;height:56px;width:auto">
+<aside>Overloop de tabel niet rij per rij; kies er drie uit en vraag de zaal of iemand een voorbeeld kent.
+
+Typosquatting: een aanvaller registreert crossenv, expres of lodahs en kopieert de echte code erin, aangevuld met een install script. Wie zich vertypt, merkt niets: alles werkt gewoon. In 2017 stuurden zo’n 40 packages van “hacktask” omgevingsvariabelen door.
+
+Slopsquatting is de AI-variant: taalmodellen stellen soms packages voor die niet bestaan, en ze doen dat herhaalbaar. Een aanvaller die de verzonnen naam registreert, wacht op de volgende ontwikkelaar die het AI-advies blind uitvoert.
+
+Accountovername: één account geeft publicatierecht op vele packages (eslint-scope 2018: hergebruikt wachtwoord zonder 2FA).
+
+Protestware: colors en faker (2022) kregen een oneindige lus; node-ipc overschreef bestanden op Russische en Belarussische IP-adressen.
+
+Beschikbaarheid: left-pad (2016). Een maintainer verwijderde uit onvrede 273 packages na een naamsconflict; builds wereldwijd braken 2,5 uur.
+
+Dependency confusion bekijken we op de volgende slide in detail.</aside>
+</section>

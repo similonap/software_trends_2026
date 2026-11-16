@@ -1,0 +1,32 @@
+<section id="axios" data-transition="fade" style="background:#FFFFFF;color:#3C3B40;font-family:'Source Sans 3', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#E60005">Casestudie · 31 maart 2026 · 70 tot 100+ mln downloads per week</p>
+<h2 style="font-family:'League Gothic', 'Arial Narrow', sans-serif;font-size:80px;font-weight:400;line-height:1.05;letter-spacing:0;color:#232226">axios: een staatsactor, één maintainer</h2>
+</div>
+<div style="display:grid;grid-template-columns:320px 1fr;gap:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:18px 0 0 0">Toegang</p>
+<p style="font-size:28px;line-height:1.35;border-top:1px solid #CFCFD1;padding:16px 0 0 0">Twee weken social engineering: een nep-oprichter, een nagemaakte Slack, een Teams-gesprek en een “update” die een RAT bleek. 2FA hielp niet.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:18px 0 0 0">Verspreiding</p>
+<p style="font-size:28px;line-height:1.35;border-top:1px solid #CFCFD1;padding:16px 0 0 0">axios zelf bleef ongewijzigd: een nieuwe dependency plain-crypto-js in axios@1.14.1 en 0.30.4, via een vergeten langlevend token. ~3 uur online.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:18px 0 0 0">Payload</p>
+<p style="font-size:28px;line-height:1.35;border-top:1px solid #CFCFD1;padding:16px 0 0 0">postinstall haalde per besturingssysteem een backdoor op en verving daarna zijn eigen package.json door een propere versie.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:18px 0 0 0">Detectie en respons</p>
+<p style="font-size:28px;line-height:1.35;border-top:1px solid #CFCFD1;padding:16px 0 0 0">StepSecurity en Socket binnen minuten. Toegeschreven aan Noord-Korea (UNC1069, Sapphire Sleet). CISA: ignore-scripts=true en min-release-age=7.</p>
+</div>
+<div style="background:#E6EFF3;border-left:6px solid #005078;border-radius:8px;padding:24px 36px">
+<p style="font-size:28px;line-height:1.4;color:#232226"><b><span style="color:#005078">Les.</span></b> 2FA beschermt je account, niet je laptop. Trusted publishing helpt alleen als je elke andere publicatieroute afsluit: één vergeten token volstaat.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1440px;font-size:24px;color:#6B6A70">Deel 4 — Tijdlijn en casestudies · 0:18–0:30</p>
+<img src="/_blob/4d3eecb01832b6f4111235aa00bb3842" alt="AP Hogeschool" style="position:absolute;right:128px;bottom:52px;height:56px;width:auto">
+<aside>Ongeveer twee minuten. axios is de bekendste HTTP-client van JavaScript, met volgens Google, StepSecurity en Datadog meer dan 100 miljoen downloads per week (Microsoft houdt het op meer dan 70 miljoen).
+
+Toegang: twee weken voor de aanval werd maintainer Jason Saayman benaderd door iemand die zich voordeed als oprichter van een bedrijf. Na contact via een nagemaakte Slack-workspace volgde een Teams-gesprek waarin hem verteld werd dat er iets op zijn systeem “verouderd” was. Wat hij installeerde, was een remote access trojan (RAT). Hij had 2FA aan, maar dat hielp niet: de aanvaller zat op zijn machine. De aanvaller veranderde ook het e-mailadres van het account.
+
+Waarom een token? De recente 1.x-releases gingen via trusted publishing (deel 6), maar voor de 0.x-lijn bestond nog een langlevend npm-token. Zo’n token geldt voor het hele package: volgens StepSecurity verscheen ook axios@1.14.1 buiten trusted publishing om.
+
+Verspreiding: de code van axios zelf werd niet aangeraakt. De aanvaller publiceerde eerst een onschuldig lokpackage plain-crypto-js@4.2.0, een dag later versie 4.2.1 met een postinstall-script, en voegde dat toe als dependency in axios@1.14.1 (gemarkeerd als latest) en axios@0.30.4.
+
+Payload: het install script haalde per besturingssysteem (macOS, Windows, Linux) een backdoor op die elke minuut contact zocht met de aanvaller. Daarna wiste het zichzelf en verving het package.json door een propere versie, zodat wie achteraf keek niets zag.
+
+Detectie: de aanvaller wiste meldingen van de community met het gekaapte account. Uit de postmortem: “There was no automated way to detect an unauthorized publish.” CISA adviseerde op 20 april ignore-scripts=true en min-release-age=7 in .npmrc.</aside>
+</section>

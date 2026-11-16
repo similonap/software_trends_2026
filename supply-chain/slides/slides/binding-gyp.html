@@ -1,0 +1,41 @@
+<section id="binding-gyp" data-transition="fade" style="background:#FFFFFF;color:#3C3B40;font-family:'Source Sans 3', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#E60005">Native addons</p>
+<h2 style="font-family:'League Gothic', 'Arial Narrow', sans-serif;font-size:80px;font-weight:400;line-height:1.05;letter-spacing:0;color:#232226">Wat doet binding.gyp?</h2>
+</div>
+<div style="display:flex;gap:48px;align-items:flex-start">
+<div style="width:940px;background:#232226;border-radius:16px;padding:24px 28px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.45;color:#F1F1F1;white-space:nowrap"><span style="color:#9A999F"># binding.gyp van @parcel/watcher 2.6.0 (ingekort)</span><br>{<br>&#160;&#160;"targets": [{<br>&#160;&#160;&#160;&#160;"target_name": "watcher",<br>&#160;&#160;&#160;&#160;"sources": ["src/binding.cc", "src/Watcher.cc"],<br>&#160;&#160;&#160;&#160;"include_dirs": [<br>&#160;&#160;&#160;&#160;&#160;&#160;<span style="color:#FF5A5F">"&lt;!(node -p \"require('node-addon-api').include_dir\")"</span><br>&#160;&#160;&#160;&#160;]<br>&#160;&#160;}]<br>}</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:20px">
+<div style="display:flex;flex-direction:column;gap:8px">
+<h3 style="font-family:'Source Sans 3', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.2;color:#232226">Normaal gebruik</h3>
+<p style="font-size:28px;line-height:1.35">C/C++ voor snelheid of OS-functies, gecompileerd tot een .node-bestand.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<h3 style="font-family:'Source Sans 3', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.2;color:#232226">Onzichtbaar script</h3>
+<p style="font-size:28px;line-height:1.35">Geen eigen install script? Dan draait npm zelf node-gyp rebuild.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<h3 style="font-family:'Source Sans 3', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.2;color:#E60005">Code tijdens de build</h3>
+<p style="font-size:28px;line-height:1.35">Alles tussen &lt;!( en ) gaat naar de shell, nog voor er iets compileert.</p>
+</div>
+</div>
+</div>
+<div style="background:#E6EFF3;border-left:6px solid #005078;border-radius:8px;padding:24px 36px">
+<p style="font-size:28px;line-height:1.4;color:#232226"><b><span style="color:#005078">Vandaag de norm.</span></b> De meeste native packages leveren kant-en-klare binaries per platform mee. Het install script compileert dan alleen als terugvaloptie.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1440px;font-size:24px;color:#6B6A70">Deel 2 — Hoe npm werkt · 0:05–0:12</p>
+<img src="/_blob/4d3eecb01832b6f4111235aa00bb3842" alt="AP Hogeschool" style="position:absolute;right:128px;bottom:52px;height:56px;width:auto">
+<aside>Een binding.gyp is het bouwrecept van een native addon: een module in C of C++ die Node.js laadt alsof het JavaScript is.
+
+Normaal gebruik. Sommige taken kan JavaScript niet, of niet snel genoeg: bestandswijzigingen volgen via FSEvents (macOS) of inotify (Linux), een C-bibliotheek zoals SQLite of LMDB gebruiken, zwaar rekenwerk. Het package bevat C/C++-broncode en een binding.gyp. node-gyp vertaalt dat recept naar een Makefile, Xcode- of Visual Studio-project en compileert met de compiler op jouw machine, tot een .node-bestand dat je met require() laadt. Daarvoor zijn Python, make en een C/C++-compiler nodig; daarom faalt npm install soms met een lange node-gyp-foutmelding.
+
+Waarom tijdens de installatie? Machinecode hangt af van besturingssysteem, processor (x64, arm64) en soms de C-bibliotheek (glibc, musl). Node-API houdt een addon stabiel over Node.js-versies heen, maar niet over platformen.
+
+Het onzichtbare script: staat er een binding.gyp in de root en heeft het package geen eigen install- of preinstall-script, dan voert npm zelf node-gyp rebuild uit. Een maintainer zet dat uit met "gypfile": false.
+
+Het risico: GYP voert alles tussen &lt;!( en ) uit via de shell, nog voor er gecompileerd wordt. In dit echte voorbeeld start dat node -p om een pad op te vragen, wat volkomen normaal is. Maar een kwaadaardig binding.gyp kan daar elk commando zetten, en wie alleen naar scripts in package.json kijkt, ziet niets (Phantom Gyp, 2026).
+
+Vandaag de norm: @parcel/watcher, lmdb en msgpackr-extract publiceren per platform een voorgecompileerde binary als optionele dependency, zoals @parcel/watcher-linux-x64-glibc. Hun install script compileert alleen als terugvaloptie. Daarom werken ze op een gewoon platform vaak ook als npm 12 het script overslaat; test dat voor je goedkeurt.</aside>
+</section>

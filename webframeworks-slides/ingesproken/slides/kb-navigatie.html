@@ -1,0 +1,18 @@
+<section id="kb-navigatie" data-transition="fade" style="background:#FFFFFF;color:#404040;font-family:Arial, Helvetica, sans-serif;padding:104px 128px 144px;display:flex;flex-direction:column;gap:40px">
+<h2 style="font-family:Questrial, 'Century Gothic', Arial, sans-serif;font-size:64px;font-weight:400;line-height:1.15;color:#C00000">Wat gebeurt er bij een klik op een link?</h2>
+<ul style="font-size:42px;line-height:1.4"><li><b>MPA</b> (multi page application): de browser vraagt nieuwe HTML aan de server. Het scherm wordt even leeg en alle JavaScript-state is weg.</li><li><b>SPA</b> (client-side routing): een JavaScript-router onderschept de klik, past de URL aan (History API) en toont meteen de nieuwe view. De data komt erna.</li><li><b>Server-gedreven (RSC)</b>: klik, request naar de server, de server rendert, de browser voegt het resultaat in. Zonder voorbereiding moet je wachten.</li></ul>
+<p style="font-size:42px;line-height:1.4"><b>Prefetching</b> = code of data voor een link al ophalen <b>vóór</b> de gebruiker klikt, bijvoorbeeld zodra de link in beeld komt of bij hover. De klik voelt dan onmiddellijk.</p>
+<p style="position:absolute;right:128px;top:48px;width:360px;text-align:right;font-size:24px;color:#C00000">Kernbegrip</p>
+<p style="position:absolute;right:128px;bottom:48px;width:80px;text-align:right;font-size:24px;color:#7F7F7F">38</p>
+<aside>Wat gebeurt er eigenlijk als je op een link klikt? Er zijn drie modellen.
+
+In een klassieke multi-page application, een MPA, vraagt de browser een volledig nieuwe HTML-pagina aan de server. Het scherm wordt even leeg, de pagina wordt opnieuw opgebouwd, en alles wat JavaScript in het geheugen had, zoals een half ingevuld formulier, is weg. Zo werkte het web oorspronkelijk.
+
+In een single page application onderschept een JavaScript-router de klik. Die past de URL in de adresbalk aan via de History API van de browser, zonder de pagina te herladen, en toont meteen de nieuwe view, eventueel met een laadindicator. De data voor die view wordt daarna opgehaald. Omdat de code voor de volgende pagina al in de browser zit, voelt de navigatie onmiddellijk.
+
+In een server-gedreven app met Server Components zit de logica om de volgende pagina te renderen op de server. Bij een klik stuurt de browser een request, de server rendert de nieuwe pagina, en de browser voegt het resultaat in zonder volledig te herladen. Dat is efficiënt, maar als de server traag is of de verbinding traag, zie je na je klik even niets gebeuren.
+
+De oplossing daarvoor heet prefetching: de code of data voor een link al ophalen voordat de gebruiker klikt. Bijvoorbeeld zodra de link zichtbaar wordt op het scherm, of wanneer de muis erover beweegt. Op het moment van de klik ligt alles al klaar. Het nadeel: je haalt misschien dingen op die de gebruiker nooit bekijkt, wat extra netwerkverkeer en serverbelasting geeft.
+
+Dat spanningsveld tussen snel aanvoelen en niet te veel werk doen, komt zo meteen terug bij Next.js.</aside>
+</section>

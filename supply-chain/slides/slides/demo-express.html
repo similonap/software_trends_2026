@@ -1,0 +1,41 @@
+<section id="demo-express" data-transition="fade" style="background:#FFFFFF;color:#3C3B40;font-family:'Source Sans 3', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#E60005">Demo · 3 minuten · in een wegwerpcontainer</p>
+<h2 style="font-family:'League Gothic', 'Arial Narrow', sans-serif;font-size:80px;font-weight:400;line-height:1.05;letter-spacing:0;color:#232226">Eén naam, 65 packages</h2>
+</div>
+<div style="display:flex;gap:64px;align-items:center">
+<div style="flex:1;background:#232226;border-radius:16px;padding:36px 40px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.6;color:#F1F1F1;white-space:nowrap">$ docker run --rm -it node:24 bash<br>$ npm init -y<br>$ npm install express --ignore-scripts<br><span style="color:#9A999F">added 65 packages …</span><br>$ npm explain debug<br>$ cat package-lock.json</p>
+</div>
+<div style="width:640px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;align-items:center;gap:32px">
+<p style="width:220px;text-align:right;font-family:'League Gothic', 'Arial Narrow', sans-serif;font-size:160px;font-weight:400;line-height:1;letter-spacing:0;color:#232226">1</p>
+<p style="flex:1;font-size:28px;line-height:1.35">naam die je typte</p>
+</div>
+<div style="display:flex;align-items:center;gap:32px">
+<p style="width:220px;text-align:right;font-family:'League Gothic', 'Arial Narrow', sans-serif;font-size:160px;font-weight:400;line-height:1;letter-spacing:0;color:#232226">65</p>
+<p style="flex:1;font-size:28px;line-height:1.35">packages in node_modules</p>
+</div>
+<div style="display:flex;align-items:center;gap:32px">
+<p style="width:220px;text-align:right;font-family:'League Gothic', 'Arial Narrow', sans-serif;font-size:160px;font-weight:400;line-height:1;letter-spacing:0;color:#E60005">36</p>
+<p style="flex:1;font-size:28px;line-height:1.35">npm-accounts die je nu vertrouwt</p>
+</div>
+</div>
+</div>
+<p style="font-size:24px;color:#6B6A70">Gemeten op 19 oktober 2026. Eén van die 65 is debug, gekaapt in september 2025.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1440px;font-size:24px;color:#6B6A70">Deel 2 — Hoe npm werkt · 0:05–0:12</p>
+<img src="/_blob/4d3eecb01832b6f4111235aa00bb3842" alt="AP Hogeschool" style="position:absolute;right:128px;bottom:52px;height:56px;width:auto">
+<aside>Demo van 3 minuten in een wegwerpcontainer met node:24. Nooit op je eigen laptop met echte tokens.
+
+1. docker run --rm -it node:24 bash
+2. npm init -y &amp;&amp; npm install express --ignore-scripts
+3. Lees in de output “added 65 packages” voor.
+4. npm explain debug: toon waarom debug erin zit, ook al typte niemand die naam.
+5. Open package-lock.json (volgende slide).
+
+Het aantal maintainers (36) bereken je op voorhand met een klein script over de lockfile en de registry-API, en je toont het op deze slide. Let op: npm view express maintainers geeft alleen de maintainers van express zelf, niet van de hele boom.
+
+Vraag aan de zaal: “Hoeveel van deze 36 mensen ken je?” Je typte één naam, maar je vertrouwt nu 36 mensen, hun wachtwoorden, hun laptops en hun CI-pipelines.
+
+Waarom --ignore-scripts? Zelfs in een demo voer je geen vreemde install scripts uit als dat niet nodig is.</aside>
+</section>

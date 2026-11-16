@@ -1,0 +1,21 @@
+<section id="design-for-agents" data-transition="fade" style="background:#FFFFFF;color:#404040;font-family:Arial, Helvetica, sans-serif;padding:104px 128px 144px;display:flex;flex-direction:column;gap:40px">
+<h2 style="font-family:Questrial, 'Century Gothic', Arial, sans-serif;font-size:64px;font-weight:400;line-height:1.15;color:#C00000">Wat maakt een framework agent-vriendelijk?</h2>
+<ul style="font-size:42px;line-height:1.4"><li><b>Expliciet boven magie</b>: geen verborgen caching, geen zone.js; het gedrag staat in de code</li><li><b>Types overal</b>: de compiler vangt fouten op nog voor de app draait; type-safe routes</li><li><b>Sterke conventies</b>: file-based routing, vaste projectstructuur; minder keuzes, minder fouten</li><li><b>Webstandaarden</b>: Request, Response, FormData; kennis die niet veroudert (Remix 3)</li><li><b>Fouten met oplossing</b>: gestructureerd, in de terminal, met een link naar uitleg</li><li><b>Snelle feedbacklus</b>: Rust-tooling, snelle tests; een agent bouwt tientallen keren per taak</li></ul>
+<p style="font-size:42px;line-height:1.4;color:#595959">Wat goed is voor agents, is ook goed voor mensen.</p>
+<p style="position:absolute;right:128px;bottom:48px;width:80px;text-align:right;font-size:24px;color:#7F7F7F">66</p>
+<aside>Als we alles uit deze trend samenvatten: wat maakt een framework agent-vriendelijk? Zes principes komen steeds terug.
+
+Eén: expliciet boven magie. De impliciete caching in oudere versies van Next.js en zone.js in Angular waren al lastig voor mensen, maar voor agents nog meer, want het gedrag staat nergens in de code. Beide zijn intussen vervangen door expliciete alternatieven: ‘use cache’ en signals.
+
+Twee: types overal. TypeScript werkt als een vangnet: de compiler meldt meteen dat een agent iets fout deed, nog voor de app draait. Frameworks als TanStack Start gaan heel ver met type-safe routes en server-functies.
+
+Drie: sterke conventies, zoals file-based routing, waarbij de mappenstructuur bepaalt welke URL welke pagina toont. Hoe minder vrijheid in de structuur, hoe minder een agent kan fout doen, en hoe sneller hij een bestaand project begrijpt.
+
+Vier: webstandaarden. Request, Response, FormData en fetch veranderen niet elk kwartaal, en staan correct in de trainingsdata van elk model. Dat is precies het argument van het Remix-team: hun framework werkt goed met agents omdat het op webstandaarden bouwt, type-safe is en state in gewone JavaScript houdt.
+
+Vijf: foutmeldingen die meteen een oplossing aanreiken, in de terminal, waar een agent ze leest.
+
+Zes: een snelle feedbacklus. Een agent bouwt en test tientallen keren per taak; daarom is de investering in Rust-tooling zo belangrijk.
+
+En het mooiste: al deze principes maken een framework ook beter voor mensen. Developer experience en agent experience versterken elkaar.</aside>
+</section>

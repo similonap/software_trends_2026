@@ -1,0 +1,38 @@
+<section id="inc-xz-utils" data-transition="fade" style="background:#FFFFFF;color:#3C3B40;font-family:'Source Sans 3', Arial, sans-serif;padding:120px 128px 150px;display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#E60005">Incident · maart 2024 · overname via vertrouwen (Linux)</p>
+<h2 style="font-family:'League Gothic', 'Arial Narrow', sans-serif;font-size:80px;font-weight:400;line-height:1.05;letter-spacing:0;color:#232226">xz-utils: ruim twee jaar geduld</h2>
+</div>
+<div style="display:grid;grid-template-columns:300px 1fr;gap:12px 16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Toegang</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">“Jia Tan” stuurde vanaf oktober 2021 nuttige patches. Nepaccounts zetten de vermoeide maintainer onder druk; Jia Tan kreeg commitrechten en tekende vanaf 2023 zelf releases.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Verspreiding</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">De kwaadaardige bouwstap stond alleen in de release-tarballs, niet in git. De payload zat verstopt in “testbestanden”. Distributies bouwden vanuit de tarball.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Payload</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">Een backdoor in liblzma die via libsystemd in sshd terechtkwam en waarschijnlijk code-uitvoering op afstand gaf, nog vóór de login.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Detectie en respons</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">Andres Freund zag toevallig dat SSH-logins een halve seconde trager waren. Ontdekt vóór de backdoor in stabiele releases van de grote distributies zat.</p>
+</div>
+<div style="display:flex;gap:24px;align-items:stretch">
+<div style="flex:1;background:#E6EFF3;border-left:6px solid #005078;border-radius:8px;padding:20px 32px">
+<p style="font-size:27px;line-height:1.35;color:#232226"><b><span style="color:#005078">Les.</span></b> Eén overbelaste vrijwilliger is een kwetsbaarheid, en wat in de tarball staat, is niet per se wat in git staat.</p>
+</div>
+<div style="width:440px;background:#F4F4F4;border:1px solid #E1E1E1;border-radius:8px;padding:20px 28px;display:flex;flex-direction:column;gap:6px;justify-content:center">
+<p style="font-size:20px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#6B6A70">Had dit tegengehouden</p>
+<p style="font-size:26px;line-height:1.3;font-weight:600;color:#232226">geen: toeval en één oplettende engineer</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1440px;font-size:24px;color:#6B6A70">Deel 4 — Tijdlijn en casestudies · 0:18–0:30</p>
+<img src="/_blob/4d3eecb01832b6f4111235aa00bb3842" alt="AP Hogeschool" style="position:absolute;right:128px;bottom:52px;height:56px;width:auto">
+<aside>Verdieping: geen npm, maar het patroon van event-stream op zijn meest geduldig. Sla over bij tijdgebrek.
+
+xz-utils is een compressiebibliotheek die in vrijwel elke Linux-distributie zit. De maintainer, Lasse Collin, onderhield het alleen en had het moeilijk. Vanaf oktober 2021 stuurde “Jia Tan” nuttige patches. Nepaccounts zoals “Jigar Kumar” klaagden publiek dat het project te traag ging en dat er een extra maintainer nodig was. Jia Tan kreeg commitrechten en tekende vanaf maart 2023 zelf releases.
+
+In februari en maart 2024 verschenen versies 5.6.0 en 5.6.1. Een aangepast bouwscript (build-to-host.m4) stond alleen in de release-tarball, niet in git. Het haalde een payload uit “testbestanden” die wel in git stonden, maar alleen bij een build op x86-64 Linux voor een Debian- of RPM-pakket. De backdoor kaapte een functie die sshd gebruikt om handtekeningen te controleren: waarschijnlijk code-uitvoering op afstand, nog vóór authenticatie.
+
+Ontdekking op 29 maart 2024: Andres Freund, een engineer bij Microsoft, merkte dat mislukte SSH-logins 0,8 in plaats van 0,3 seconden duurden, en zag valgrind-fouten. “The upstream xz repository and the xz tarballs have been backdoored.”
+
+De backdoor zat al in Debian testing en Fedora Rawhide, maar nog niet in de stabiele releases. Geen enkele maatregel uit deel 5 had dit tegengehouden: het was geluk.
+
+Bronnen: melding op oss-security; tijdlijn van Russ Cox.</aside>
+</section>

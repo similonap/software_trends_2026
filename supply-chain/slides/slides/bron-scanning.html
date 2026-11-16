@@ -1,0 +1,42 @@
+<section id="bron-scanning" data-transition="fade" style="background:#FFFFFF;color:#3C3B40;font-family:'Source Sans 3', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#005078">Laag 4 en 5</p>
+<h2 style="font-family:'League Gothic', 'Arial Narrow', sans-serif;font-size:80px;font-weight:400;line-height:1.05;letter-spacing:0;color:#232226">De juiste bron, en meekijken</h2>
+</div>
+<div style="display:flex;gap:64px;align-items:flex-start">
+<div style="flex:1;display:flex;flex-direction:column;gap:16px">
+<h3 style="font-family:'Source Sans 3', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.2;color:#232226">Laag 4 · De juiste bron</h3>
+<ul style="font-size:28px;line-height:1.4">
+<li>Interne packages onder een eigen scope, en die organisatie ook registreren op npmjs.com</li>
+<li>Scope vast gekoppeld in .npmrc; de proxy zoekt interne namen nooit upstream op</li>
+<li>Namen uit de officiële documentatie, niet uit je geheugen of een chatbot</li>
+<li>Twijfel? npm view: leeftijd, maintainers, repository</li>
+</ul>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px">
+<h3 style="font-family:'Source Sans 3', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.2;color:#232226">Laag 5 · Kijken</h3>
+<table style="font-size:28px;color:#3C3B40">
+<tr><th style="width:48%;color:#232226">Tool</th><th style="width:52%;color:#232226">Vangt nieuwe malware?</th></tr>
+<tr><td>npm audit</td><td style="color:#E60005">nee, alleen gekende advisories</td></tr>
+<tr><td>npm audit signatures</td><td style="color:#E60005">nee, controleert herkomst</td></tr>
+<tr><td>OSV-Scanner, Dependabot</td><td>pas na een melding</td></tr>
+<tr><td>Socket</td><td style="color:#005078">ja, op gedrag</td></tr>
+<tr><td>Aikido Safe Chain</td><td>deels, plus 48 uur wachttijd</td></tr>
+</table>
+<p style="font-size:24px;line-height:1.4;color:#6B6A70">Sinds 28 juli 2026 scant de registry zelf elke publicatie op malware.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1440px;font-size:24px;color:#6B6A70">Deel 5 — Verdediging als gebruiker · 0:30–0:36</p>
+<img src="/_blob/4d3eecb01832b6f4111235aa00bb3842" alt="AP Hogeschool" style="position:absolute;right:128px;bottom:52px;height:56px;width:auto">
+<aside>Laag 4, de juiste bron, tegen dependency confusion en typosquatting:
+- Zet alle interne packages onder een scope die je bezit, en registreer die organisatie ook op npmjs.com, zelfs als je er niets publiceert.
+- Koppel de scope vast aan je interne registry in .npmrc en laat je proxy-registry (Verdaccio, Artifactory, GitHub Packages) interne namen nooit upstream opzoeken.
+- Kopieer packagenamen uit de officiële documentatie. Controleer bij twijfel met npm view: hoe oud is het package, wie onderhoudt het, naar welke repository verwijst het?
+- Behandel een package dat een AI-assistent voorstelt als onbekend tot je zelf hebt nagegaan dat het bestaat en een geschiedenis heeft (slopsquatting).
+
+Laag 5, kijken: ken het verschil tussen tools die een databank opzoeken en tools die gedrag analyseren. npm audit vergelijkt met de GitHub Advisory Database; npm audit signatures verifieert registry-handtekeningen en provenance; Dependabot-malwarealerts (sinds maart 2026) en OSV-Scanner zoeken gekende kwaadaardige packages op; Socket analyseert code statisch op install scripts, obfuscatie, netwerk- en shellgebruik; Aikido Safe Chain is een lokale proxy die bekende malware blokkeert en standaard een minimumleeftijd van 48 uur afdwingt.
+
+De registry scant sinds 28 juli 2026 elke publicatie voordat ze installeerbaar wordt (meestal binnen een vijftal minuten). In september 2026 blokkeerde die scan bijvoorbeeld @nubjs/nub 0.9.4.
+
+Een slim signaal is vertrouwensverlies: met trustPolicy: no-downgrade weigert pnpm een versie die met minder bewijs gepubliceerd is dan haar voorgangers, bijvoorbeeld zonder trusted publishing terwijl eerdere versies dat wel hadden. Dat was precies het geval bij axios@1.14.1.</aside>
+</section>

@@ -1,0 +1,348 @@
+<template id="05-spread-template">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<style>
+  @font-face { font-family: 'Barlow'; src: url('assets/fonts/Barlow-400.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: block; }
+  @font-face { font-family: 'Barlow'; src: url('assets/fonts/Barlow-900.woff2') format('woff2'); font-weight: 900; font-style: normal; font-display: block; }
+  @font-face { font-family: 'IBM Plex Mono'; src: url('assets/fonts/IBM_Plex_Mono-500.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: block; }
+  @font-face { font-family: 'IBM Plex Mono'; src: url('assets/fonts/IBM_Plex_Mono-600.woff2') format('woff2'); font-weight: 600; font-style: normal; font-display: block; }
+
+  #root {
+    position: relative;
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    container-type: size;
+  }
+  .\30 5-spread-bg {
+    position: absolute;
+    inset: 0;
+    background: #111111;
+  }
+  .\30 5-spread-stage {
+    position: absolute;
+    inset: 0;
+  }
+  .\30 5-spread-cam {
+    position: absolute;
+    inset: 0;
+    transform-origin: 960px 450px;
+  }
+
+  /* kicker */
+  .\30 5-spread-kicker {
+    position: absolute;
+    left: 106px;
+    top: 100px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+  .\30 5-spread-rule {
+    width: 36px;
+    height: 2px;
+    background: #E85D26;
+    transform-origin: left center;
+  }
+  .\30 5-spread-kicker-text {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 500;
+    font-size: 0.95cqw;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #E85D26;
+  }
+
+  /* counter 0 -> 8 */
+  .\30 5-spread-counter-block {
+    position: absolute;
+    left: 106px;
+    top: 160px;
+    display: flex;
+    align-items: baseline;
+    gap: 28px;
+  }
+  .\30 5-spread-counter-wrap {
+    width: 1.2em;
+    font-size: 5.5cqw;
+  }
+  .\30 5-spread-counter {
+    display: inline-block;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 900;
+    font-size: 5.5cqw;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    font-variant-numeric: tabular-nums;
+    color: #E85D26;
+    transform-origin: left bottom;
+  }
+  .\30 5-spread-counter-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 600;
+    font-size: 1.15cqw;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #F0ECE5;
+  }
+
+  /* timeline */
+  .\30 5-spread-svg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1920px;
+    height: 1080px;
+    overflow: visible;
+  }
+  .\30 5-spread-line {
+    fill: none;
+    stroke: #888880;
+    stroke-width: 2;
+  }
+  .\30 5-spread-span {
+    fill: none;
+    stroke: #E85D26;
+    stroke-width: 4;
+  }
+  .\30 5-spread-cap {
+    fill: none;
+    stroke: #F0ECE5;
+    stroke-width: 2;
+  }
+  .\30 5-spread-end {
+    position: absolute;
+    top: 470px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 500;
+    font-size: 0.95cqw;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #888880;
+    white-space: nowrap;
+  }
+  .\30 5-spread-end-l { left: 106px; }
+  .\30 5-spread-end-r { right: 106px; text-align: right; }
+  .\30 5-spread-dur {
+    position: absolute;
+    top: 470px;
+    left: 760px;
+    width: 400px;
+    text-align: center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 600;
+    font-size: 0.95cqw;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #F0ECE5;
+  }
+
+  /* markers */
+  .\30 5-spread-marker {
+    position: absolute;
+    top: 0;
+    width: 200px;
+    height: 1080px;
+    margin-left: -100px;
+  }
+  .\30 5-spread-tick {
+    position: absolute;
+    left: 98px;
+    top: 406px;
+    width: 4px;
+    height: 68px;
+    background: #E85D26;
+    transform-origin: center center;
+  }
+  .\30 5-spread-tag {
+    position: absolute;
+    left: 0;
+    top: 356px;
+    width: 200px;
+    text-align: center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 500;
+    font-size: 1.15cqw;
+    letter-spacing: 0.04em;
+    color: #F0ECE5;
+    white-space: nowrap;
+  }
+
+  /* stat */
+  .\30 5-spread-stat {
+    position: absolute;
+    left: 106px;
+    right: 106px;
+    top: 592px;
+  }
+  .\30 5-spread-stat-border {
+    height: 1px;
+    background: #282826;
+    transform-origin: left center;
+  }
+  .\30 5-spread-stat-row {
+    display: flex;
+    align-items: baseline;
+    margin-top: 30px;
+  }
+  .\30 5-spread-stat-wrap {
+    width: 0.62em;
+    font-size: 10cqw;
+  }
+  .\30 5-spread-stat-num {
+    display: inline-block;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 900;
+    font-size: 10cqw;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    font-variant-numeric: tabular-nums;
+    color: #F0ECE5;
+    transform-origin: left bottom;
+  }
+  .\30 5-spread-stat-suffix {
+    display: inline-block;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 900;
+    font-size: 10cqw;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: #F0ECE5;
+    margin-left: 0.12em;
+  }
+  .\30 5-spread-stat-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 600;
+    font-size: 1.4cqw;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #E85D26;
+    margin-top: 14px;
+  }
+</style>
+
+<div data-hf-id="hf-acng" id="root" data-composition-id="05-spread" data-width="1920" data-height="1080" data-duration="9.54">
+  <div data-hf-id="hf-alln" class="clip 05-spread-bg" data-start="0" data-duration="9.54" data-track-index="0"></div>
+
+  <div data-hf-id="hf-olwj" class="clip 05-spread-stage" data-start="0" data-duration="9.54" data-track-index="1">
+    <div data-hf-id="hf-x9qk" class="05-spread-cam" id="05-spread-cam">
+
+      <div data-hf-id="hf-fpiz" class="05-spread-kicker">
+        <div data-hf-id="hf-206a" class="05-spread-rule" id="05-spread-rule"></div>
+        <div data-hf-id="hf-cg47" class="05-spread-kicker-text" id="05-spread-kicker-text">02 / Verspreiding</div>
+      </div>
+
+      <div data-hf-id="hf-3tbu" class="05-spread-counter-block" id="05-spread-counter-block">
+        <div data-hf-id="hf-1ff5" class="05-spread-counter-wrap"><span data-hf-id="hf-ha89" class="05-spread-counter" id="05-spread-counter">0</span></div>
+        <div data-hf-id="hf-5hnm" class="05-spread-counter-label" id="05-spread-counter-label">kwaadaardige versies</div>
+      </div>
+
+      <svg data-hf-id="hf-zr0p" class="05-spread-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+        <line data-hf-id="hf-zx4s" class="05-spread-line" id="05-spread-line" x1="106" y1="440" x2="1814" y2="440" />
+        <line data-hf-id="hf-8h77" class="05-spread-span" id="05-spread-span" x1="256" y1="440" x2="1664" y2="440" />
+        <line data-hf-id="hf-w36b" class="05-spread-cap" id="05-spread-cap-l" x1="107" y1="428" x2="107" y2="452" />
+        <line data-hf-id="hf-xd5j" class="05-spread-cap" id="05-spread-cap-r" x1="1813" y1="428" x2="1813" y2="452" />
+      </svg>
+
+      <div data-hf-id="hf-2few" class="05-spread-end 05-spread-end-l" id="05-spread-end-l">26 aug · 22:32 UTC</div>
+      <div data-hf-id="hf-in3s" class="05-spread-end 05-spread-end-r" id="05-spread-end-r">27 aug · 00:37 UTC</div>
+      <div data-hf-id="hf-lshd" class="05-spread-dur" id="05-spread-dur">± 2 uur</div>
+
+      <div data-hf-id="hf-sez2" id="05-spread-markers"></div>
+
+      <div data-hf-id="hf-1wry" class="05-spread-stat">
+        <div data-hf-id="hf-g85o" class="05-spread-stat-border" id="05-spread-stat-border"></div>
+        <div data-hf-id="hf-kp9l" class="05-spread-stat-row">
+          <div data-hf-id="hf-3xhb" class="05-spread-stat-wrap"><span data-hf-id="hf-m5st" class="05-spread-stat-num" id="05-spread-stat-num">0</span></div>
+          <span data-hf-id="hf-y5xw" class="05-spread-stat-suffix" id="05-spread-stat-suffix">mln</span>
+        </div>
+        <div data-hf-id="hf-46i8" class="05-spread-stat-label" id="05-spread-stat-label">downloads per week</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var $ = function (id) { return document.getElementById(id); };
+    var VERSIONS = ["nx@20.9.0", "nx@20.10.0", "nx@20.11.0", "nx@20.12.0", "nx@21.5.0", "nx@21.6.0", "nx@21.7.0", "nx@21.8.0"];
+    var X0 = 256, X1 = 1664;
+    var STEP = 0.18;           // marker cascade interval
+    var M_START = 3.72;        // "acht"
+
+    // build the eight markers (deterministic, synchronous)
+    var host = $("05-spread-markers");
+    var ticks = [], tags = [];
+    VERSIONS.forEach(function (v, i) {
+      var m = document.createElement("div");
+      m.className = "05-spread-marker";
+      m.style.left = (X0 + (X1 - X0) * i / (VERSIONS.length - 1)) + "px";
+      var tick = document.createElement("div");
+      tick.className = "05-spread-tick";
+      var tag = document.createElement("div");
+      tag.className = "05-spread-tag";
+      tag.textContent = v;
+      m.appendChild(tick);
+      m.appendChild(tag);
+      host.appendChild(m);
+      ticks.push(tick);
+      tags.push(tag);
+    });
+
+    // svg-path-draw setup — measured lengths
+    ["05-spread-line", "05-spread-span"].forEach(function (id) {
+      var p = $(id);
+      var len = p.getTotalLength();
+      p.style.strokeDasharray = len + "";
+      p.style.strokeDashoffset = len + "";
+    });
+
+    window.__timelines = window.__timelines || {};
+    var tl = gsap.timeline({ paused: true });
+
+    // slow continuous camera push underneath
+    tl.fromTo($("05-spread-cam"), { scale: 1 }, { scale: 1.03, duration: 9.04, ease: "none" }, 0);
+
+    // Scene 1 — kicker, endpoints, line draw
+    tl.fromTo($("05-spread-rule"), { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "power2.out" }, 0.1);
+    tl.fromTo($("05-spread-kicker-text"), { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.45, ease: "power2.out" }, 0.18);
+
+    tl.fromTo($("05-spread-cap-l"), { opacity: 0, scaleY: 0, transformOrigin: "50% 50%" }, { opacity: 1, scaleY: 1, duration: 0.3, ease: "power2.out" }, 0.36);
+    tl.fromTo($("05-spread-end-l"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 0.4);
+
+    tl.to($("05-spread-line"), { strokeDashoffset: 0, duration: 1.0, ease: "power2.out" }, 1.84);
+    tl.fromTo($("05-spread-dur"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 2.36);
+    tl.fromTo($("05-spread-cap-r"), { opacity: 0, scaleY: 0, transformOrigin: "50% 50%" }, { opacity: 1, scaleY: 1, duration: 0.3, ease: "power2.out" }, 2.55);
+    tl.fromTo($("05-spread-end-r"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 2.6);
+
+    // Scene 2 — eight markers cascade, counter 0 -> 8 ticks with them
+    tl.fromTo($("05-spread-counter-block"), { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, 3.5);
+    ticks.forEach(function (t, i) {
+      var at = M_START + i * STEP;
+      tl.fromTo(t, { scaleY: 0, opacity: 0 }, { scaleY: 1, opacity: 1, duration: 0.4, ease: "back.out(2.2)" }, at);
+      tl.fromTo(tags[i], { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.32, ease: "back.out(1.6)" }, at + 0.04);
+    });
+    // counting-dynamic-scale: proxy + scale share timing/ease; linear so each integer lands with its tick
+    var cState = { v: 0 };
+    var cEl = $("05-spread-counter");
+    var C_START = M_START - 0.5 * STEP + 0.05;
+    var C_DUR = VERSIONS.length * STEP;
+    tl.to(cState, { v: 8, duration: C_DUR, ease: "none", onUpdate: function () { cEl.textContent = String(Math.round(cState.v)); } }, C_START);
+    tl.fromTo(cEl, { scale: 0.55 }, { scale: 1, duration: C_DUR, ease: "none" }, C_START);
+    // the infected window lights up between first and last release ("van Nx.")
+    tl.to($("05-spread-span"), { strokeDashoffset: 0, duration: 0.6, ease: "power2.out" }, 5.2);
+
+    // Scene 3 — 6 mln downloads per week
+    tl.fromTo($("05-spread-stat-border"), { scaleX: 0 }, { scaleX: 1, duration: 0.7, ease: "power2.out" }, 6.6);
+    var sState = { v: 0 };
+    var sEl = $("05-spread-stat-num");
+    tl.fromTo(sEl, { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "power1.out" }, 7.15);
+    tl.to(sState, { v: 6, duration: 1.2, ease: "power3.out", onUpdate: function () { sEl.textContent = String(Math.round(sState.v)); } }, 7.2);
+    tl.fromTo(sEl, { scale: 0.5 }, { scale: 1, duration: 1.2, ease: "power3.out" }, 7.2);
+    tl.fromTo($("05-spread-stat-label"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 7.84);
+    tl.fromTo($("05-spread-stat-suffix"), { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.45, ease: "back.out(1.6)" }, 8.4);
+
+    window.__timelines["05-spread"] = tl;
+  })();
+</script>
+</template>

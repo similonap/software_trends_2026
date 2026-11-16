@@ -1,0 +1,56 @@
+# Alles wat hier genegeerd wordt, kun je opnieuw maken. Hoe: zie README.md.
+
+# --- Systeem en editors ---
+.DS_Store
+Thumbs.db
+.idea/
+*.swp
+
+# --- Back-up van de oude, aparte git-repo's (lokaal, mag weg) ---
+/.oude-git/
+
+# --- Node (labo's, voorbeelden) ---
+node_modules/
+.next/
+.angular/
+dist/
+out-tsc/
+coverage/
+*.tsbuildinfo
+npm-debug.log*
+
+# --- Python ---
+__pycache__/
+*.pyc
+.venv/
+
+# --- Slides: uitvoer van bron/bouw.py (GraphQL en WebAssembly) ---
+# De bron staat in bron/inhoud_a.py en bron/inhoud_b.py.
+/graphql-slides/slides/
+/graphql-slides/sprekersnotities.md
+/graphql-slides/presentatie/kort.md
+/webassembly-slides/slides/
+/webassembly-slides/sprekersnotities.md
+/webassembly-slides/presentatie/kort.md
+
+# --- Presentatie in één bestand: uitvoer van presentatie/maak.py ---
+/*-slides/presentatie/presentatie.html
+
+# --- Ingesproken video: uitvoer van ingesproken/maak.py ---
+# audio/ = ElevenLabs-opnames (opnieuw maken kost credits), build/ = tussenresultaten.
+/*-slides/ingesproken/audio/
+/*-slides/ingesproken/build/
+/*-slides/ingesproken/maak.log
+/*-slides/ingesproken-*.mp4
+
+# --- HyperFrames-video's (supply-chain/videos): caches, ingesproken audio, renders ---
+/supply-chain/videos/*/.waveform-cache/
+/supply-chain/videos/*/.thumbnails/
+/supply-chain/videos/*/.media/
+/supply-chain/videos/*/.hyperframes/preview/
+/supply-chain/videos/*/.hyperframes/artifacts/
+/supply-chain/videos/*/.hyperframes/video-state-lock
+/supply-chain/videos/*/assets/voice/*.wav
+/supply-chain/videos/*/assets/voice/*.mp3
+/supply-chain/videos/*/renders/
+/supply-chain/videos/*/err.txt

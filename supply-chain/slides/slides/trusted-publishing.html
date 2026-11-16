@@ -1,0 +1,46 @@
+<section id="trusted-publishing" data-transition="fade" style="background:#FFFFFF;color:#3C3B40;font-family:'Source Sans 3', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#005078">Geen langlevende tokens</p>
+<h2 style="font-family:'League Gothic', 'Arial Narrow', sans-serif;font-size:80px;font-weight:400;line-height:1.05;letter-spacing:0;color:#232226">Trusted publishing in twee jobs</h2>
+</div>
+<div style="display:flex;gap:16px;align-items:stretch">
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#F4F4F4;border:1px solid #E1E1E1;border-radius:16px;padding:28px">
+<h3 style="font-family:'Source Sans 3', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.2;color:#232226">build-job</h3>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.5;color:#232226">npm ci --ignore-scripts<br>npm test<br>npm pack</p>
+<p style="font-size:24px;line-height:1.35;color:#E60005">voert vreemde code uit, maar krijgt geen OIDC-token</p>
+</div>
+<div style="width:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;color:#6B6A70">.tgz</p>
+<x-shape kind="arrow-right" style="width:64px;height:32px;background:#232226"></x-shape>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#E6EFF3;border:1px solid #B3CDD9;border-radius:16px;padding:28px">
+<h3 style="font-family:'Source Sans 3', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.2;color:#232226">publish-job</h3>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.5;color:#232226">id-token: write<br>environment: npm-release<br>npm publish ./*.tgz</p>
+<p style="font-size:24px;line-height:1.35;color:#005078">voert geen vreemde code uit; een reviewer keurt goed</p>
+</div>
+<div style="width:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px">
+<p style="font-size:24px;color:#6B6A70">OIDC</p>
+<x-shape kind="arrow-right" style="width:64px;height:32px;background:#005078"></x-shape>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#F4F4F4;border:1px solid #E1E1E1;border-radius:16px;padding:28px">
+<h3 style="font-family:'Source Sans 3', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.2;color:#232226">npm-registry</h3>
+<p style="font-size:28px;line-height:1.35">Komt het token van release.yml in jouw repository? Dan eenmalig publicatierecht, plus provenance.</p>
+</div>
+</div>
+<div style="display:flex;gap:48px">
+<p style="flex:1;font-size:28px;line-height:1.4">Algemeen beschikbaar sinds 31 juli 2025 voor GitHub Actions en GitLab.com, CircleCI sinds april 2026. Vereist npm 11.5.1+ en een gehoste runner.</p>
+<p style="flex:1;font-size:28px;line-height:1.4;color:#232226">Daarna: verwijder alle oude tokens en kies <b>disallow tokens</b>. Eén vergeten token naast trusted publishing volstaat (axios).</p>
+</div>
+<p style="font-size:24px;line-height:1.4;color:#6B6A70">Staged publishing (sinds 22 mei 2026): CI zet de versie klaar, een maintainer keurt goed met 2FA.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1440px;font-size:24px;color:#6B6A70">Deel 6 — Verdediging als maintainer en in CI/CD · 0:36–0:40</p>
+<img src="/_blob/4d3eecb01832b6f4111235aa00bb3842" alt="AP Hogeschool" style="position:absolute;right:128px;bottom:52px;height:56px;width:auto">
+<aside>Met trusted publishing bewaar je geen npm-token meer in je CI. De pipeline vraagt aan GitHub een kortlevend OIDC-token dat zegt “ik ben workflow release.yml in repository X”. npm controleert dat tegen de configuratie van je package en geeft eenmalig publicatierecht. Er is niets dat langer leeft dan één job, en dus niets dat een worm kan meenemen.
+
+Maar binnen die ene job is het token wel bruikbaar: zie TanStack, waar aanvallerscode het uit het geheugen van de runner las. Daarom bestaat de workflow bewust uit twee jobs. De build-job voert de code van je dependencies en je tests uit, maar kan geen OIDC-token vragen. De publish-job krijgt alleen de gebouwde tarball, voert geen vreemde code uit, en draait in een environment met een verplichte reviewer. De volledige release.yml staat in de cursustekst.
+
+Praktisch: npm 11.5.1 of hoger in de publish-job, alleen door het platform gehoste runners, en met npm trust (sinds npm 11.10) stel je het vanaf de opdrachtregel in.
+
+Staged publishing (verdieping): CI voert npm stage publish uit, en de versie wordt pas installeerbaar nadat een maintainer ze met 2FA goedkeurt. Vanaf ongeveer januari 2027 kunnen tokens die 2FA omzeilen alleen nog stagen, niet meer rechtstreeks publiceren.
+
+Oefening 4 laat studenten dit zelf opzetten met een scoped testpackage.</aside>
+</section>

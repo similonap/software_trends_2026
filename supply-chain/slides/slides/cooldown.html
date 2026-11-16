@@ -1,0 +1,35 @@
+<section id="cooldown" data-transition="fade" style="background:#FFFFFF;color:#3C3B40;font-family:'Source Sans 3', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#005078">Laag 2 · Wachten</p>
+<h2 style="font-family:'League Gothic', 'Arial Narrow', sans-serif;font-size:80px;font-weight:400;line-height:1.05;letter-spacing:0;color:#232226">Een cooldown instellen</h2>
+</div>
+<table style="font-size:28px;color:#3C3B40">
+<tr><th style="width:16%;color:#232226">Tool</th><th style="width:38%;color:#232226">Instelling</th><th style="width:14%;color:#232226">Eenheid</th><th style="width:32%;color:#232226">Standaard</th></tr>
+<tr><td style="color:#232226">npm</td><td>min-release-age (vanaf 11.10)</td><td>dagen</td><td>uit</td></tr>
+<tr><td style="color:#232226">pnpm</td><td>minimumReleaseAge</td><td>minuten</td><td>1 dag sinds pnpm 11</td></tr>
+<tr><td style="color:#232226">Yarn</td><td>npmMinimalAgeGate</td><td>duur (1d)</td><td>1 dag sinds Yarn 4.15</td></tr>
+<tr><td style="color:#232226">Bun</td><td>install.minimumReleaseAge</td><td>seconden</td><td>uit</td></tr>
+<tr><td style="color:#232226">Dependabot</td><td>cooldown</td><td>dagen</td><td>3 dagen sinds juli 2026</td></tr>
+<tr><td style="color:#232226">Renovate</td><td>minimumReleaseAge</td><td>duur</td><td>preset: 3 dagen</td></tr>
+</table>
+<div style="display:flex;gap:48px;align-items:center">
+<div style="flex:1;background:#232226;border-radius:16px;padding:24px 32px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.5;color:#F1F1F1;white-space:nowrap"><span style="color:#9A999F"># .npmrc (npm 11.10 of nieuwer): advies van CISA</span><br>min-release-age=7</p>
+</div>
+<p style="flex:1;font-size:28px;line-height:1.4;color:#232226"><b><span style="color:#E60005">Let op de eenheid.</span></b> Een 7 betekent bij npm een week, bij pnpm zeven minuten.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1440px;font-size:24px;color:#6B6A70">Deel 5 — Verdediging als gebruiker · 0:30–0:36</p>
+<img src="/_blob/4d3eecb01832b6f4111235aa00bb3842" alt="AP Hogeschool" style="position:absolute;right:128px;bottom:52px;height:56px;width:auto">
+<aside>Sinds 2026 ondersteunen alle grote tools een cooldown, maar elke tool gebruikt een andere eenheid.
+
+npm: min-release-age, in dagen, sinds npm 11.10 (februari 2026), standaard uit. Oudere npm-versies negeren de regel.
+pnpm: minimumReleaseAge, in minuten, standaard 1440 (één dag) sinds pnpm 11 (april 2026).
+Yarn: npmMinimalAgeGate, een duur zoals 1d, standaard één dag sinds Yarn 4.15 (mei 2026).
+Bun: install.minimumReleaseAge in bunfig.toml, in seconden, standaard uit.
+Dependabot: cooldown, in dagen, standaard 3 dagen voor versie-updates sinds juli 2026.
+Renovate: minimumReleaseAge, met de preset security:minimumReleaseAgeNpm (3 dagen).
+
+De valkuil: wie min-release-age=7 overneemt in pnpm als minimumReleaseAge: 7, wacht zeven minuten in plaats van een week.
+
+Uitzonderingen voor dringende patches: min-release-age-exclude in npm, minimumReleaseAgeExclude in pnpm.</aside>
+</section>

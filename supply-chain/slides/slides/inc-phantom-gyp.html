@@ -1,0 +1,38 @@
+<section id="inc-phantom-gyp" data-transition="fade" style="background:#FFFFFF;color:#3C3B40;font-family:'Source Sans 3', Arial, sans-serif;padding:120px 128px 150px;display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#E60005">Incident · 3 juni 2026 · binding.gyp misbruikt</p>
+<h2 style="font-family:'League Gothic', 'Arial Narrow', sans-serif;font-size:80px;font-weight:400;line-height:1.05;letter-spacing:0;color:#232226">Phantom Gyp: een install script dat niet bestaat</h2>
+</div>
+<div style="display:grid;grid-template-columns:300px 1fr;gap:12px 16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Toegang</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">Gecompromitteerde maintaineraccounts, te beginnen met @vapi-ai/server-sdk (~86.500 downloads per week). Hoe die accounts gecompromitteerd werden, is niet bekend.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Verspreiding</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">Een worm: hij vroeg alle packages van de maintainer op, voegde binding.gyp en index.js toe en publiceerde ze opnieuw. 57 packages en 286 versies in minder dan twee uur.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Payload</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">Geen scripts in package.json. npm draaide zelf node-gyp rebuild, en de regel &lt;!(node index.js) in binding.gyp startte een steler. Er werd niets gecompileerd.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Detectie en respons</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">Chainguard blokkeerde alle versies zes uur later. Snyk: de gestolen data is versleuteld, dus achteraf weet je niet wat er weg is.</p>
+</div>
+<div style="display:flex;gap:24px;align-items:stretch">
+<div style="flex:1;background:#E6EFF3;border-left:6px solid #005078;border-radius:8px;padding:20px 32px">
+<p style="font-size:27px;line-height:1.35;color:#232226"><b><span style="color:#005078">Les.</span></b> Een install script hoeft niet in package.json te staan: een bouwbestand voert net zo goed code uit.</p>
+</div>
+<div style="width:440px;background:#F4F4F4;border:1px solid #E1E1E1;border-radius:8px;padding:20px 28px;display:flex;flex-direction:column;gap:6px;justify-content:center">
+<p style="font-size:20px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#6B6A70">Had dit tegengehouden</p>
+<p style="font-size:26px;line-height:1.3;font-weight:600;color:#232226">install scripts blokkeren, cooldown</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1440px;font-size:24px;color:#6B6A70">Deel 2 — Hoe npm werkt · 0:05–0:12</p>
+<img src="/_blob/4d3eecb01832b6f4111235aa00bb3842" alt="AP Hogeschool" style="position:absolute;right:128px;bottom:52px;height:56px;width:auto">
+<aside>Verdieping: dit is het bewijs bij de vorige slide. Sla over bij tijdgebrek.
+
+3 juni 2026, 23:30 UTC: kwaadaardige versies van @vapi-ai/server-sdk verschijnen. Binnen twee uur volgen ai-sdk-ollama, 25 autotel-packages en de packages van nog een maintainer: 57 packages en meer dan 286 versies. StepSecurity gaf de techniek de naam Phantom Gyp, de campagne heet Miasma.
+
+Het mechanisme is precies wat we net zagen. package.json bevat geen enkel script. Maar het package heeft een binding.gyp in de root en geen eigen install script, dus npm voert zelf node-gyp rebuild uit. In binding.gyp staat een command expansion: &lt;!(node index.js …). GYP voert die uit tijdens de configure-fase, nog voor er iets gecompileerd wordt. Het target heeft type “none”: er wordt helemaal niets gebouwd. De uitvoer gaat naar /dev/null, zodat de installatie er normaal uitziet.
+
+Wie alleen het scripts-veld van package.json controleert, met een scanner of een allowlist, ziet niets. Volgens Snyk blokkeert --ignore-scripts de impliciete node-gyp rebuild wel. Op npm 12 telt zo’n package ook als package met een install script, en dus moet je het eerst goedkeuren.
+
+Payload: een versluierde loader van 4,5 MB haalt Bun op en start een steler voor cloud-, CI-, Vault-, Kubernetes- en wachtwoordmanagergegevens, met persistentie in .claude/, .cursor/rules/ en .vscode/tasks.json. Snyk: “Do not treat a clean latest tag as evidence you are safe.”
+
+Bronnen: Snyk; Chainguard.</aside>
+</section>

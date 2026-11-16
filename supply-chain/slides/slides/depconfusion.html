@@ -1,0 +1,49 @@
+<section id="depconfusion" data-transition="fade" style="background:#FFFFFF;color:#3C3B40;font-family:'Source Sans 3', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#E60005">Dependency confusion</p>
+<h2 style="font-family:'League Gothic', 'Arial Narrow', sans-serif;font-size:80px;font-weight:400;line-height:1.05;letter-spacing:0;color:#232226">Geen account nodig, alleen een naam</h2>
+</div>
+<div style="display:flex;gap:24px;align-items:center">
+<div style="width:440px;display:flex;flex-direction:column;gap:24px">
+<div style="display:flex;flex-direction:column;gap:4px;background:#F4F4F4;border:2px solid #232226;border-radius:12px;padding:20px 28px">
+<p style="font-size:28px;font-weight:600;line-height:1.2;color:#232226">Interne registry</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.4;color:#6B6A70">acme-auth@1.0.0</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:4px;background:#FDE8E8;border:2px solid #E60005;border-radius:12px;padding:20px 28px">
+<p style="font-size:28px;font-weight:600;line-height:1.2;color:#232226">Publieke npm-registry</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.4;color:#E60005">acme-auth@99.0.0</p>
+<p style="font-size:24px;line-height:1.3;color:#6B6A70">gepubliceerd door de aanvaller</p>
+</div>
+</div>
+<x-shape kind="arrow-right" style="width:64px;height:32px;background:#232226"></x-shape>
+<div style="flex:1;display:flex;flex-direction:column;gap:4px;background:#F4F4F4;border:2px solid #232226;border-radius:12px;padding:20px 28px">
+<p style="font-size:28px;font-weight:600;line-height:1.2;color:#232226">Proxy-registry</p>
+<p style="font-size:24px;line-height:1.3;color:#6B6A70">voegt beide samen en levert de hoogste versie</p>
+</div>
+<x-shape kind="arrow-right" style="width:64px;height:32px;background:#E60005"></x-shape>
+<div style="flex:1;display:flex;flex-direction:column;gap:4px;background:#FDE8E8;border:2px solid #E60005;border-radius:12px;padding:20px 28px">
+<p style="font-size:28px;font-weight:600;line-height:1.2;color:#232226">Jouw build</p>
+<p style="font-size:24px;line-height:1.3;color:#6B6A70">installeert 99.0.0, en het preinstall-script draait</p>
+</div>
+</div>
+<div style="display:flex;gap:48px;align-items:flex-start">
+<p style="flex:1;font-size:28px;line-height:1.4">Hoe lekt de interne naam? Via een package.json in een publieke repo of in gebundelde JavaScript. Alex Birsan liet zo in 2021 code draaien bij meer dan 35 bedrijven.</p>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px">
+<div style="background:#232226;border-radius:16px;padding:24px 32px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.5;color:#F1F1F1;white-space:nowrap"><span style="color:#9A999F"># .npmrc: @acme komt altijd van de interne registry</span><br>@acme:registry=https://npm.intern.acme.example/</p>
+</div>
+<p style="font-size:28px;line-height:1.4;color:#005078">Verdediging: een eigen scope, vast gekoppeld, en een proxy die interne namen nooit publiek opzoekt.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1440px;font-size:24px;color:#6B6A70">Deel 3 — Het dreigingsmodel · 0:12–0:18</p>
+<img src="/_blob/4d3eecb01832b6f4111235aa00bb3842" alt="AP Hogeschool" style="position:absolute;right:128px;bottom:52px;height:56px;width:auto">
+<aside>Dependency confusion kraakt geen enkel account en werkt toch.
+
+Bedrijven hebben interne packages, bijvoorbeeld acme-auth, op een private registry. Vaak staat daarvoor een proxy-registry (Verdaccio, Artifactory, GitHub Packages) die de interne packages en de publieke npm-registry samenvoegt tot één bron.
+
+Lekt de interne naam, via een package.json in een publieke repo of in gebundelde JavaScript, dan publiceert de aanvaller acme-auth@99.0.0 op de publieke registry. Een slecht geconfigureerde proxy levert dan gewoon de hoogste versie: die van de aanvaller.
+
+In februari 2021 liet onderzoeker Alex Birsan zo code draaien binnen meer dan 35 organisaties, waaronder Apple, Microsoft, PayPal en Netflix. Zijn payload was bewust onschuldig: een preinstall-script stuurde gebruikersnaam, hostnaam en pad door via DNS. Hij ontving meer dan 130.000 dollar aan bug bounties.
+
+De verdediging is eenvoudig: gebruik een scope die je zelf bezit, koppel die vast aan je private registry in .npmrc, en laat de proxy interne namen nooit publiek opzoeken. Oefening 5 bouwt dit na met twee lokale Verdaccio-registries.</aside>
+</section>

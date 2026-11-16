@@ -1,0 +1,38 @@
+<section id="inc-chaindrop" data-transition="fade" style="background:#FFFFFF;color:#3C3B40;font-family:'Source Sans 3', Arial, sans-serif;padding:120px 128px 150px;display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#E60005">Incident · 4 augustus 2026 · worm</p>
+<h2 style="font-family:'League Gothic', 'Arial Narrow', sans-serif;font-size:80px;font-weight:400;line-height:1.05;letter-spacing:0;color:#232226">ChainDrop: de grootste worm tot nu toe</h2>
+</div>
+<div style="display:grid;grid-template-columns:300px 1fr;gap:12px 16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Toegang</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">Het GitHub-account van de maintainer van keyv werd gekaapt. De aanvaller pushte rechtstreeks naar main en maakte meteen een release. Hoe het account gekaapt werd, is niet bekend.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Verspreiding</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">De release liep via de echte pipeline, met geldige provenance. Met gestolen npm-tokens republiceerde de worm daarna andere packages, en hij committe als “claude” naar tot 50 branches per repo.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Payload</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">Een preinstall-script haalde Bun op en startte een steler voor meer dan 300 soorten secrets. Het adres van zijn server zoekt hij op in een Ethereum-contract.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Detectie en respons</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">Elastic en Aikido zagen het dezelfde dag. Aikido telde minstens 444 packages in 1.381 versies, samen meer dan 2 miljard downloads per maand.</p>
+</div>
+<div style="display:flex;gap:24px;align-items:stretch">
+<div style="flex:1;background:#E6EFF3;border-left:6px solid #005078;border-radius:8px;padding:20px 32px">
+<p style="font-size:27px;line-height:1.35;color:#232226"><b><span style="color:#005078">Les.</span></b> Provenance en een echte pipeline bewijzen niets als het account van de maintainer zelf gekaapt is.</p>
+</div>
+<div style="width:440px;background:#F4F4F4;border:1px solid #E1E1E1;border-radius:8px;padding:20px 28px;display:flex;flex-direction:column;gap:6px;justify-content:center">
+<p style="font-size:20px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#6B6A70">Had dit tegengehouden</p>
+<p style="font-size:26px;line-height:1.3;font-weight:600;color:#232226">cooldown, install scripts blokkeren</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1440px;font-size:24px;color:#6B6A70">Deel 4 — Tijdlijn en casestudies · 0:18–0:30</p>
+<img src="/_blob/4d3eecb01832b6f4111235aa00bb3842" alt="AP Hogeschool" style="position:absolute;right:128px;bottom:52px;height:56px;width:auto">
+<aside>Verdieping: sla over bij tijdgebrek.
+
+4 augustus 2026. Het begon met het GitHub-account van de maintainer van keyv, een veelgebruikte key-value-bibliotheek. De aanvaller pushte rechtstreeks naar main en maakte een release. De gewone GitHub Actions-pipeline publiceerde keyv@6.0.0, met geldige provenance. Daarna volgden onder meer flat-cache, file-entry-cache, cacheable-request en cache-manager.
+
+Verspreiding: met gestolen npm-tokens republiceerde de worm de packages van elk slachtoffer met een patchversie. Dat lukte alleen met tokens die 2FA mochten omzeilen. Met gestolen GitHub-tokens committe hij naar tot 50 branches per repository, als auteur “claude” met de boodschap “chore: update config”.
+
+Payload: preinstall voert node setup.mjs uit, dat Bun downloadt en een steler van ongeveer 720 KB start. Die zoekt naar meer dan 300 soorten credentials en leest in CI OIDC-tokens uit het geheugen van de runner. De buit belandt versleuteld in publieke GitHub-repositories met de omschrijving “Shai-Hulud: Here We Go Again”. Persistentie via een SessionStart-hook in .claude/settings.json en een taak in .vscode/tasks.json. Elastic: “the attacker can rotate C2 infrastructure by updating the smart contract without touching the payload.”
+
+Schaal: volgens Aikido minstens 444 packages, samen meer dan 2 miljard downloads per maand; Elastic komt lager uit (meer dan 400 packages, 1,3 miljard). Secundaire bronnen leggen een verband met de publiek gemaakte TeamPCP-code; de primaire bronnen bevestigen dat niet.
+
+Bronnen: Aikido; Elastic Security Labs.</aside>
+</section>

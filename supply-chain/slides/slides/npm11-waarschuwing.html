@@ -1,0 +1,34 @@
+<section id="npm11-waarschuwing" data-transition="fade" style="background:#FFFFFF;color:#3C3B40;font-family:'Source Sans 3', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#005078">Laag 3 · overstappen naar npm 12</p>
+<h2 style="font-family:'League Gothic', 'Arial Narrow', sans-serif;font-size:80px;font-weight:400;line-height:1.05;letter-spacing:0;color:#232226">npm 11 waarschuwt je al</h2>
+</div>
+<div style="background:#232226;border-radius:16px;padding:24px 36px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.4;color:#F1F1F1;white-space:nowrap"><span style="color:#4FC3D0">$ npm approve-scripts --allow-scripts-pending</span><br>5 packages have install scripts not yet covered by allowScripts:<br>&#160;&#160;<span style="color:#FF5A5F">@parcel/watcher@2.6.0</span> (install: node-gyp rebuild)<br>&#160;&#160;<span style="color:#FF5A5F">esbuild@0.28.2</span> (install: (install scripts present))<br>&#160;&#160;<span style="color:#FF5A5F">fsevents@2.3.3</span> (install: (install scripts present))<br>&#160;&#160;<span style="color:#FF5A5F">lmdb@3.5.6</span> (install: node-gyp rebuild)<br>&#160;&#160;<span style="color:#FF5A5F">msgpackr-extract@3.0.4</span> (install: node-gyp rebuild)<br><span style="color:#9A999F">Run `npm approve-scripts &lt;pkg&gt;` to allow, or `npm deny-scripts &lt;pkg&gt;` to deny.</span></p>
+</div>
+<div style="display:flex;gap:32px">
+<div style="flex:1;display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border:1px solid #E1E1E1;border-radius:16px;padding:24px 32px">
+<h3 style="font-family:'Source Sans 3', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.2;color:#232226">Sinds npm 11.16</h3>
+<p style="font-size:28px;line-height:1.35">Scripts draaien nog, maar npm toont welke je nog niet goedkeurde.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border:1px solid #E1E1E1;border-radius:16px;padding:24px 32px">
+<h3 style="font-family:'Source Sans 3', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.2;color:#232226">Vanaf npm 11.18</h3>
+<p style="font-size:28px;line-height:1.35">Nieuwe namen: npm install-scripts ls, approve en deny.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:8px;background:#E6EFF3;border:1px solid #B3CDD9;border-radius:16px;padding:24px 32px">
+<h3 style="font-family:'Source Sans 3', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.2;color:#005078">In npm 12</h3>
+<p style="font-size:28px;line-height:1.35;color:#232226">Niet-goedgekeurde scripts worden overgeslagen.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1440px;font-size:24px;color:#6B6A70">Deel 5 — Verdediging als gebruiker · 0:30–0:36</p>
+<img src="/_blob/4d3eecb01832b6f4111235aa00bb3842" alt="AP Hogeschool" style="position:absolute;right:128px;bottom:52px;height:56px;width:auto">
+<aside>Echte output van een project op npm 11. Sinds npm 11.16 (27 mei 2026) kent npm 11 de allowScripts-lijst al, maar alleen als advies: de install scripts draaien nog gewoon, en npm toont welke packages je nog niet beoordeelde. Met npm approve-scripts --allow-scripts-pending vraag je die lijst op zonder iets te wijzigen.
+
+Lees de lijst samen met de zaal. Drie packages bevatten native code met een binding.gyp. npm toont daarvoor het label node-gyp rebuild, al hebben ze in werkelijkheid een eigen install script dat eerst een kant-en-klare binary probeert (zie de slide over binding.gyp in deel 2). Bij esbuild en fsevents meldt npm alleen dat er een install script is, zonder de inhoud te tonen. Dit zijn de packages waarvan het script in npm 12 niet meer draait tot je het goedkeurt.
+
+Vanaf npm 11.18 (29 juni 2026) heten de commando’s npm install-scripts ls, npm install-scripts approve en npm install-scripts deny. De oude namen approve-scripts en deny-scripts blijven als alias werken, ook in npm 12.
+
+Migratietip voor studenten: draai dit op npm 11, keur alleen goed wat een script echt nodig heeft, en commit de allowScripts-lijst in package.json. Een goedkeuring wordt standaard als exacte versie vastgelegd (bijvoorbeeld esbuild@0.28.2), dus een nieuwe versie vraagt opnieuw om goedkeuring. Op npm 12 voer je na een goedkeuring npm rebuild uit, zodat het overgeslagen script alsnog draait.
+
+Vraag aan de zaal: “Welke van deze vijf zou je goedkeuren, en hoe beslis je dat?”</aside>
+</section>

@@ -1,0 +1,40 @@
+<section id="inc-mastra" data-transition="fade" style="background:#FFFFFF;color:#3C3B40;font-family:'Source Sans 3', Arial, sans-serif;padding:120px 128px 150px;display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#E60005">Incident · 17 juni 2026 · accountovername</p>
+<h2 style="font-family:'League Gothic', 'Arial Narrow', sans-serif;font-size:80px;font-weight:400;line-height:1.05;letter-spacing:0;color:#232226">Mastra: één nieuwe dependency</h2>
+</div>
+<div style="display:grid;grid-template-columns:300px 1fr;gap:12px 16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Toegang</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">Het npm-account van een maintainer met publicatierecht op de @mastra-scope werd overgenomen. Hoe, staat niet in de bron.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Verspreiding</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">De enige wijziging: een nieuwe dependency easy-day-js@^1.11.21, een namaak van dayjs. Een dag later resolveerde die range naar de kwaadaardige 1.11.22. Meer dan 140 packages, allemaal als latest.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Payload</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">Een postinstall-script van 4,5 KB haalde een implantaat op dat opdrachten uitvoert, met persistentie op Windows, macOS en Linux, en wallets en browsergeschiedenis steelt.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Detectie en respons</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">Microsoft analyseerde het, meldde het aan npm en schrijft het met hoge zekerheid toe aan de Noord-Koreaanse groep Sapphire Sleet, dezelfde als bij axios.</p>
+</div>
+<div style="display:flex;gap:24px;align-items:stretch">
+<div style="flex:1;background:#E6EFF3;border-left:6px solid #005078;border-radius:8px;padding:20px 32px">
+<p style="font-size:27px;line-height:1.35;color:#232226"><b><span style="color:#005078">Les.</span></b> Eén nieuwe dependency in een patchrelease volstaat, en ^ haalt de kwaadaardige versie zelf binnen.</p>
+</div>
+<div style="width:440px;background:#F4F4F4;border:1px solid #E1E1E1;border-radius:8px;padding:20px 28px;display:flex;flex-direction:column;gap:6px;justify-content:center">
+<p style="font-size:20px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#6B6A70">Had dit tegengehouden</p>
+<p style="font-size:26px;line-height:1.3;font-weight:600;color:#232226">install scripts blokkeren, cooldown</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1440px;font-size:24px;color:#6B6A70">Deel 4 — Tijdlijn en casestudies · 0:18–0:30</p>
+<img src="/_blob/4d3eecb01832b6f4111235aa00bb3842" alt="AP Hogeschool" style="position:absolute;right:128px;bottom:52px;height:56px;width:auto">
+<aside>Verdieping: sla over bij tijdgebrek.
+
+Mastra is een TypeScript-framework voor AI-agents. Het patroon is dat van axios: de code van het package zelf wordt niet aangeraakt, er komt alleen een dependency bij.
+
+16 juni 2026, 07:05 UTC: een onschuldig lokpackage easy-day-js verschijnt, een kopie van dayjs. 17 juni, 01:01 UTC: versie 1.11.22 met een postinstall-script. Om 01:20 UTC publiceert de aanvaller met het overgenomen account mastra@1.13.1 en de rest van de scope, met als enige wijziging de dependency easy-day-js@^1.11.21. Die range resolveert naar de kwaadaardige 1.11.22.
+
+Microsoft telde “140+ packages across the mastra and @mastra scopes”. Iedereen die npm install draaide, was blootgesteld, “regardless of whether the package was imported in application code”.
+
+Payload: een dropper van 4.572 bytes schakelt TLS-verificatie uit, haalt een Node-implantaat van ongeveer 41 KB op en installeert persistentie op alle drie de besturingssystemen. Het steelt crypto-wallets en browsergeschiedenis.
+
+Wat had het tegengehouden? Install scripts blokkeren (npm 12 doet dat standaard) en een cooldown: het lokpackage was nog geen dag oud.
+
+Bron: Microsoft Security Blog, 17 juni 2026.</aside>
+</section>

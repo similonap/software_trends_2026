@@ -1,0 +1,18 @@
+<section id="react-193" data-transition="fade" style="background:#FFFFFF;color:#404040;font-family:Arial, Helvetica, sans-serif;padding:104px 128px 144px;display:flex;flex-direction:column;gap:40px">
+<h2 style="font-family:Questrial, 'Century Gothic', Arial, sans-serif;font-size:64px;font-weight:400;line-height:1.15;color:#C00000">React 19.2 en 19.3</h2>
+<ul style="font-size:42px;line-height:1.4"><li><b>&lt;ViewTransition&gt;</b> (19.3): vloeiende animaties wanneer elementen verschijnen, verdwijnen of verplaatsen, via de View Transition API van de browser</li><li><b>&lt;Activity&gt;</b> (19.2): UI verbergen zonder ze te verwijderen; de interne state blijft bewaard (bv. tabs, terug naar een lijst)</li><li><b>use(browser())</b> (19.3): een component bewust niet op de server renderen, bv. omdat het de tijdzone van de gebruiker nodig heeft</li><li><b>Fragment refs</b> (19.3): een ref op een groep elementen, zonder extra wrapper-div in de DOM</li></ul>
+<p style="font-size:39px;line-height:1.4;color:#595959">Samen: React bouwt het ‘app-gevoel’ zelf in.</p>
+<p style="position:absolute;left:128px;bottom:48px;width:1480px;font-size:24px;color:#7F7F7F">Bronnen: react.dev/blog/2025/10/01/react-19-2, react.dev/blog/2026/09/09/react-19-3</p>
+<p style="position:absolute;right:128px;bottom:48px;width:80px;text-align:right;font-size:24px;color:#7F7F7F">42</p>
+<aside>Ook React zelf beweegt richting dat app-gevoel. Er is geen React 20 gekomen; in plaats daarvan kwamen er twee kleinere versies met belangrijke features.
+
+ViewTransition, stabiel sinds React 19.3 in september 2026. Native apps op je smartphone animeren overgangen: een foto die vergroot, een lijst die naar opzij schuift. Op het web was dat lang moeilijk. Browsers hebben nu de View Transition API: de browser maakt een momentopname van de oude en de nieuwe toestand en animeert het verschil. Het ViewTransition-component van React is een laagje bovenop die browser-API.
+
+Activity, uit React 19.2. Normaal gezien verdwijnt een component volledig als je het niet meer toont, met al zijn state. Met Activity verberg je een stuk UI zonder het te verwijderen. Denk aan tabs: je schakelt naar een andere tab en terug, en het formulier dat je half had ingevuld staat er nog.
+
+De functie browser, in combinatie met use, laat een component expliciet zeggen: render mij niet op de server, enkel in de browser. Dat is nodig voor componenten die informatie gebruiken die alleen de browser heeft, zoals de tijdzone of de schermgrootte. Op de server wordt dan een laadstatus getoond. Dat vervangt oude trucs zoals controleren of typeof window bestaat.
+
+En fragment refs laten toe om bijvoorbeeld focus of een observer op een groep elementen te zetten zonder een extra div in je DOM te stoppen.
+
+Wat je hier ziet: React voegt features toe die ervoor zorgen dat een server-gerenderde app kan aanvoelen als een native app.</aside>
+</section>

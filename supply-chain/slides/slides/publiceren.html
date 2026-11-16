@@ -1,0 +1,29 @@
+<section id="publiceren" data-transition="fade" style="background:#FFFFFF;color:#3C3B40;font-family:'Source Sans 3', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#E60005">Publiceren</p>
+<h2 style="font-family:'League Gothic', 'Arial Narrow', sans-serif;font-size:80px;font-weight:400;line-height:1.05;letter-spacing:0;color:#232226">Wie het token heeft, ís de maintainer</h2>
+</div>
+<div style="display:flex;gap:32px">
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#F4F4F4;border:1px solid #E1E1E1;border-radius:16px;padding:40px">
+<h3 style="font-family:'Source Sans 3', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.2;color:#232226">Tokens en accounts</h3>
+<p style="font-size:28px;line-height:1.4">npm login bewaart een token in ~/.npmrc; in CI staat het als secret. Elke maintainer kan elke versie publiceren, en één account beheert vaak tientallen packages.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#F4F4F4;border:1px solid #E1E1E1;border-radius:16px;padding:40px">
+<h3 style="font-family:'Source Sans 3', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.2;color:#232226">Geen controle op de inhoud</h3>
+<p style="font-size:28px;line-height:1.4">De registry controleert niet of de tarball overeenkomt met de code op GitHub. Wat je op GitHub leest, is niet noodzakelijk wat je installeert.</p>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;background:#232226;border-radius:16px;padding:32px 40px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#FF5A5F">Kernpunt deel 2</p>
+<p style="font-size:28px;line-height:1.4;color:#F1F1F1">npm draait op transitief vertrouwen. Door één package te installeren, vertrouw je al zijn maintainers, hun accounts, hun pipelines en alle transitieve dependencies, en geef je hen codeuitvoering op je machine nog voor je één regel van hun code hebt gelezen.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1440px;font-size:24px;color:#6B6A70">Deel 2 — Hoe npm werkt · 0:05–0:12</p>
+<img src="/_blob/4d3eecb01832b6f4111235aa00bb3842" alt="AP Hogeschool" style="position:absolute;right:128px;bottom:52px;height:56px;width:auto">
+<aside>Een maintainer logt in met npm login en publiceert met npm publish. De CLI bewaart een token in ~/.npmrc; in CI staat dat token als secret in de pipeline. Wie dat token heeft, is voor de registry de maintainer.
+
+Elke maintainer van een package kan elke versie publiceren, en één account beheert vaak tientallen packages. Eén gekaapt account geeft dus toegang tot veel packages tegelijk.
+
+De registry controleert bovendien niet of de tarball overeenkomt met de code op GitHub. Wat je op GitHub leest, is niet noodzakelijk wat je installeert. Bij event-stream zat de payload alleen in de geminificeerde tarball. In deel 6 komen we hierop terug met provenance.
+
+Lees het kernpunt voor; het is examenstof.</aside>
+</section>

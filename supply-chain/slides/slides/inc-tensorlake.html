@@ -1,0 +1,40 @@
+<section id="inc-tensorlake" data-transition="fade" style="background:#FFFFFF;color:#3C3B40;font-family:'Source Sans 3', Arial, sans-serif;padding:120px 128px 150px;display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#E60005">Incident · 8 oktober 2026 · kwaadaardige commit</p>
+<h2 style="font-family:'League Gothic', 'Arial Narrow', sans-serif;font-size:80px;font-weight:400;line-height:1.05;letter-spacing:0;color:#232226">tensorlake: het token als gijzelaar</h2>
+</div>
+<div style="display:grid;grid-template-columns:300px 1fr;gap:12px 16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Toegang</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">Acht commits rechtstreeks op main, onder de naam van een maintainer en zonder pull request. Hoe de aanvaller pushrechten kreeg, staat niet in de bron.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Verspreiding</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">De officiële release-workflow publiceerde tensorlake@0.5.144, met geldige provenance. Daarna republiceert de worm met gestolen tokens de packages van elk slachtoffer.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Payload</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">Een preinstall-script start een steler, maar alleen buiten CI: hij mikt op laptops. Een dienst controleert elke minuut het gestolen GitHub-token; wordt dat ingetrokken, dan volgt rm -rf ~/.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Detectie en respons</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">De AI-scanner van StepSecurity markeerde de release op basis van de inhoud van de tarball, niet op basis van een gekende signature.</p>
+</div>
+<div style="display:flex;gap:24px;align-items:stretch">
+<div style="flex:1;background:#E6EFF3;border-left:6px solid #005078;border-radius:8px;padding:20px 32px">
+<p style="font-size:27px;line-height:1.35;color:#232226"><b><span style="color:#005078">Les.</span></b> Bij incidentrespons telt de volgorde: eerst de persistentie verwijderen, dan pas tokens intrekken.</p>
+</div>
+<div style="width:440px;background:#F4F4F4;border:1px solid #E1E1E1;border-radius:8px;padding:20px 28px;display:flex;flex-direction:column;gap:6px;justify-content:center">
+<p style="font-size:20px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#6B6A70">Had dit tegengehouden</p>
+<p style="font-size:26px;line-height:1.3;font-weight:600;color:#232226">install scripts blokkeren, een gedragsscanner</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1440px;font-size:24px;color:#6B6A70">Deel 4 — Tijdlijn en casestudies · 0:18–0:30</p>
+<img src="/_blob/4d3eecb01832b6f4111235aa00bb3842" alt="AP Hogeschool" style="position:absolute;right:128px;bottom:52px;height:56px;width:auto">
+<aside>Verdieping: sla over bij tijdgebrek. Dit is de recentste aanval in dit college, twee weken oud.
+
+7 oktober 2026, 01:20 UTC: er verschijnen acht commits rechtstreeks op de main-branch van tensorlake, onder de naam van een maintainer en zonder pull request. Een dag later publiceert de gewone release-workflow tensorlake@0.5.144. Ook hier: geldige provenance, want de echte pipeline bouwde het.
+
+Het preinstall-script start setup.mjs, dat Bun downloadt en een steler van 856 KB uitvoert. In CI slaat het zichzelf over, zodat het minder opvalt in buildlogs; het mikt op ontwikkelaarslaptops. Het steelt tokens, cloud- en SSH-secrets, browserwachtwoorden en de configuratie van AI-tools.
+
+De dodemansknop: een dienst met de naam gh-token-monitor controleert elke 60 seconden, tot 24 uur lang, of het gestolen GitHub-token nog werkt. Wordt het geweigerd, dan wist de malware je thuismap (rm -rf ~/, op Windows je gebruikersprofiel). De reflex “token intrekken” wordt zo een val.
+
+Daarom de volgorde bij incidentrespons: eerst de machine isoleren en de persistentie verwijderen (gh-token-monitor, de .claude- en .vscode-hooks), dan pas tokens intrekken en roteren.
+
+StepSecurity: “The attestation says where a package was built. It doesn't say the code is safe.”
+
+Bron: StepSecurity, “tensorlake npm compromised: hostage token worm”.</aside>
+</section>

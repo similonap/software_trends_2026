@@ -1,0 +1,38 @@
+<section id="inc-crossenv" data-transition="fade" style="background:#FFFFFF;color:#3C3B40;font-family:'Source Sans 3', Arial, sans-serif;padding:120px 128px 150px;display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#E60005">Incident · juli 2017 · typosquatting</p>
+<h2 style="font-family:'League Gothic', 'Arial Narrow', sans-serif;font-size:80px;font-weight:400;line-height:1.05;letter-spacing:0;color:#232226">crossenv: één ontbrekend streepje</h2>
+</div>
+<div style="display:grid;grid-template-columns:300px 1fr;gap:12px 16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Toegang</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">Geen inbraak nodig. Het account “hacktask” registreerde zo’n 40 namen die leken op populaire packages, zoals crossenv voor cross-env en mongose voor mongoose.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Verspreiding</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">Ontwikkelaars die zich vertypten bij npm install. Het package werkte gewoon, dus niemand merkte iets.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Payload</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">Stuurde alle omgevingsvariabelen van de installatie door naar npm.hacktask.net, en dus ook tokens en andere secrets in je shell.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Detectie en respons</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">Twee weken na publicatie, op 1 augustus, meldde iemand het op Twitter. npm verwijderde alle packages van hacktask en ging namen controleren op gelijkenis.</p>
+</div>
+<div style="display:flex;gap:24px;align-items:stretch">
+<div style="flex:1;background:#E6EFF3;border-left:6px solid #005078;border-radius:8px;padding:20px 32px">
+<p style="font-size:27px;line-height:1.35;color:#232226"><b><span style="color:#005078">Les.</span></b> Eén tikfout in een install-commando is genoeg om vreemde code met jouw secrets te laten draaien.</p>
+</div>
+<div style="width:440px;background:#F4F4F4;border:1px solid #E1E1E1;border-radius:8px;padding:20px 28px;display:flex;flex-direction:column;gap:6px;justify-content:center">
+<p style="font-size:20px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#6B6A70">Had dit tegengehouden</p>
+<p style="font-size:26px;line-height:1.3;font-weight:600;color:#232226">de naam controleren, een gedragsscanner</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1440px;font-size:24px;color:#6B6A70">Deel 4 — Tijdlijn en casestudies · 0:18–0:30</p>
+<img src="/_blob/4d3eecb01832b6f4111235aa00bb3842" alt="AP Hogeschool" style="position:absolute;right:128px;bottom:52px;height:56px;width:auto">
+<aside>Verdieping: sla over bij tijdgebrek.
+
+Typosquatting in zijn eenvoudigste vorm. Het account hacktask publiceerde op 19 juli 2017 een veertigtal packages met namen die op populaire packages leken: crossenv (voor cross-env), jquery.js, mongose en andere. De packages werkten zoals het origineel, maar stuurden daarnaast de omgevingsvariabelen van de installatie door naar een server van de aanvaller. In een CI-omgeving of een ontwikkelaarsshell staan daar vaak tokens en wachtwoorden in.
+
+Schaal: crossenv had 679 downloads, maar volgens npm waren er “at most 50 real installations”, de rest kwam van mirrors. Het belang zit niet in de schaal, maar in het patroon: het is sindsdien elk jaar duizenden keren herhaald.
+
+Detectie: op 1 augustus meldde een gebruiker het op Twitter. npm verwijderde alle packages van hacktask, verbande het account en kondigde detectie aan voor namen die sterk lijken op bestaande packages. Advies aan wie het geïnstalleerd had: alle credentials uit die shell intrekken.
+
+Brug: slopsquatting (deel 3) is dezelfde aanval, maar dan met namen die een AI-assistent verzint.
+
+Bron: npm-blog “crossenv malware on the npm registry”.</aside>
+</section>

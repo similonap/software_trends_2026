@@ -1,0 +1,17 @@
+<section id="kb-change-detection" data-transition="fade" style="background:#FFFFFF;color:#404040;font-family:Arial, Helvetica, sans-serif;padding:104px 128px 144px;display:flex;flex-direction:column;gap:40px">
+<h2 style="font-family:Questrial, 'Century Gothic', Arial, sans-serif;font-size:64px;font-weight:400;line-height:1.15;color:#C00000">Change detection in Angular</h2>
+<p style="font-size:44px;line-height:1.4"><b>Change detection</b> is het mechanisme waarmee Angular bepaalt welke delen van de UI opnieuw getekend moeten worden nadat de data veranderd is.</p>
+<ul style="font-size:42px;line-height:1.4"><li><b>Vroeger: zone.js.</b> zone.js onderschept elke asynchrone gebeurtenis (klik, timer, HTTP) via monkey patching. Daarna controleert Angular de <b>hele componentenboom</b>.</li><li><b>OnPush.</b> Een component wordt alleen gecontroleerd als een input verandert, er een event in gebeurt of een signal die het leest wijzigt.</li><li><b>Nu: zoneless.</b> Geen zone.js meer. Een signal weet wie ervan afhangt en vertelt Angular precies welke views bijgewerkt moeten worden.</li></ul>
+<p style="font-size:39px;line-height:1.4;color:#595959"><b>Monkey patching</b> = bestaande functies (setTimeout, addEventListener …) tijdens het draaien vervangen door een versie met extra code.</p>
+<p style="position:absolute;right:128px;top:48px;width:360px;text-align:right;font-size:24px;color:#C00000">Kernbegrip</p>
+<p style="position:absolute;right:128px;bottom:48px;width:80px;text-align:right;font-size:24px;color:#7F7F7F">27</p>
+<aside>Om de evolutie van Angular te begrijpen, moeten we weten wat change detection is: het mechanisme waarmee Angular bepaalt welke delen van het scherm opnieuw getekend moeten worden nadat de data veranderd is.
+
+Jarenlang gebruikte Angular daarvoor een library genaamd zone.js. Die gebruikt monkey patching: ze vervangt standaardfuncties van de browser, zoals setTimeout, addEventListener en XMLHttpRequest, door een eigen versie die hetzelfde doet maar ook Angular verwittigt. Telkens wanneer er iets asynchroon gebeurt, een klik, een timer of een HTTP-antwoord, weet Angular: er kan iets veranderd zijn. Maar het weet niet wát. Dus controleert het standaard de volledige componentenboom, en vergelijkt het voor elke binding in elke template de oude en de nieuwe waarde. In grote applicaties is dat traag, en zone.js maakt foutmeldingen en stack traces moeilijk leesbaar.
+
+Een eerste verbetering was de OnPush-strategie. Een component met OnPush wordt alleen gecontroleerd als zijn inputs veranderen, als er in dat component een event gebeurt, of als een signal die het component leest verandert. Zo sla je grote delen van de boom over.
+
+De laatste stap is zoneless. Omdat signals zelf weten wie ervan afhangt, is zone.js niet meer nodig. Wanneer een signal verandert, vertelt die precies welke views bijgewerkt moeten worden.
+
+Dat is precies wat er in 2025 en 2026 gebeurd is: zoneless werd de standaard in Angular 21 en OnPush werd de standaard in Angular 22. Dat zie je op de volgende slide.</aside>
+</section>

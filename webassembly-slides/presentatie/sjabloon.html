@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WebAssembly 2026</title>
+<style>
+/*FONTS*/
+*{margin:0;box-sizing:border-box}
+section{position:relative;width:1920px;height:1080px;overflow:hidden;margin:0}
+ul,ol{padding-left:1.15em}
+x-shape{display:block}
+aside{display:none}
+table{border-collapse:collapse}
+td,th{border:1px solid #BFBFBF;padding:.35em .6em;vertical-align:top}
+x-shape[kind=arrow-right]{clip-path:polygon(0 30%,60% 30%,60% 0,100% 50%,60% 100%,60% 70%,0 70%)}
+x-shape[kind=arrow-down]{clip-path:polygon(30% 0,70% 0,70% 60%,100% 60%,50% 100%,0 60%,30% 60%)}
+
+/* ---------- presentatievenster ---------- */
+html,body{height:100%;font-family:Arial,Helvetica,sans-serif}
+body.presentatie{background:#000;overflow:hidden}
+#stage{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0;background:#fff}
+#stage.fade{animation:fade .25s ease-out}
+@keyframes fade{from{opacity:.35}to{opacity:1}}
+#zwart{position:fixed;inset:0;background:#000;display:none;z-index:5}
+body.zwart #zwart{display:block}
+body.verberg-cursor{cursor:none}
+#hulp{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:10;background:rgba(20,20,20,.9);color:#eee;
+  font-size:15px;line-height:1.6;padding:12px 20px;border-radius:8px;transition:opacity .6s;max-width:calc(100% - 32px)}
+#hulp.weg{opacity:0;pointer-events:none}
+kbd{background:#444;color:#eee;border-radius:4px;padding:1px 6px;font-family:inherit;font-size:.92em}
+#ga{position:fixed;right:20px;bottom:20px;z-index:10;background:rgba(20,20,20,.9);color:#fff;font-size:22px;padding:8px 14px;border-radius:8px;display:none}
+
+/* ---------- notitievenster ---------- */
+body.notities{--bg:#16181c;--paneel:#1f2228;--rand:#33373f;--tekst:#e8e8e8;--zacht:#9aa0aa;--accent:#e04848;--goud:#f2c14e;
+  margin:0;background:var(--bg);color:var(--tekst);display:flex;flex-direction:column;overflow:hidden}
+.notities header{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:10px 16px;background:var(--paneel);border-bottom:1px solid var(--rand);font-size:15px}
+#nr{font-size:22px;font-weight:700;font-variant-numeric:tabular-nums}#nr span{color:var(--zacht);font-weight:400;font-size:16px}
+#titel{flex:1;min-width:160px;font-size:16px;color:var(--zacht);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#tijd{font-size:24px;font-variant-numeric:tabular-nums;font-weight:700}#tijd.pauze{color:var(--goud)}
+#klok{font-variant-numeric:tabular-nums;color:var(--zacht);font-size:17px}
+.notities button{font:inherit;font-size:14px;color:var(--tekst);background:#2b2f37;border:1px solid var(--rand);border-radius:6px;padding:6px 10px;cursor:pointer}
+.notities button:hover{background:#363b45}
+.notities button.aan{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+.groep{display:flex}.groep button{border-radius:0!important}.groep button:first-child{border-radius:6px 0 0 6px!important}.groep button:last-child{border-radius:0 6px 6px 0!important}
+.notities main{flex:1;display:flex;min-height:0}
+#links{width:36%;max-width:620px;min-width:240px;padding:14px;display:flex;flex-direction:column;gap:10px;border-right:1px solid var(--rand);overflow:auto}
+.label{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--zacht);margin-bottom:4px}
+.voorbeeld{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;background:#fff;border:1px solid var(--rand)}
+.voorbeeld .binnen{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0}
+#volgende-wrap{opacity:.8}#volgende-titel{font-size:14px;color:var(--zacht);margin-top:4px}
+#nav{display:flex;gap:8px;margin-top:auto}#nav button{flex:1;font-size:18px;padding:10px}
+#tekst{flex:1;overflow:auto;padding:20px 28px 60px;line-height:1.5}
+#tekst p{margin:0 0 .8em}
+#tekst ul{margin:0;padding-left:1.1em}#tekst li{margin:0 0 .55em;padding-left:.2em}
+#tekst li.overgang{list-style:none;margin-left:-1.1em;color:var(--zacht);font-style:italic;margin-top:.9em}
+#tekst li.examen{list-style:none;margin-left:-1.1em;color:var(--goud)}
+#tekst .leeg{color:var(--zacht);font-style:italic}
+#zwart-melding{display:none;background:var(--goud);color:#000;font-weight:700;padding:4px 10px;border-radius:6px}
+body.zwart #zwart-melding{display:inline-block}
+#tips{font-size:12px;color:var(--zacht);line-height:1.7}
+#tips kbd{background:#2b2f37}
+@media (max-width:760px){.notities main{flex-direction:column}#links{width:auto;max-width:none;border-right:0;border-bottom:1px solid var(--rand)}#volgende-wrap,#tips{display:none}}
+</style>
+</head>
+<body>
+<script id="data" type="application/json">/*DATA*/</script>
+<script>
+(function () {
+  'use strict';
+  var SLIDES = JSON.parse(document.getElementById('data').textContent);
+  var TOTAAL = SLIDES.length;
+  var IS_NOTITIES = /[?&]notities\b/.test(location.search);
+
+  // Beide vensters praten met elkaar via localStorage: een schrijfactie in het ene venster
+  // geeft een 'storage'-event in het andere. Dat werkt ook voor file://-bestanden.
+  function lees(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+  function schrijf(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+  function leesJson(k) { try { return JSON.parse(lees(k)); } catch (e) { return null; } }
+  function stuur(cmd, waarde) { schrijf('sn-cmd', JSON.stringify({ cmd: cmd, waarde: waarde, t: Date.now() + Math.random() })); }
+
+  function navToets(k) {
+    switch (k) {
+      case 'ArrowRight': case 'ArrowDown': case 'PageDown': case ' ': case 'Enter': return 'volgende';
+      case 'ArrowLeft': case 'ArrowUp': case 'PageUp': case 'Backspace': return 'vorige';
+      case 'Home': return 'eerste';
+      case 'End': return 'laatste';
+      case 'b': case 'B': case '.': return 'zwart';
+    }
+    return null;
+  }
+
+  // Cijfer(s) typen + Enter = ga naar die slide (in beide vensters).
+  var invoer = '', invoerTimer = null;
+  function cijferToets(e, toon, klaar) {
+    if (/^[0-9]$/.test(e.key)) {
+      invoer = (invoer + e.key).slice(-3); toon(invoer);
+      clearTimeout(invoerTimer); invoerTimer = setTimeout(function () { invoer = ''; toon(''); }, 2500);
+      return true;
+    }
+    if (e.key === 'Enter' && invoer) { klaar(parseInt(invoer, 10) - 1); invoer = ''; toon(''); return true; }
+    if (e.key === 'Escape' && invoer) { invoer = ''; toon(''); return true; }
+    return false;
+  }
+
+  function esc(t) { return String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+
+  if (IS_NOTITIES) notitievenster(); else presentatievenster();
+
+  // =====================================================================
+  function presentatievenster() {
+    document.body.className = 'presentatie';
+    document.body.insertAdjacentHTML('beforeend',
+      '<div id="stage"></div><div id="zwart"></div><div id="ga"></div>' +
+      '<div id="hulp"><kbd>N</kbd> sprekersnotities in een apart venster · <kbd>F</kbd> volledig scherm · ' +
+      '<kbd>←</kbd> <kbd>→</kbd> vorige / volgende · <kbd>B</kbd> zwart scherm · cijfer + <kbd>Enter</kbd> ga naar slide · <kbd>?</kbd> deze hulp</div>');
+    var stage = document.getElementById('stage'), hulp = document.getElementById('hulp'), gaEl = document.getElementById('ga');
+    var huidig = -1, notesVenster = null;
+
+    function schaal() {
+      var s = Math.min(innerWidth / 1920, innerHeight / 1080);
+      stage.style.transform = 'translate(' + (innerWidth - 1920 * s) / 2 + 'px,' + (innerHeight - 1080 * s) / 2 + 'px) scale(' + s + ')';
+    }
+
+    function publiceer() {
+      schrijf('sn-stand', JSON.stringify({ n: huidig, zwart: document.body.classList.contains('zwart'), t: Date.now() }));
+    }
+
+    function ga(n, animatie) {
+      n = Math.max(0, Math.min(TOTAAL - 1, n));
+      if (n !== huidig) {
+        huidig = n;
+        stage.innerHTML = SLIDES[n].html;
+        if (animatie !== false) { stage.classList.remove('fade'); void stage.offsetWidth; stage.classList.add('fade'); }
+        try { history.replaceState(null, '', '#' + (n + 1)); } catch (e) {}
+        document.title = (n + 1) + '/' + TOTAAL + ' · ' + SLIDES[n].titel;
+      }
+      publiceer();
+    }
+
+    function doe(cmd, waarde) {
+      if (cmd === 'volgende') ga(huidig + 1);
+      else if (cmd === 'vorige') ga(huidig - 1);
+      else if (cmd === 'eerste') ga(0);
+      else if (cmd === 'laatste') ga(TOTAAL - 1);
+      else if (cmd === 'ga') ga(waarde);
+      else if (cmd === 'zwart') { document.body.classList.toggle('zwart'); publiceer(); }
+      else if (cmd === 'hallo') publiceer();      // notitievenster vraagt de huidige stand
+    }
+
+    function openNotities() {
+      if (notesVenster && !notesVenster.closed) { notesVenster.focus(); return; }
+      var url = location.href.split('#')[0].split('?')[0] + '?notities';
+      notesVenster = window.open(url, 'sprekersnotities', 'width=1200,height=780');
+      if (!notesVenster) {
+        hulp.textContent = 'Het notitievenster werd geblokkeerd. Sta pop-ups toe voor dit bestand en druk opnieuw op N.';
+        hulp.classList.remove('weg');
+      }
+    }
+
+    function volledigScherm() {
+      if (document.fullscreenElement) document.exitFullscreen();
+      else if (document.documentElement.requestFullscreen) document.documentElement.requestFullscreen().catch(function () {});
+    }
+
+    document.addEventListener('keydown', function (e) {
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      if (cijferToets(e, function (v) { gaEl.style.display = v ? 'block' : 'none'; gaEl.textContent = 'Ga naar slide ' + v; }, ga)) { e.preventDefault(); return; }
+      var cmd = navToets(e.key);
+      if (cmd) doe(cmd);
+      else if (e.key === 'n' || e.key === 'N') openNotities();
+      else if (e.key === 'f' || e.key === 'F') volledigScherm();
+      else if (e.key === '?' || e.key === 'h' || e.key === 'H') hulp.classList.toggle('weg');
+      else return;
+      e.preventDefault();
+    });
+
+    addEventListener('storage', function (e) {
+      if (e.key !== 'sn-cmd' || !e.newValue) return;
+      var c = JSON.parse(e.newValue);
+      doe(c.cmd, c.waarde);
+    });
+
+    addEventListener('resize', schaal);
+    var verberg;
+    addEventListener('mousemove', function () {
+      document.body.classList.remove('verberg-cursor');
+      clearTimeout(verberg); verberg = setTimeout(function () { document.body.classList.add('verberg-cursor'); }, 2000);
+    });
+    setTimeout(function () { hulp.classList.add('weg'); }, 7000);
+    schaal();
+    var start = parseInt((location.hash || '').slice(1), 10);
+    ga(isNaN(start) ? 0 : start - 1, false);
+  }
+
+  // =====================================================================
+  function notitievenster() {
+    document.body.className = 'notities';
+    document.title = 'Sprekersnotities';
+    document.body.insertAdjacentHTML('beforeend',
+      '<header>' +
+      '<div id="nr">–</div><div id="titel">Wacht op het presentatievenster…</div><span id="zwart-melding">Zwart scherm</span>' +
+      '<div class="groep"><button id="m-kort" title="Toets K">Kort</button><button id="m-volledig" title="Toets K">Volledig</button></div>' +
+      '<div class="groep"><button id="a-min" title="Kleinere letters (−)">A−</button><button id="a-plus" title="Grotere letters (+)">A+</button></div>' +
+      '<div id="tijd" title="Verstreken tijd">00:00</div>' +
+      '<div class="groep"><button id="t-pauze">Pauze</button><button id="t-reset">Reset</button></div>' +
+      '<div id="klok"></div>' +
+      '</header>' +
+      '<main><div id="links">' +
+      '<div><div class="label">Nu</div><div class="voorbeeld" id="v-nu"><div class="binnen"></div></div></div>' +
+      '<div id="volgende-wrap"><div class="label">Volgende</div><div class="voorbeeld" id="v-volgende"><div class="binnen"></div></div><div id="volgende-titel"></div></div>' +
+      '<div id="nav"><button id="vorige">◀ Vorige</button><button id="volgende">Volgende ▶</button></div>' +
+      '<div id="tips"><kbd>K</kbd> kort/volledig · <kbd>←</kbd><kbd>→</kbd> slides · <kbd>B</kbd> zwart · <kbd>+</kbd><kbd>−</kbd> lettergrootte · cijfer + <kbd>Enter</kbd> ga naar</div>' +
+      '</div><div id="tekst"></div></main>');
+
+    var $ = function (id) { return document.getElementById(id); };
+    var huidig = -1, zwart = false, invoerTekst = '';
+    var modus = lees('sn-modus') || 'kort';
+    var letter = parseInt(lees('sn-letter') || '22', 10);
+    // De timer overleeft het herladen van dit venster, maar begint opnieuw als hij ouder is dan 4 uur.
+    var timer = leesJson('sn-timer');
+    if (!timer || Date.now() - timer.start > 4 * 3600 * 1000) {
+      timer = { start: Date.now(), pauze: 0, sinds: null };
+      schrijf('sn-timer', JSON.stringify(timer));
+    }
+
+    function bewaarTimer() { schrijf('sn-timer', JSON.stringify(timer)); tik(); }
+    function twee(n) { return (n < 10 ? '0' : '') + n; }
+    function tik() {
+      var ms = (timer.sinds || Date.now()) - timer.start - timer.pauze;
+      var s = Math.max(0, Math.floor(ms / 1000));
+      $('tijd').textContent = (s >= 3600 ? Math.floor(s / 3600) + ':' : '') + twee(Math.floor(s / 60) % 60) + ':' + twee(s % 60);
+      $('tijd').className = timer.sinds ? 'pauze' : '';
+      $('t-pauze').textContent = timer.sinds ? 'Verder' : 'Pauze';
+      var k = new Date();
+      $('klok').textContent = twee(k.getHours()) + ':' + twee(k.getMinutes());
+    }
+
+    function notitieHtml(sl) {
+      if (modus === 'kort') {
+        if (!sl.kort || !sl.kort.length) return '<p class="leeg">Nog geen korte versie voor deze slide (zie kort.md). Druk K voor de volledige notities.</p>';
+        return '<ul>' + sl.kort.map(function (b) {
+          if (/^→/.test(b)) return '<li class="overgang">' + esc(b) + '</li>';
+          if (/^Examen:/.test(b)) return '<li class="examen"><b>Examen:</b>' + esc(b.slice(7)) + '</li>';
+          return '<li>' + esc(b) + '</li>';
+        }).join('') + '</ul>';
+      }
+      if (!sl.notities) return '<p class="leeg">Geen notities bij deze slide.</p>';
+      return sl.notities.split(/\n\s*\n/).map(function (p) { return '<p>' + esc(p.trim()) + '</p>'; }).join('');
+    }
+
+    function schaalVoorbeelden() {
+      var vs = document.querySelectorAll('.voorbeeld');
+      for (var i = 0; i < vs.length; i++) vs[i].firstChild.style.transform = 'scale(' + (vs[i].clientWidth / 1920) + ')';
+    }
+
+    function toonTekst() {
+      if (huidig < 0) return;
+      $('m-kort').className = modus === 'kort' ? 'aan' : '';
+      $('m-volledig').className = modus === 'volledig' ? 'aan' : '';
+      $('tekst').style.fontSize = letter + 'px';
+      $('tekst').innerHTML = notitieHtml(SLIDES[huidig]);
+    }
+
+    function toon(stand) {
+      if (!stand) return;
+      zwart = !!stand.zwart;
+      document.body.classList.toggle('zwart', zwart);
+      if (stand.n === huidig) return;
+      huidig = stand.n;
+      var sl = SLIDES[huidig], vg = SLIDES[huidig + 1];
+      document.title = 'Notities ' + (huidig + 1) + '/' + TOTAAL;
+      $('nr').innerHTML = (huidig + 1) + ' <span>/ ' + TOTAAL + '</span>';
+      $('titel').textContent = invoerTekst || sl.titel;
+      toonTekst();
+      $('tekst').scrollTop = 0;
+      $('v-nu').firstChild.innerHTML = sl.html;
+      $('v-volgende').firstChild.innerHTML = vg ? vg.html :
+        '<section style="background:#000;color:#fff;display:flex;align-items:center;justify-content:center;font-size:90px">Einde</section>';
+      $('volgende-titel').textContent = vg ? (huidig + 2) + '. ' + vg.titel : '';
+      schaalVoorbeelden();
+    }
+
+    function zetModus(m) { modus = m; schrijf('sn-modus', m); toonTekst(); }
+    function zetLetter(px) { letter = Math.max(14, Math.min(48, px)); schrijf('sn-letter', String(letter)); toonTekst(); }
+
+    $('vorige').onclick = function () { stuur('vorige'); };
+    $('volgende').onclick = function () { stuur('volgende'); };
+    $('m-kort').onclick = function () { zetModus('kort'); };
+    $('m-volledig').onclick = function () { zetModus('volledig'); };
+    $('a-min').onclick = function () { zetLetter(letter - 2); };
+    $('a-plus').onclick = function () { zetLetter(letter + 2); };
+    $('t-pauze').onclick = function () {
+      if (timer.sinds) { timer.pauze += Date.now() - timer.sinds; timer.sinds = null; } else timer.sinds = Date.now();
+      bewaarTimer();
+    };
+    $('t-reset').onclick = function () { timer = { start: Date.now(), pauze: 0, sinds: null }; bewaarTimer(); };
+
+    document.addEventListener('keydown', function (e) {
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      var toonInvoer = function (v) { invoerTekst = v ? 'Ga naar slide ' + v : ''; $('titel').textContent = invoerTekst || (SLIDES[huidig] || {}).titel || ''; };
+      if (cijferToets(e, toonInvoer, function (n) { stuur('ga', n); })) { e.preventDefault(); return; }
+      var cmd = navToets(e.key);
+      if (cmd) stuur(cmd);
+      else if (e.key === 'k' || e.key === 'K') zetModus(modus === 'kort' ? 'volledig' : 'kort');
+      else if (e.key === '+' || e.key === '=') zetLetter(letter + 2);
+      else if (e.key === '-' || e.key === '_') zetLetter(letter - 2);
+      else return;
+      e.preventDefault();
+    });
+
+    addEventListener('storage', function (e) {
+      if (e.key === 'sn-stand' && e.newValue) toon(JSON.parse(e.newValue));
+      if (e.key === 'sn-timer' && e.newValue) { timer = JSON.parse(e.newValue); tik(); }
+    });
+    addEventListener('resize', schaalVoorbeelden);
+    setInterval(tik, 500);
+    tik();
+    toon(leesJson('sn-stand') || { n: 0 });
+    stuur('hallo');
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<section id="wanneer-wat" data-transition="fade" style="background:#FFFFFF;color:#404040;font-family:Arial, Helvetica, sans-serif;padding:104px 128px 144px;display:flex;flex-direction:column;gap:40px">
+<h2 style="font-family:Questrial, 'Century Gothic', Arial, sans-serif;font-size:64px;font-weight:400;line-height:1.15;color:#C00000">Welke aanpak voor welke app?</h2>
+<table style="font-size:39px;color:#404040;font-family:Arial, Helvetica, sans-serif"><tr style="background:#C00000"><th style="width:30%;text-align:left;color:#FFFFFF;font-weight:700">Soort applicatie</th><th style="width:34%;text-align:left;color:#FFFFFF;font-weight:700">Aanpak</th><th style="width:36%;text-align:left;color:#FFFFFF;font-weight:700">Voorbeelden</th></tr><tr style="background:#F2F2F2"><td>Content, blog, docs</td><td>SSG + islands</td><td>Astro, Next.js met ensureStatic</td></tr><tr style="background:#FFFFFF"><td>E-commerce, marketing</td><td>Statische shell + streaming</td><td>Next.js Cache Components, Nuxt</td></tr><tr style="background:#F2F2F2"><td>Dashboard, admin, chat</td><td>CSR / SPA</td><td>Vite + React/Vue/Angular, TanStack</td></tr><tr style="background:#FFFFFF"><td>Formulier-zware apps</td><td>SSR + progressive enhancement</td><td>Remix 3, SvelteKit, Angular SSR</td></tr></table>
+<p style="font-size:42px;line-height:1.4">SSR is geen doel op zich: meer server betekent meer kosten én meer aanvalsoppervlak.</p>
+<p style="position:absolute;right:128px;bottom:48px;width:80px;text-align:right;font-size:24px;color:#7F7F7F">45</p>
+<aside>Hoe kies je dan? Deze tabel brengt alle rendering-begrippen samen in een beslissingshulp. Het is een vereenvoudiging, maar een goed vertrekpunt, ook voor examenvragen van het type: welke rendering-strategie kies je voor deze applicatie, en waarom?
+
+Content zoals een blog, documentatie of een portfolio verandert zelden en moet goed vindbaar zijn: static site generation, eventueel met islands voor de paar interactieve stukjes. Astro is daar ideaal voor.
+
+Een webshop of marketingsite moet snel laden en gevonden worden door zoekmachines, maar heeft ook persoonlijke delen, zoals een winkelmandje of aanbevelingen. Dan wil je een statische shell met gestreamde dynamische delen, precies waar Cache Components voor ontworpen is.
+
+Een dashboard, admin-omgeving of chat-applicatie zit achter een login. SEO is dus irrelevant, interactiviteit is alles. Een klassieke SPA met client side rendering is vaak eenvoudiger, goedkoper en sneller.
+
+Voor apps met veel formulieren, zoals een overheidsformulier of een inschrijvingssysteem, is SSR met progressive enhancement sterk, omdat het ook werkt op trage toestellen of als JavaScript faalt.
+
+Een belangrijke vuistregel: server side rendering is geen doel op zich. Elke stap richting de server betekent meer serverkosten, en ook meer aanvalsoppervlak: meer code die publiek bereikbaar is op een server. Dat brengt ons bij trend drie.</aside>
+</section>

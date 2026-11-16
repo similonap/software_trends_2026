@@ -1,0 +1,50 @@
+<section id="checklist" data-transition="fade" style="background:#FFFFFF;color:#3C3B40;font-family:'Source Sans 3', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#005078">Afsluiting en vragen</p>
+<h2 style="font-family:'League Gothic', 'Arial Narrow', sans-serif;font-size:80px;font-weight:400;line-height:1.05;letter-spacing:0;color:#232226">Checklist voor je volgende project</h2>
+</div>
+<div style="display:flex;gap:64px;align-items:flex-start">
+<div style="flex:1;display:flex;flex-direction:column;gap:14px">
+<h3 style="font-family:'Source Sans 3', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.2;color:#232226">Als gebruiker van packages</h3>
+<div style="display:flex;gap:16px;align-items:center"><x-icon name="Check" style="color:#005078;width:40px;height:40px"></x-icon><p style="flex:1;font-size:28px;line-height:1.35">Lockfile in Git, npm ci in CI</p></div>
+<div style="display:flex;gap:16px;align-items:center"><x-icon name="Check" style="color:#005078;width:40px;height:40px"></x-icon><p style="flex:1;font-size:28px;line-height:1.35">Scripts uit, met een korte allowlist</p></div>
+<div style="display:flex;gap:16px;align-items:center"><x-icon name="Check" style="color:#005078;width:40px;height:40px"></x-icon><p style="flex:1;font-size:28px;line-height:1.35">Cooldown: minstens 1 dag, liefst 3 tot 7</p></div>
+<div style="display:flex;gap:16px;align-items:center"><x-icon name="Check" style="color:#005078;width:40px;height:40px"></x-icon><p style="flex:1;font-size:28px;line-height:1.35">Interne packages onder een eigen scope</p></div>
+<div style="display:flex;gap:16px;align-items:center"><x-icon name="Check" style="color:#005078;width:40px;height:40px"></x-icon><p style="flex:1;font-size:28px;line-height:1.35">Naast npm audit ook een gedragsscanner</p></div>
+<div style="display:flex;gap:16px;align-items:center"><x-icon name="Check" style="color:#005078;width:40px;height:40px"></x-icon><p style="flex:1;font-size:28px;line-height:1.35">Een SBOM per release (npm sbom)</p></div>
+<div style="display:flex;gap:16px;align-items:center"><x-icon name="Check" style="color:#005078;width:40px;height:40px"></x-icon><p style="flex:1;font-size:28px;line-height:1.35">Geen langlevende tokens op je laptop</p></div>
+<div style="display:flex;gap:16px;align-items:center"><x-icon name="Check" style="color:#005078;width:40px;height:40px"></x-icon><p style="flex:1;font-size:28px;line-height:1.35">AI-agents met vangrails, .claude/ in review</p></div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:14px">
+<h3 style="font-family:'Source Sans 3', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.2;color:#232226">Als maintainer</h3>
+<div style="display:flex;gap:16px;align-items:center"><x-icon name="Check" style="color:#005078;width:40px;height:40px"></x-icon><p style="flex:1;font-size:28px;line-height:1.35">2FA met passkey of hardwaresleutel</p></div>
+<div style="display:flex;gap:16px;align-items:center"><x-icon name="Check" style="color:#005078;width:40px;height:40px"></x-icon><p style="flex:1;font-size:28px;line-height:1.35">Trusted publishing, tokens uitgeschakeld</p></div>
+<div style="display:flex;gap:16px;align-items:center"><x-icon name="Check" style="color:#005078;width:40px;height:40px"></x-icon><p style="flex:1;font-size:28px;line-height:1.35">Elke release goedgekeurd door een mens</p></div>
+<div style="display:flex;gap:16px;align-items:center"><x-icon name="Check" style="color:#005078;width:40px;height:40px"></x-icon><p style="flex:1;font-size:28px;line-height:1.35">Geen pull_request_target, SHA-pinning</p></div>
+<div style="display:flex;gap:16px;align-items:center"><x-icon name="Check" style="color:#005078;width:40px;height:40px"></x-icon><p style="flex:1;font-size:28px;line-height:1.35">Minimale permissions, zizmor in CI</p></div>
+<div style="display:flex;gap:16px;align-items:center"><x-icon name="Check" style="color:#005078;width:40px;height:40px"></x-icon><p style="flex:1;font-size:28px;line-height:1.35">Een melding bij elke publicatie</p></div>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1440px;font-size:24px;color:#6B6A70">Verwerking: oefening 1 en 3 · bronnen en begrippenlijst in de cursustekst</p>
+<img src="/_blob/4d3eecb01832b6f4111235aa00bb3842" alt="AP Hogeschool" style="position:absolute;right:128px;bottom:52px;height:56px;width:auto">
+<aside>Laat deze slide openstaan tijdens de vragen.
+
+Als gebruiker van packages:
+- package-lock.json staat in Git en CI installeert met npm ci.
+- Je gebruikt npm 12, pnpm 11 of Yarn 4.15 (of minstens ignore-scripts=true), met een korte, gereviewde allowlist van install scripts.
+- Nieuwe versies krijgen een cooldown van minstens één dag, liefst drie tot zeven, ook in Dependabot of Renovate.
+- Interne packages staan onder een eigen scope die vast aan je interne registry gekoppeld is.
+- Naast npm audit draait een tool die gedrag analyseert of gekende malware blokkeert.
+- Elke release krijgt een SBOM (npm sbom).
+- Er staan geen langlevende tokens of productiecredentials op ontwikkelmachines, en onbekende code draait in een container.
+- AI-agents draaien met hun vangrails aan, en wijzigingen aan .claude/ en .vscode/ worden gereviewd.
+
+Als maintainer:
+- 2FA met een passkey of hardwaresleutel, geen TOTP.
+- Trusted publishing, alle oude tokens verwijderd, disallow tokens aan.
+- Staged publishing of een environment met een verplichte reviewer voor elke release.
+- Workflows zonder pull_request_target, met minimale permissions en Actions gepind op commit-SHA, gecontroleerd met zizmor.
+- Een melding bij elke publicatie van je packages.
+
+Verwijs voor de verwerking naar oefening 1 (inventaris van een eigen project) en oefening 3 (een repository beveiligen). Als er tijd over is: gebruik een van de discussievragen uit de cursustekst, bijvoorbeeld “Wie zou moeten betalen voor de veiligheid van open source?”</aside>
+</section>

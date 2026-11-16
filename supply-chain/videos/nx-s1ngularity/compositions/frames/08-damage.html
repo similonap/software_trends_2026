@@ -1,0 +1,344 @@
+<template id="08-damage-template">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<style>
+  @font-face { font-family: 'Barlow'; src: url('assets/fonts/Barlow-600.woff2') format('woff2'); font-weight: 600; font-style: normal; font-display: block; }
+  @font-face { font-family: 'Barlow'; src: url('assets/fonts/Barlow-900.woff2') format('woff2'); font-weight: 900; font-style: normal; font-display: block; }
+  @font-face { font-family: 'IBM Plex Mono'; src: url('assets/fonts/IBM_Plex_Mono-500.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: block; }
+  @font-face { font-family: 'IBM Plex Mono'; src: url('assets/fonts/IBM_Plex_Mono-600.woff2') format('woff2'); font-weight: 600; font-style: normal; font-display: block; }
+
+  #root {
+    position: absolute;
+    inset: 0;
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    container-type: size;
+    font-family: 'Barlow', sans-serif;
+    color: #F0ECE5;
+  }
+  .clip { position: absolute; inset: 0; }
+  #d08-bg { background: #111111; }
+
+  #d08-cam {
+    position: absolute;
+    inset: 0;
+    transform-origin: 50% 42%;
+  }
+
+  /* top chrome bar */
+  #d08-chrome {
+    position: absolute;
+    left: 106px; right: 106px; top: 96px;
+    height: 40px;
+  }
+  #d08-kicker-row {
+    position: absolute; left: 0; top: 0;
+    display: flex; align-items: center; gap: 18px;
+  }
+  #d08-rule { width: 36px; height: 2px; background: #E85D26; }
+  .d08-mono {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+  }
+  #d08-kicker { font-size: 22px; color: #E85D26; }
+  #d08-catnum { position: absolute; right: 0; top: 0; font-size: 22px; color: #505048; }
+  #d08-chrome-line {
+    position: absolute; left: 0; right: 0; top: 52px;
+    height: 1px; background: #282826;
+    transform-origin: left center;
+  }
+
+  /* triptych */
+  .d08-card {
+    position: absolute;
+    top: 300px;
+    width: 525px;
+    height: 520px;
+  }
+  #d08-card1 { left: 106px; }
+  #d08-card2 { left: 698px; }
+  #d08-card3 { left: 1290px; }
+
+  .d08-top {
+    position: absolute; left: 0; right: 0; top: 0;
+    height: 1px; background: #282826;
+    transform-origin: left center;
+  }
+  .d08-top-accent {
+    position: absolute; left: 0; top: -1px;
+    width: 100%; height: 3px; background: #E85D26;
+    transform-origin: left center;
+  }
+  .d08-idx {
+    position: absolute; left: 0; top: 22px;
+    font-size: 20px; color: #505048;
+  }
+  .d08-src {
+    position: absolute; right: 0; top: 22px;
+    font-size: 20px; color: #888880;
+  }
+  .d08-body {
+    position: absolute; left: 0; right: 0; top: 0; bottom: 0;
+  }
+  .d08-num-wrap {
+    position: absolute; left: 0; top: 96px;
+    width: 525px; height: 210px;
+    display: flex; align-items: baseline;
+    white-space: nowrap;
+  }
+  .d08-num {
+    display: inline-block;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    font-variant-numeric: tabular-nums;
+    color: #E85D26;
+    transform-origin: left bottom;
+  }
+  #d08-num1 { font-size: 200px; }
+  #d08-num2 { font-size: 170px; }
+  #d08-of {
+    display: inline-block;
+    font-weight: 900;
+    font-size: 84px;
+    letter-spacing: -0.03em;
+    color: #888880;
+    margin-left: 22px;
+  }
+
+  .d08-label {
+    position: absolute; left: 0; top: 352px;
+    font-weight: 600;
+    font-size: 54px;
+    line-height: 1.1;
+    text-transform: lowercase;
+    color: #F0ECE5;
+    white-space: nowrap;
+  }
+
+  /* card 2 — progress fill */
+  #d08-track {
+    position: absolute; left: 0; top: 318px;
+    width: 525px; height: 10px;
+    background: #282826;
+    overflow: hidden;
+  }
+  #d08-fill {
+    width: 100%; height: 100%;
+    background: #E85D26;
+    transform-origin: left center;
+  }
+  #d08-pct {
+    position: absolute; left: 0; top: 448px;
+    font-size: 20px; color: #888880;
+  }
+
+  /* card 3 — state swap */
+  #d08-state-wrap {
+    position: absolute; left: 0; top: 168px;
+    min-width: 525px; height: 110px;
+    display: flex; align-items: center;
+    white-space: nowrap;
+  }
+  #d08-state-box {
+    position: relative;
+    display: inline-block;
+  }
+  #d08-state {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 600;
+    font-size: 92px;
+    letter-spacing: 0.06em;
+    line-height: 1;
+    color: #F0ECE5;
+  }
+  #d08-strike {
+    position: absolute; left: -8px; right: -8px; top: 50%;
+    height: 8px; margin-top: -4px;
+    background: #E85D26;
+    transform-origin: left center;
+  }
+
+  /* bottom hairline */
+  #d08-foot {
+    position: absolute; left: 106px; right: 106px; top: 872px;
+    height: 1px; background: #282826;
+    transform-origin: left center;
+  }
+</style>
+
+<div data-hf-id="hf-1i5r" id="root" data-composition-id="08-damage" data-width="1920" data-height="1080" data-start="0" data-duration="13.6">
+  <div data-hf-id="hf-q1zk" id="d08-bg" class="clip" data-start="0" data-duration="13.6" data-track-index="0"></div>
+
+  <div data-hf-id="hf-g8lu" id="d08-stage" class="clip" data-start="0" data-duration="13.6" data-track-index="1">
+    <div data-hf-id="hf-34m9" id="d08-cam">
+      <div data-hf-id="hf-046y" id="d08-chrome">
+        <div data-hf-id="hf-4uec" id="d08-kicker-row">
+          <div data-hf-id="hf-vy4e" id="d08-rule"></div>
+          <div data-hf-id="hf-49z2" id="d08-kicker" class="d08-mono">04 / Detectie</div>
+        </div>
+        <div data-hf-id="hf-q91y" id="d08-catnum" class="d08-mono">No. 08</div>
+        <div data-hf-id="hf-c2q1" id="d08-chrome-line"></div>
+      </div>
+
+      <!-- card 1 -->
+      <div data-hf-id="hf-531b" id="d08-card1" class="d08-card">
+        <div data-hf-id="hf-4e5a" class="d08-top"></div>
+        <div data-hf-id="hf-pm0m" class="d08-top-accent" id="d08-acc1"></div>
+        <div data-hf-id="hf-nrhh" class="d08-idx d08-mono">01</div>
+        <div data-hf-id="hf-0j6b" class="d08-body" id="d08-body1">
+          <div data-hf-id="hf-qtom" class="d08-src d08-mono">GitGuardian</div>
+          <div data-hf-id="hf-ljsg" class="d08-num-wrap"><span data-hf-id="hf-t2de" class="d08-num" id="d08-num1">0</span></div>
+          <div data-hf-id="hf-x19a" class="d08-label" id="d08-lab1">gelekte secrets</div>
+        </div>
+      </div>
+
+      <!-- card 2 -->
+      <div data-hf-id="hf-wf5g" id="d08-card2" class="d08-card">
+        <div data-hf-id="hf-rxj6" class="d08-top"></div>
+        <div data-hf-id="hf-lnwl" class="d08-top-accent" id="d08-acc2"></div>
+        <div data-hf-id="hf-oyek" class="d08-idx d08-mono">02</div>
+        <div data-hf-id="hf-rvag" class="d08-body" id="d08-body2">
+          <div data-hf-id="hf-2qn3" class="d08-src d08-mono">AI-TOOLS</div>
+          <div data-hf-id="hf-nj9k" class="d08-num-wrap"><span data-hf-id="hf-wmwv" class="d08-num" id="d08-num2">0</span><span data-hf-id="hf-ew5s" id="d08-of">/ 366</span></div>
+          <div data-hf-id="hf-2wbt" id="d08-track"><div data-hf-id="hf-ko9r" id="d08-fill"></div></div>
+          <div data-hf-id="hf-lwt2" class="d08-label" id="d08-lab2">ai-truc gelukt</div>
+          <div data-hf-id="hf-m1m3" id="d08-pct" class="d08-mono">26%</div>
+        </div>
+      </div>
+
+      <!-- card 3 -->
+      <div data-hf-id="hf-x6t9" id="d08-card3" class="d08-card">
+        <div data-hf-id="hf-sbu7" class="d08-top"></div>
+        <div data-hf-id="hf-kw8s" class="d08-top-accent" id="d08-acc3"></div>
+        <div data-hf-id="hf-ok3j" class="d08-idx d08-mono">03</div>
+        <div data-hf-id="hf-smy9" class="d08-body" id="d08-body3">
+          <div data-hf-id="hf-6mu0" id="d08-state-wrap">
+            <div data-hf-id="hf-vodr" id="d08-state-box">
+              <span data-hf-id="hf-7yfu" id="d08-state"></span>
+              <div data-hf-id="hf-6lq2" id="d08-strike"></div>
+            </div>
+          </div>
+          <div data-hf-id="hf-xnzm" class="d08-label" id="d08-lab3">tweede golf</div>
+        </div>
+      </div>
+
+      <div data-hf-id="hf-8ahc" id="d08-foot"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  window.__timelines = window.__timelines || {};
+  var tl = gsap.timeline({ paused: true });
+  var DUR = 13.6;
+
+  // --- macro camera: slow steady push-in under the whole shot ---
+  tl.fromTo("#d08-cam", { scale: 1 }, { scale: 1.035, duration: DUR, ease: "none" }, 0);
+
+  // --- Scene 1 (0.0–4.4): chrome + empty triptych slots, card 1 on "2.349" ---
+  tl.fromTo("#d08-rule", { scaleX: 0, transformOrigin: "left center" }, { scaleX: 1, duration: 0.4, ease: "power3.out" }, 0.05);
+  tl.fromTo("#d08-kicker", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.1);
+  tl.fromTo("#d08-catnum", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 0.2);
+  tl.fromTo("#d08-chrome-line", { scaleX: 0 }, { scaleX: 1, duration: 0.9, ease: "power3.inOut" }, 0.1);
+  tl.fromTo("#d08-foot", { scaleX: 0 }, { scaleX: 1, duration: 0.9, ease: "power3.inOut" }, 0.2);
+
+  // empty slots — the three top hairlines + catalogue indices establish the grid
+  tl.fromTo(".d08-top", { scaleX: 0 }, { scaleX: 1, duration: 0.7, ease: "power3.out", stagger: 0.08 }, 0.15);
+  tl.fromTo(".d08-idx", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out", stagger: 0.08 }, 0.35);
+
+  // accent bars all start empty
+  tl.set(".d08-top-accent", { scaleX: 0 }, 0);
+
+  // card bodies: rise in on their own spoken number
+  function rise(sel, at) {
+    tl.fromTo(sel, { opacity: 0, y: 48 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, at);
+  }
+  function accent(sel, at) {
+    tl.fromTo(sel, { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power3.out" }, at);
+  }
+
+  // card 1 — hero, visible early; count lands on "2.349" (1.16s)
+  rise("#d08-body1", 0.3);
+  accent("#d08-acc1", 1.1);
+
+  var num1 = document.getElementById("d08-num1");
+  function fmtNL(n) {
+    n = Math.round(n);
+    if (n < 1000) return String(n);
+    var r = n % 1000;
+    return Math.floor(n / 1000) + "." + (r < 10 ? "00" : r < 100 ? "0" : "") + r;
+  }
+  var c1 = { v: 0 };
+  var C1_AT = 1.1, C1_DUR = 1.8;
+  tl.to(c1, {
+    v: 2349, duration: C1_DUR, ease: "power3.out",
+    onUpdate: function () { num1.textContent = fmtNL(c1.v); }
+  }, C1_AT);
+  tl.fromTo("#d08-num1", { scale: 0.5 }, { scale: 1, duration: C1_DUR, ease: "power3.out" }, C1_AT);
+  tl.fromTo("#d08-lab1", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 1.85);
+
+  // --- Scene 2 (4.4–8.6): card 2 on "95 van de 366" ---
+  rise("#d08-body2", 5.9);
+  accent("#d08-acc2", 6.25);
+  var num2 = document.getElementById("d08-num2");
+  var c2 = { v: 0 };
+  var C2_AT = 6.25, C2_DUR = 1.2;
+  tl.to(c2, {
+    v: 95, duration: C2_DUR, ease: "power3.out",
+    onUpdate: function () { num2.textContent = String(Math.round(c2.v)); }
+  }, C2_AT);
+  tl.fromTo("#d08-num2", { scale: 0.55 }, { scale: 1, duration: C2_DUR, ease: "power3.out" }, C2_AT);
+  tl.fromTo("#d08-lab2", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 6.6);
+  // "/ 366" lands on "366" (7.44s), then the bar fills to 95/366 ≈ 26%
+  tl.fromTo("#d08-of", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.45, ease: "back.out(1.6)" }, 7.42);
+  tl.fromTo("#d08-fill", { scaleX: 0 }, { scaleX: 95 / 366, duration: 1.0, ease: "power2.out" }, 7.6);
+  tl.fromTo("#d08-pct", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 8.3);
+
+  // --- Scene 3 (8.6–13.6): card 3 on "tweede golf", PRIVATE struck → PUBLIC ---
+  rise("#d08-body3", 9.85);
+  accent("#d08-acc3", 10.3);
+  tl.fromTo("#d08-lab3", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 10.3);
+
+  // discrete state swap — instant jumps, reverse-searched each frame
+  var SEQ = [
+    { t: 0.0, text: "" },
+    { t: 10.0, text: "_" },
+    { t: 11.44, text: "PRIVATE" },
+    { t: 12.62, text: "PUBLIC" }
+  ];
+  var stateEl = document.getElementById("d08-state");
+  function textAt(time) {
+    for (var i = SEQ.length - 1; i >= 0; i--) {
+      if (time >= SEQ[i].t) return SEQ[i].text;
+    }
+    return "";
+  }
+  var drv = { t: 0 };
+  tl.to(drv, {
+    t: DUR, duration: DUR, ease: "none",
+    onUpdate: function () {
+      var txt = textAt(drv.t);
+      stateEl.textContent = txt;
+      stateEl.style.color = drv.t >= 12.62 ? "#E85D26" : (txt === "_" ? "#505048" : "#F0ECE5");
+    }
+  }, 0);
+
+  // strike-through draws across PRIVATE, then vanishes on the swap
+  tl.fromTo("#d08-strike", { scaleX: 0, opacity: 1 }, { scaleX: 1, duration: 0.35, ease: "power3.out" }, 12.1);
+  tl.set("#d08-strike", { opacity: 0 }, 12.62);
+  // PUBLIC punch — a small settle, no exit
+  tl.fromTo("#d08-state-box", { scale: 1 }, { scale: 1.06, duration: 0.12, ease: "power2.out", immediateRender: false }, 12.62);
+  tl.to("#d08-state-box", { scale: 1, duration: 0.3, ease: "power2.out" }, 12.74);
+
+  // hold all three still to the end
+  tl.to({}, { duration: DUR }, 0);
+
+  window.__timelines["08-damage"] = tl;
+})();
+</script>
+</template>

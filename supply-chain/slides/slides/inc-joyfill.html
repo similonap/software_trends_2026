@@ -1,0 +1,38 @@
+<section id="inc-joyfill" data-transition="fade" style="background:#FFFFFF;color:#3C3B40;font-family:'Source Sans 3', Arial, sans-serif;padding:120px 128px 150px;display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#E60005">Incident · 28 juli 2026 · code bij import</p>
+<h2 style="font-family:'League Gothic', 'Arial Narrow', sans-serif;font-size:80px;font-weight:400;line-height:1.05;letter-spacing:0;color:#232226">@joyfill: geen install script nodig</h2>
+</div>
+<div style="display:grid;grid-template-columns:300px 1fr;gap:12px 16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Toegang</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">Legitieme packages werden gekaapt; hoe is niet bekend. De kwaadaardige code zat alleen in de gepubliceerde tarballs, niet in de broncode op GitHub.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Verspreiding</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">Zes betaversies van @joyfill/components en @joyfill/layouts. Daarna paste de malware de globale npm-CLI aan, zodat elke volgende npm-opdracht hem opnieuw startte.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Payload</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">De code draaide bij import, niet bij installatie. Hij opende een kanaal voor toegang op afstand en installeerde een steler voor browsers, wallets en wachtwoordmanagers.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Detectie en respons</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">De AI-scan van StepSecurity markeerde de versie als kritiek, en een test in een sandbox bevestigde het.</p>
+</div>
+<div style="display:flex;gap:24px;align-items:stretch">
+<div style="flex:1;background:#E6EFF3;border-left:6px solid #005078;border-radius:8px;padding:20px 32px">
+<p style="font-size:27px;line-height:1.35;color:#232226"><b><span style="color:#005078">Les.</span></b> Install scripts blokkeren beschermt niet tegen code die in het package zelf zit en bij import draait.</p>
+</div>
+<div style="width:440px;background:#F4F4F4;border:1px solid #E1E1E1;border-radius:8px;padding:20px 28px;display:flex;flex-direction:column;gap:6px;justify-content:center">
+<p style="font-size:20px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#6B6A70">Had dit tegengehouden</p>
+<p style="font-size:26px;line-height:1.3;font-weight:600;color:#232226">lockfile, cooldown, een gedragsscanner</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1440px;font-size:24px;color:#6B6A70">Deel 5 — Verdediging als gebruiker · 0:30–0:36</p>
+<img src="/_blob/4d3eecb01832b6f4111235aa00bb3842" alt="AP Hogeschool" style="position:absolute;right:128px;bottom:52px;height:56px;width:auto">
+<aside>Verdieping: de grens van laag 3. Sla over bij tijdgebrek.
+
+28 juli 2026. Drie betaversies van @joyfill/components en drie van @joyfill/layouts bevatten kwaadaardige code. De code stond niet in de repository op GitHub, alleen in de tarballs op de registry. Wie de broncode reviewde, zag dus niets.
+
+Het verschil met bijna alle eerdere aanvallen: er is geen install script. StepSecurity: “The code runs when an application imports the package.” Dus ook op npm 12, met install scripts geblokkeerd, draait de code zodra je applicatie of je testsuite het package laadt.
+
+Payload: het C2-adres staat in blockchaintransacties (Tron, BNB Smart Chain, met Aptos als reserve). De malware opent een Socket.IO-kanaal waarmee de aanvaller code kan uitvoeren, bestanden kan lezen en je klembord kan zien, en installeert een Python-steler voor browsers, wallets, wachtwoordmanagers, git- en gh-credentials en de keychain. Daarna past ze de globale npm-CLI aan. StepSecurity: “Infection of the npm CLI is the supply-chain amplifier.” Alles wat je daarna op die machine bouwt of publiceert, kan besmet zijn.
+
+Wat helpt dan wel? Een lockfile met een vastgepinde stabiele versie (betaversies kwamen alleen binnen bij wie die expliciet vroeg), een cooldown, en scanners die naar het gedrag van de code kijken. Runtime-isolatie (deel 7) beperkt de schade.
+
+Bron: StepSecurity.</aside>
+</section>

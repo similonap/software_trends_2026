@@ -1,0 +1,1831 @@
+{
+  "total_duration_s": 84.8,
+  "width": 1920,
+  "height": 1080,
+  "groups": [
+    {
+      "id": "caption-group-0",
+      "frame": 1,
+      "start": 0,
+      "end": 2.28,
+      "text": "Augustus 2025.",
+      "words": [
+        {
+          "id": "caption-word-0-0",
+          "text": "Augustus",
+          "start": 0,
+          "end": 0.64
+        },
+        {
+          "id": "caption-word-0-1",
+          "text": "2025.",
+          "start": 0.72,
+          "end": 2.16
+        }
+      ]
+    },
+    {
+      "id": "caption-group-1",
+      "frame": 1,
+      "start": 2.48,
+      "end": 3.08,
+      "text": "Je typt",
+      "words": [
+        {
+          "id": "caption-word-1-0",
+          "text": "Je",
+          "start": 2.48,
+          "end": 2.56
+        },
+        {
+          "id": "caption-word-1-1",
+          "text": "typt",
+          "start": 2.64,
+          "end": 2.96
+        }
+      ]
+    },
+    {
+      "id": "caption-group-2",
+      "frame": 1,
+      "start": 3.2,
+      "end": 5.2,
+      "text": "npm install.",
+      "words": [
+        {
+          "id": "caption-word-2-0",
+          "text": "npm",
+          "start": 3.2,
+          "end": 3.76
+        },
+        {
+          "id": "caption-word-2-1",
+          "text": "install.",
+          "start": 3.84,
+          "end": 5.08
+        }
+      ]
+    },
+    {
+      "id": "caption-group-3",
+      "frame": 1,
+      "start": 5.28,
+      "end": 5.56,
+      "text": "En op",
+      "words": [
+        {
+          "id": "caption-word-3-0",
+          "text": "En",
+          "start": 5.28,
+          "end": 5.36
+        },
+        {
+          "id": "caption-word-3-1",
+          "text": "op",
+          "start": 5.44,
+          "end": 5.52
+        }
+      ]
+    },
+    {
+      "id": "caption-group-4",
+      "frame": 1,
+      "start": 5.56,
+      "end": 6.16,
+      "text": "je laptop",
+      "words": [
+        {
+          "id": "caption-word-4-0",
+          "text": "je",
+          "start": 5.56,
+          "end": 5.6
+        },
+        {
+          "id": "caption-word-4-1",
+          "text": "laptop",
+          "start": 5.68,
+          "end": 6.08
+        }
+      ]
+    },
+    {
+      "id": "caption-group-5",
+      "frame": 1,
+      "start": 6.16,
+      "end": 6.64,
+      "text": "begint je",
+      "words": [
+        {
+          "id": "caption-word-5-0",
+          "text": "begint",
+          "start": 6.16,
+          "end": 6.4
+        },
+        {
+          "id": "caption-word-5-1",
+          "text": "je",
+          "start": 6.48,
+          "end": 6.56
+        }
+      ]
+    },
+    {
+      "id": "caption-group-6",
+      "frame": 1,
+      "start": 6.64,
+      "end": 8.36,
+      "text": "eigen AI-assistent naar je",
+      "words": [
+        {
+          "id": "caption-word-6-0",
+          "text": "eigen",
+          "start": 6.64,
+          "end": 6.96
+        },
+        {
+          "id": "caption-word-6-1",
+          "text": "AI-assistent",
+          "start": 7.04,
+          "end": 7.92
+        },
+        {
+          "id": "caption-word-6-2",
+          "text": "naar",
+          "start": 8,
+          "end": 8.16
+        },
+        {
+          "id": "caption-word-6-3",
+          "text": "je",
+          "start": 8.24,
+          "end": 8.32
+        }
+      ]
+    },
+    {
+      "id": "caption-group-7",
+      "frame": 1,
+      "start": 8.36,
+      "end": 9.6,
+      "text": "wachtwoorden te zoeken.",
+      "words": [
+        {
+          "id": "caption-word-7-0",
+          "text": "wachtwoorden",
+          "start": 8.36,
+          "end": 8.88
+        },
+        {
+          "id": "caption-word-7-1",
+          "text": "te",
+          "start": 8.96,
+          "end": 9.04
+        },
+        {
+          "id": "caption-word-7-2",
+          "text": "zoeken.",
+          "start": 9.08,
+          "end": 9.68
+        }
+      ]
+    },
+    {
+      "id": "caption-group-8",
+      "frame": 2,
+      "start": 9.6,
+      "end": 11.24,
+      "text": "Dit is s1ngularity.",
+      "words": [
+        {
+          "id": "caption-word-8-0",
+          "text": "Dit",
+          "start": 9.6,
+          "end": 9.84
+        },
+        {
+          "id": "caption-word-8-1",
+          "text": "is",
+          "start": 9.92,
+          "end": 10.08
+        },
+        {
+          "id": "caption-word-8-2",
+          "text": "s1ngularity.",
+          "start": 10.24,
+          "end": 11.12
+        }
+      ]
+    },
+    {
+      "id": "caption-group-9",
+      "frame": 2,
+      "start": 11.6,
+      "end": 12.2,
+      "text": "Eén titel",
+      "words": [
+        {
+          "id": "caption-word-9-0",
+          "text": "Eén",
+          "start": 11.6,
+          "end": 11.76
+        },
+        {
+          "id": "caption-word-9-1",
+          "text": "titel",
+          "start": 11.84,
+          "end": 12.16
+        }
+      ]
+    },
+    {
+      "id": "caption-group-10",
+      "frame": 2,
+      "start": 12.2,
+      "end": 12.48,
+      "text": "van een",
+      "words": [
+        {
+          "id": "caption-word-10-0",
+          "text": "van",
+          "start": 12.2,
+          "end": 12.24
+        },
+        {
+          "id": "caption-word-10-1",
+          "text": "een",
+          "start": 12.32,
+          "end": 12.4
+        }
+      ]
+    },
+    {
+      "id": "caption-group-11",
+      "frame": 2,
+      "start": 12.48,
+      "end": 12.76,
+      "text": "pull",
+      "words": [
+        {
+          "id": "caption-word-11-0",
+          "text": "pull",
+          "start": 12.48,
+          "end": 12.64
+        }
+      ]
+    },
+    {
+      "id": "caption-group-12",
+      "frame": 2,
+      "start": 12.88,
+      "end": 13.68,
+      "text": "request opende",
+      "words": [
+        {
+          "id": "caption-word-12-0",
+          "text": "request",
+          "start": 12.88,
+          "end": 13.12
+        },
+        {
+          "id": "caption-word-12-1",
+          "text": "opende",
+          "start": 13.28,
+          "end": 13.6
+        }
+      ]
+    },
+    {
+      "id": "caption-group-13",
+      "frame": 2,
+      "start": 13.68,
+      "end": 14.48,
+      "text": "de deur.",
+      "words": [
+        {
+          "id": "caption-word-13-0",
+          "text": "de",
+          "start": 13.68,
+          "end": 13.76
+        },
+        {
+          "id": "caption-word-13-1",
+          "text": "deur.",
+          "start": 13.84,
+          "end": 14.36
+        }
+      ]
+    },
+    {
+      "id": "caption-group-14",
+      "frame": 2,
+      "start": 14.56,
+      "end": 15.76,
+      "text": "Jouw AI deed",
+      "words": [
+        {
+          "id": "caption-word-14-0",
+          "text": "Jouw",
+          "start": 14.56,
+          "end": 14.8
+        },
+        {
+          "id": "caption-word-14-1",
+          "text": "AI",
+          "start": 14.88,
+          "end": 15.36
+        },
+        {
+          "id": "caption-word-14-2",
+          "text": "deed",
+          "start": 15.52,
+          "end": 15.68
+        }
+      ]
+    },
+    {
+      "id": "caption-group-15",
+      "frame": 2,
+      "start": 15.76,
+      "end": 16.32,
+      "text": "de rest.",
+      "words": [
+        {
+          "id": "caption-word-15-0",
+          "text": "de",
+          "start": 15.76,
+          "end": 15.8
+        },
+        {
+          "id": "caption-word-15-1",
+          "text": "rest.",
+          "start": 15.84,
+          "end": 16.4
+        }
+      ]
+    },
+    {
+      "id": "caption-group-16",
+      "frame": 3,
+      "start": 16.32,
+      "end": 17.16,
+      "text": "Nx had een",
+      "words": [
+        {
+          "id": "caption-word-16-0",
+          "text": "Nx",
+          "start": 16.32,
+          "end": 16.72
+        },
+        {
+          "id": "caption-word-16-1",
+          "text": "had",
+          "start": 16.8,
+          "end": 16.88
+        },
+        {
+          "id": "caption-word-16-2",
+          "text": "een",
+          "start": 16.96,
+          "end": 17.04
+        }
+      ]
+    },
+    {
+      "id": "caption-group-17",
+      "frame": 3,
+      "start": 17.32,
+      "end": 17.84,
+      "text": "workflow die",
+      "words": [
+        {
+          "id": "caption-word-17-0",
+          "text": "workflow",
+          "start": 17.32,
+          "end": 17.6
+        },
+        {
+          "id": "caption-word-17-1",
+          "text": "die",
+          "start": 17.68,
+          "end": 17.76
+        }
+      ]
+    },
+    {
+      "id": "caption-group-18",
+      "frame": 3,
+      "start": 17.84,
+      "end": 18.32,
+      "text": "de titels",
+      "words": [
+        {
+          "id": "caption-word-18-0",
+          "text": "de",
+          "start": 17.84,
+          "end": 17.92
+        },
+        {
+          "id": "caption-word-18-1",
+          "text": "titels",
+          "start": 18,
+          "end": 18.24
+        }
+      ]
+    },
+    {
+      "id": "caption-group-19",
+      "frame": 3,
+      "start": 18.32,
+      "end": 18.8,
+      "text": "van pull",
+      "words": [
+        {
+          "id": "caption-word-19-0",
+          "text": "van",
+          "start": 18.32,
+          "end": 18.4
+        },
+        {
+          "id": "caption-word-19-1",
+          "text": "pull",
+          "start": 18.56,
+          "end": 18.72
+        }
+      ]
+    },
+    {
+      "id": "caption-group-20",
+      "frame": 3,
+      "start": 18.8,
+      "end": 20.48,
+      "text": "requests controleerde.",
+      "words": [
+        {
+          "id": "caption-word-20-0",
+          "text": "requests",
+          "start": 18.8,
+          "end": 19.2
+        },
+        {
+          "id": "caption-word-20-1",
+          "text": "controleerde.",
+          "start": 19.28,
+          "end": 20.4
+        }
+      ]
+    },
+    {
+      "id": "caption-group-21",
+      "frame": 3,
+      "start": 20.48,
+      "end": 20.96,
+      "text": "Die plakte",
+      "words": [
+        {
+          "id": "caption-word-21-0",
+          "text": "Die",
+          "start": 20.48,
+          "end": 20.56
+        },
+        {
+          "id": "caption-word-21-1",
+          "text": "plakte",
+          "start": 20.6,
+          "end": 20.88
+        }
+      ]
+    },
+    {
+      "id": "caption-group-22",
+      "frame": 3,
+      "start": 20.96,
+      "end": 21.96,
+      "text": "de titel zomaar",
+      "words": [
+        {
+          "id": "caption-word-22-0",
+          "text": "de",
+          "start": 20.96,
+          "end": 21.04
+        },
+        {
+          "id": "caption-word-22-1",
+          "text": "titel",
+          "start": 21.12,
+          "end": 21.44
+        },
+        {
+          "id": "caption-word-22-2",
+          "text": "zomaar",
+          "start": 21.48,
+          "end": 21.92
+        }
+      ]
+    },
+    {
+      "id": "caption-group-23",
+      "frame": 3,
+      "start": 21.96,
+      "end": 23.32,
+      "text": "in een bash-commando.",
+      "words": [
+        {
+          "id": "caption-word-23-0",
+          "text": "in",
+          "start": 21.96,
+          "end": 22
+        },
+        {
+          "id": "caption-word-23-1",
+          "text": "een",
+          "start": 22.08,
+          "end": 22.16
+        },
+        {
+          "id": "caption-word-23-2",
+          "text": "bash-commando.",
+          "start": 22.28,
+          "end": 23.28
+        }
+      ]
+    },
+    {
+      "id": "caption-group-24",
+      "frame": 3,
+      "start": 23.32,
+      "end": 24.08,
+      "text": "Dus zette",
+      "words": [
+        {
+          "id": "caption-word-24-0",
+          "text": "Dus",
+          "start": 23.32,
+          "end": 23.6
+        },
+        {
+          "id": "caption-word-24-1",
+          "text": "zette",
+          "start": 23.76,
+          "end": 24
+        }
+      ]
+    },
+    {
+      "id": "caption-group-25",
+      "frame": 3,
+      "start": 24.08,
+      "end": 24.72,
+      "text": "de aanvaller",
+      "words": [
+        {
+          "id": "caption-word-25-0",
+          "text": "de",
+          "start": 24.08,
+          "end": 24.16
+        },
+        {
+          "id": "caption-word-25-1",
+          "text": "aanvaller",
+          "start": 24.28,
+          "end": 24.64
+        }
+      ]
+    },
+    {
+      "id": "caption-group-26",
+      "frame": 3,
+      "start": 24.72,
+      "end": 25.84,
+      "text": "er shellcode in.",
+      "words": [
+        {
+          "id": "caption-word-26-0",
+          "text": "er",
+          "start": 24.72,
+          "end": 24.8
+        },
+        {
+          "id": "caption-word-26-1",
+          "text": "shellcode",
+          "start": 24.88,
+          "end": 25.44
+        },
+        {
+          "id": "caption-word-26-2",
+          "text": "in.",
+          "start": 25.56,
+          "end": 25.92
+        }
+      ]
+    },
+    {
+      "id": "caption-group-27",
+      "frame": 4,
+      "start": 25.84,
+      "end": 26.84,
+      "text": "Dat leverde een",
+      "words": [
+        {
+          "id": "caption-word-27-0",
+          "text": "Dat",
+          "start": 25.84,
+          "end": 26.08
+        },
+        {
+          "id": "caption-word-27-1",
+          "text": "leverde",
+          "start": 26.24,
+          "end": 26.48
+        },
+        {
+          "id": "caption-word-27-2",
+          "text": "een",
+          "start": 26.6,
+          "end": 26.72
+        }
+      ]
+    },
+    {
+      "id": "caption-group-28",
+      "frame": 4,
+      "start": 26.92,
+      "end": 28.12,
+      "text": "token met schrijfrechten",
+      "words": [
+        {
+          "id": "caption-word-28-0",
+          "text": "token",
+          "start": 26.92,
+          "end": 27.12
+        },
+        {
+          "id": "caption-word-28-1",
+          "text": "met",
+          "start": 27.2,
+          "end": 27.28
+        },
+        {
+          "id": "caption-word-28-2",
+          "text": "schrijfrechten",
+          "start": 27.36,
+          "end": 28
+        }
+      ]
+    },
+    {
+      "id": "caption-group-29",
+      "frame": 4,
+      "start": 28.12,
+      "end": 28.6,
+      "text": "op.",
+      "words": [
+        {
+          "id": "caption-word-29-0",
+          "text": "op.",
+          "start": 28.12,
+          "end": 28.48
+        }
+      ]
+    },
+    {
+      "id": "caption-group-30",
+      "frame": 4,
+      "start": 28.72,
+      "end": 29.76,
+      "text": "Daarmee startte hij",
+      "words": [
+        {
+          "id": "caption-word-30-0",
+          "text": "Daarmee",
+          "start": 28.72,
+          "end": 29.12
+        },
+        {
+          "id": "caption-word-30-1",
+          "text": "startte",
+          "start": 29.2,
+          "end": 29.52
+        },
+        {
+          "id": "caption-word-30-2",
+          "text": "hij",
+          "start": 29.56,
+          "end": 29.68
+        }
+      ]
+    },
+    {
+      "id": "caption-group-31",
+      "frame": 4,
+      "start": 29.76,
+      "end": 31.56,
+      "text": "de publicatie-workflow.",
+      "words": [
+        {
+          "id": "caption-word-31-0",
+          "text": "de",
+          "start": 29.76,
+          "end": 29.84
+        },
+        {
+          "id": "caption-word-31-1",
+          "text": "publicatie-workflow.",
+          "start": 30,
+          "end": 31.44
+        }
+      ]
+    },
+    {
+      "id": "caption-group-32",
+      "frame": 4,
+      "start": 31.56,
+      "end": 32.04,
+      "text": "En die",
+      "words": [
+        {
+          "id": "caption-word-32-0",
+          "text": "En",
+          "start": 31.56,
+          "end": 31.68
+        },
+        {
+          "id": "caption-word-32-1",
+          "text": "die",
+          "start": 31.8,
+          "end": 31.92
+        }
+      ]
+    },
+    {
+      "id": "caption-group-33",
+      "frame": 4,
+      "start": 32.08,
+      "end": 33.52,
+      "text": "gaf het npm-token",
+      "words": [
+        {
+          "id": "caption-word-33-0",
+          "text": "gaf",
+          "start": 32.08,
+          "end": 32.24
+        },
+        {
+          "id": "caption-word-33-1",
+          "text": "het",
+          "start": 32.32,
+          "end": 32.4
+        },
+        {
+          "id": "caption-word-33-2",
+          "text": "npm-token",
+          "start": 32.48,
+          "end": 33.44
+        }
+      ]
+    },
+    {
+      "id": "caption-group-34",
+      "frame": 4,
+      "start": 33.52,
+      "end": 33.92,
+      "text": "af.",
+      "words": [
+        {
+          "id": "caption-word-34-0",
+          "text": "af.",
+          "start": 33.52,
+          "end": 34
+        }
+      ]
+    },
+    {
+      "id": "caption-group-35",
+      "frame": 5,
+      "start": 33.92,
+      "end": 35.76,
+      "text": "Op 26 augustus,",
+      "words": [
+        {
+          "id": "caption-word-35-0",
+          "text": "Op",
+          "start": 33.92,
+          "end": 34.16
+        },
+        {
+          "id": "caption-word-35-1",
+          "text": "26",
+          "start": 34.28,
+          "end": 34.72
+        },
+        {
+          "id": "caption-word-35-2",
+          "text": "augustus,",
+          "start": 34.8,
+          "end": 35.68
+        }
+      ]
+    },
+    {
+      "id": "caption-group-36",
+      "frame": 5,
+      "start": 35.76,
+      "end": 36.28,
+      "text": "in ruim",
+      "words": [
+        {
+          "id": "caption-word-36-0",
+          "text": "in",
+          "start": 35.76,
+          "end": 35.84
+        },
+        {
+          "id": "caption-word-36-1",
+          "text": "ruim",
+          "start": 35.92,
+          "end": 36.24
+        }
+      ]
+    },
+    {
+      "id": "caption-group-37",
+      "frame": 5,
+      "start": 36.28,
+      "end": 37.64,
+      "text": "twee uur:",
+      "words": [
+        {
+          "id": "caption-word-37-0",
+          "text": "twee",
+          "start": 36.28,
+          "end": 36.6
+        },
+        {
+          "id": "caption-word-37-1",
+          "text": "uur:",
+          "start": 36.72,
+          "end": 37.52
+        }
+      ]
+    },
+    {
+      "id": "caption-group-38",
+      "frame": 5,
+      "start": 37.64,
+      "end": 38.96,
+      "text": "acht kwaadaardige versies",
+      "words": [
+        {
+          "id": "caption-word-38-0",
+          "text": "acht",
+          "start": 37.64,
+          "end": 37.76
+        },
+        {
+          "id": "caption-word-38-1",
+          "text": "kwaadaardige",
+          "start": 37.84,
+          "end": 38.48
+        },
+        {
+          "id": "caption-word-38-2",
+          "text": "versies",
+          "start": 38.56,
+          "end": 38.88
+        }
+      ]
+    },
+    {
+      "id": "caption-group-39",
+      "frame": 5,
+      "start": 38.96,
+      "end": 40.133,
+      "text": "van Nx.",
+      "words": [
+        {
+          "id": "caption-word-39-0",
+          "text": "van",
+          "start": 38.96,
+          "end": 39.12
+        },
+        {
+          "id": "caption-word-39-1",
+          "text": "Nx.",
+          "start": 39.2,
+          "end": 40.08
+        }
+      ]
+    },
+    {
+      "id": "caption-group-40",
+      "frame": 5,
+      "start": 40.133,
+      "end": 40.36,
+      "text": "Een",
+      "words": [
+        {
+          "id": "caption-word-40-0",
+          "text": "Een",
+          "start": 40.133,
+          "end": 40.24
+        }
+      ]
+    },
+    {
+      "id": "caption-group-41",
+      "frame": 5,
+      "start": 40.44,
+      "end": 41.08,
+      "text": "package met",
+      "words": [
+        {
+          "id": "caption-word-41-0",
+          "text": "package",
+          "start": 40.44,
+          "end": 40.64
+        },
+        {
+          "id": "caption-word-41-1",
+          "text": "met",
+          "start": 40.72,
+          "end": 40.96
+        }
+      ]
+    },
+    {
+      "id": "caption-group-42",
+      "frame": 5,
+      "start": 41.12,
+      "end": 42.32,
+      "text": "zes miljoen downloads",
+      "words": [
+        {
+          "id": "caption-word-42-0",
+          "text": "zes",
+          "start": 41.12,
+          "end": 41.28
+        },
+        {
+          "id": "caption-word-42-1",
+          "text": "miljoen",
+          "start": 41.36,
+          "end": 41.68
+        },
+        {
+          "id": "caption-word-42-2",
+          "text": "downloads",
+          "start": 41.76,
+          "end": 42.24
+        }
+      ]
+    },
+    {
+      "id": "caption-group-43",
+      "frame": 5,
+      "start": 42.32,
+      "end": 42.96,
+      "text": "per week.",
+      "words": [
+        {
+          "id": "caption-word-43-0",
+          "text": "per",
+          "start": 42.32,
+          "end": 42.4
+        },
+        {
+          "id": "caption-word-43-1",
+          "text": "week.",
+          "start": 42.48,
+          "end": 43.04
+        }
+      ]
+    },
+    {
+      "id": "caption-group-44",
+      "frame": 6,
+      "start": 42.96,
+      "end": 44.96,
+      "text": "Een postinstall-script zocht naar",
+      "words": [
+        {
+          "id": "caption-word-44-0",
+          "text": "Een",
+          "start": 42.96,
+          "end": 43.2
+        },
+        {
+          "id": "caption-word-44-1",
+          "text": "postinstall-script",
+          "start": 43.36,
+          "end": 44.24
+        },
+        {
+          "id": "caption-word-44-2",
+          "text": "zocht",
+          "start": 44.4,
+          "end": 44.64
+        },
+        {
+          "id": "caption-word-44-3",
+          "text": "naar",
+          "start": 44.72,
+          "end": 44.88
+        }
+      ]
+    },
+    {
+      "id": "caption-group-45",
+      "frame": 6,
+      "start": 44.96,
+      "end": 46,
+      "text": "AI-tools op je",
+      "words": [
+        {
+          "id": "caption-word-45-0",
+          "text": "AI-tools",
+          "start": 44.96,
+          "end": 45.68
+        },
+        {
+          "id": "caption-word-45-1",
+          "text": "op",
+          "start": 45.76,
+          "end": 45.84
+        },
+        {
+          "id": "caption-word-45-2",
+          "text": "je",
+          "start": 45.88,
+          "end": 45.92
+        }
+      ]
+    },
+    {
+      "id": "caption-group-46",
+      "frame": 6,
+      "start": 46,
+      "end": 46.6,
+      "text": "machine.",
+      "words": [
+        {
+          "id": "caption-word-46-0",
+          "text": "machine.",
+          "start": 46,
+          "end": 46.48
+        }
+      ]
+    },
+    {
+      "id": "caption-group-47",
+      "frame": 6,
+      "start": 46.88,
+      "end": 47.64,
+      "text": "Claude.",
+      "words": [
+        {
+          "id": "caption-word-47-0",
+          "text": "Claude.",
+          "start": 46.88,
+          "end": 47.52
+        }
+      ]
+    },
+    {
+      "id": "caption-group-48",
+      "frame": 6,
+      "start": 47.68,
+      "end": 48.44,
+      "text": "Gemini.",
+      "words": [
+        {
+          "id": "caption-word-48-0",
+          "text": "Gemini.",
+          "start": 47.68,
+          "end": 48.32
+        }
+      ]
+    },
+    {
+      "id": "caption-group-49",
+      "frame": 6,
+      "start": 48.56,
+      "end": 49.08,
+      "text": "Q.",
+      "words": [
+        {
+          "id": "caption-word-49-0",
+          "text": "Q.",
+          "start": 48.56,
+          "end": 48.96
+        }
+      ]
+    },
+    {
+      "id": "caption-group-50",
+      "frame": 6,
+      "start": 49.44,
+      "end": 50,
+      "text": "Het startte",
+      "words": [
+        {
+          "id": "caption-word-50-0",
+          "text": "Het",
+          "start": 49.44,
+          "end": 49.52
+        },
+        {
+          "id": "caption-word-50-1",
+          "text": "startte",
+          "start": 49.6,
+          "end": 49.92
+        }
+      ]
+    },
+    {
+      "id": "caption-group-51",
+      "frame": 6,
+      "start": 50,
+      "end": 50.28,
+      "text": "ze met",
+      "words": [
+        {
+          "id": "caption-word-51-0",
+          "text": "ze",
+          "start": 50,
+          "end": 50.08
+        },
+        {
+          "id": "caption-word-51-1",
+          "text": "met",
+          "start": 50.16,
+          "end": 50.24
+        }
+      ]
+    },
+    {
+      "id": "caption-group-52",
+      "frame": 6,
+      "start": 50.28,
+      "end": 51.36,
+      "text": "de vangrails uit,",
+      "words": [
+        {
+          "id": "caption-word-52-0",
+          "text": "de",
+          "start": 50.28,
+          "end": 50.32
+        },
+        {
+          "id": "caption-word-52-1",
+          "text": "vangrails",
+          "start": 50.4,
+          "end": 50.88
+        },
+        {
+          "id": "caption-word-52-2",
+          "text": "uit,",
+          "start": 50.96,
+          "end": 51.28
+        }
+      ]
+    },
+    {
+      "id": "caption-group-53",
+      "frame": 6,
+      "start": 51.36,
+      "end": 51.84,
+      "text": "en gaf",
+      "words": [
+        {
+          "id": "caption-word-53-0",
+          "text": "en",
+          "start": 51.36,
+          "end": 51.44
+        },
+        {
+          "id": "caption-word-53-1",
+          "text": "gaf",
+          "start": 51.48,
+          "end": 51.76
+        }
+      ]
+    },
+    {
+      "id": "caption-group-54",
+      "frame": 6,
+      "start": 51.84,
+      "end": 53.12,
+      "text": "één opdracht:",
+      "words": [
+        {
+          "id": "caption-word-54-0",
+          "text": "één",
+          "start": 51.84,
+          "end": 52
+        },
+        {
+          "id": "caption-word-54-1",
+          "text": "opdracht:",
+          "start": 52.08,
+          "end": 53.04
+        }
+      ]
+    },
+    {
+      "id": "caption-group-55",
+      "frame": 6,
+      "start": 53.12,
+      "end": 54.32,
+      "text": "zoek wallets en",
+      "words": [
+        {
+          "id": "caption-word-55-0",
+          "text": "zoek",
+          "start": 53.12,
+          "end": 53.36
+        },
+        {
+          "id": "caption-word-55-1",
+          "text": "wallets",
+          "start": 53.52,
+          "end": 54
+        },
+        {
+          "id": "caption-word-55-2",
+          "text": "en",
+          "start": 54.08,
+          "end": 54.24
+        }
+      ]
+    },
+    {
+      "id": "caption-group-56",
+      "frame": 6,
+      "start": 54.32,
+      "end": 55.04,
+      "text": "secrets.",
+      "words": [
+        {
+          "id": "caption-word-56-0",
+          "text": "secrets.",
+          "start": 54.32,
+          "end": 55.12
+        }
+      ]
+    },
+    {
+      "id": "caption-group-57",
+      "frame": 7,
+      "start": 55.04,
+      "end": 56,
+      "text": "De buit,",
+      "words": [
+        {
+          "id": "caption-word-57-0",
+          "text": "De",
+          "start": 55.04,
+          "end": 55.2
+        },
+        {
+          "id": "caption-word-57-1",
+          "text": "buit,",
+          "start": 55.24,
+          "end": 55.92
+        }
+      ]
+    },
+    {
+      "id": "caption-group-58",
+      "frame": 7,
+      "start": 56,
+      "end": 58.32,
+      "text": "drie keer base64-gecodeerd,",
+      "words": [
+        {
+          "id": "caption-word-58-0",
+          "text": "drie",
+          "start": 56,
+          "end": 56.08
+        },
+        {
+          "id": "caption-word-58-1",
+          "text": "keer",
+          "start": 56.16,
+          "end": 56.32
+        },
+        {
+          "id": "caption-word-58-2",
+          "text": "base64-gecodeerd,",
+          "start": 56.4,
+          "end": 58.24
+        }
+      ]
+    },
+    {
+      "id": "caption-group-59",
+      "frame": 7,
+      "start": 58.32,
+      "end": 58.72,
+      "text": "ging naar",
+      "words": [
+        {
+          "id": "caption-word-59-0",
+          "text": "ging",
+          "start": 58.32,
+          "end": 58.48
+        },
+        {
+          "id": "caption-word-59-1",
+          "text": "naar",
+          "start": 58.52,
+          "end": 58.64
+        }
+      ]
+    },
+    {
+      "id": "caption-group-60",
+      "frame": 7,
+      "start": 58.72,
+      "end": 60.36,
+      "text": "een publieke repository.",
+      "words": [
+        {
+          "id": "caption-word-60-0",
+          "text": "een",
+          "start": 58.72,
+          "end": 58.8
+        },
+        {
+          "id": "caption-word-60-1",
+          "text": "publieke",
+          "start": 58.92,
+          "end": 59.2
+        },
+        {
+          "id": "caption-word-60-2",
+          "text": "repository.",
+          "start": 59.28,
+          "end": 60.24
+        }
+      ]
+    },
+    {
+      "id": "caption-group-61",
+      "frame": 7,
+      "start": 60.4,
+      "end": 60.76,
+      "text": "Op je",
+      "words": [
+        {
+          "id": "caption-word-61-0",
+          "text": "Op",
+          "start": 60.4,
+          "end": 60.48
+        },
+        {
+          "id": "caption-word-61-1",
+          "text": "je",
+          "start": 60.56,
+          "end": 60.72
+        }
+      ]
+    },
+    {
+      "id": "caption-group-62",
+      "frame": 7,
+      "start": 60.76,
+      "end": 62.16,
+      "text": "eigen GitHub-account.",
+      "words": [
+        {
+          "id": "caption-word-62-0",
+          "text": "eigen",
+          "start": 60.76,
+          "end": 61.04
+        },
+        {
+          "id": "caption-word-62-1",
+          "text": "GitHub-account.",
+          "start": 61.12,
+          "end": 62.24
+        }
+      ]
+    },
+    {
+      "id": "caption-group-63",
+      "frame": 8,
+      "start": 62.16,
+      "end": 65.92,
+      "text": "GitGuardian telde 2.349 gelekte",
+      "words": [
+        {
+          "id": "caption-word-63-0",
+          "text": "GitGuardian",
+          "start": 62.16,
+          "end": 62.88
+        },
+        {
+          "id": "caption-word-63-1",
+          "text": "telde",
+          "start": 62.96,
+          "end": 63.28
+        },
+        {
+          "id": "caption-word-63-2",
+          "text": "2.349",
+          "start": 63.32,
+          "end": 64
+        },
+        {
+          "id": "caption-word-63-3",
+          "text": "gelekte",
+          "start": 64.04,
+          "end": 65.84
+        }
+      ]
+    },
+    {
+      "id": "caption-group-64",
+      "frame": 8,
+      "start": 65.92,
+      "end": 67.04,
+      "text": "secrets.",
+      "words": [
+        {
+          "id": "caption-word-64-0",
+          "text": "secrets.",
+          "start": 65.92,
+          "end": 66.96
+        }
+      ]
+    },
+    {
+      "id": "caption-group-65",
+      "frame": 8,
+      "start": 67.04,
+      "end": 68.28,
+      "text": "De AI-truc lukte",
+      "words": [
+        {
+          "id": "caption-word-65-0",
+          "text": "De",
+          "start": 67.04,
+          "end": 67.12
+        },
+        {
+          "id": "caption-word-65-1",
+          "text": "AI-truc",
+          "start": 67.2,
+          "end": 67.84
+        },
+        {
+          "id": "caption-word-65-2",
+          "text": "lukte",
+          "start": 67.92,
+          "end": 68.16
+        }
+      ]
+    },
+    {
+      "id": "caption-group-66",
+      "frame": 8,
+      "start": 68.28,
+      "end": 69.6,
+      "text": "op 95 van de",
+      "words": [
+        {
+          "id": "caption-word-66-0",
+          "text": "op",
+          "start": 68.28,
+          "end": 68.4
+        },
+        {
+          "id": "caption-word-66-1",
+          "text": "95",
+          "start": 68.48,
+          "end": 69.2
+        },
+        {
+          "id": "caption-word-66-2",
+          "text": "van",
+          "start": 69.28,
+          "end": 69.36
+        },
+        {
+          "id": "caption-word-66-3",
+          "text": "de",
+          "start": 69.44,
+          "end": 69.52
+        }
+      ]
+    },
+    {
+      "id": "caption-group-67",
+      "frame": 8,
+      "start": 69.6,
+      "end": 72.04,
+      "text": "366 systemen.",
+      "words": [
+        {
+          "id": "caption-word-67-0",
+          "text": "366",
+          "start": 69.6,
+          "end": 70.8
+        },
+        {
+          "id": "caption-word-67-1",
+          "text": "systemen.",
+          "start": 70.88,
+          "end": 71.92
+        }
+      ]
+    },
+    {
+      "id": "caption-group-68",
+      "frame": 8,
+      "start": 72.04,
+      "end": 72.4,
+      "text": "En in",
+      "words": [
+        {
+          "id": "caption-word-68-0",
+          "text": "En",
+          "start": 72.04,
+          "end": 72.16
+        },
+        {
+          "id": "caption-word-68-1",
+          "text": "in",
+          "start": 72.24,
+          "end": 72.32
+        }
+      ]
+    },
+    {
+      "id": "caption-group-69",
+      "frame": 8,
+      "start": 72.4,
+      "end": 72.88,
+      "text": "een tweede",
+      "words": [
+        {
+          "id": "caption-word-69-0",
+          "text": "een",
+          "start": 72.4,
+          "end": 72.48
+        },
+        {
+          "id": "caption-word-69-1",
+          "text": "tweede",
+          "start": 72.52,
+          "end": 72.8
+        }
+      ]
+    },
+    {
+      "id": "caption-group-70",
+      "frame": 8,
+      "start": 72.88,
+      "end": 74.12,
+      "text": "golf werden private",
+      "words": [
+        {
+          "id": "caption-word-70-0",
+          "text": "golf",
+          "start": 72.88,
+          "end": 73.2
+        },
+        {
+          "id": "caption-word-70-1",
+          "text": "werden",
+          "start": 73.28,
+          "end": 73.52
+        },
+        {
+          "id": "caption-word-70-2",
+          "text": "private",
+          "start": 73.6,
+          "end": 74
+        }
+      ]
+    },
+    {
+      "id": "caption-group-71",
+      "frame": 8,
+      "start": 74.36,
+      "end": 75.76,
+      "text": "repositories publiek gemaakt.",
+      "words": [
+        {
+          "id": "caption-word-71-0",
+          "text": "repositories",
+          "start": 74.36,
+          "end": 74.72
+        },
+        {
+          "id": "caption-word-71-1",
+          "text": "publiek",
+          "start": 74.8,
+          "end": 75.12
+        },
+        {
+          "id": "caption-word-71-2",
+          "text": "gemaakt.",
+          "start": 75.16,
+          "end": 75.84
+        }
+      ]
+    },
+    {
+      "id": "caption-group-72",
+      "frame": 9,
+      "start": 75.76,
+      "end": 76.6,
+      "text": "Twee lessen.",
+      "words": [
+        {
+          "id": "caption-word-72-0",
+          "text": "Twee",
+          "start": 75.76,
+          "end": 76
+        },
+        {
+          "id": "caption-word-72-1",
+          "text": "lessen.",
+          "start": 76.08,
+          "end": 76.48
+        }
+      ]
+    },
+    {
+      "id": "caption-group-73",
+      "frame": 9,
+      "start": 76.88,
+      "end": 78.04,
+      "text": "Je CI is",
+      "words": [
+        {
+          "id": "caption-word-73-0",
+          "text": "Je",
+          "start": 76.88,
+          "end": 77.04
+        },
+        {
+          "id": "caption-word-73-1",
+          "text": "CI",
+          "start": 77.12,
+          "end": 77.6
+        },
+        {
+          "id": "caption-word-73-2",
+          "text": "is",
+          "start": 77.68,
+          "end": 77.92
+        }
+      ]
+    },
+    {
+      "id": "caption-group-74",
+      "frame": 9,
+      "start": 78.04,
+      "end": 79.28,
+      "text": "aanvalsoppervlak.",
+      "words": [
+        {
+          "id": "caption-word-74-0",
+          "text": "aanvalsoppervlak.",
+          "start": 78.04,
+          "end": 79.16
+        }
+      ]
+    },
+    {
+      "id": "caption-group-75",
+      "frame": 9,
+      "start": 79.36,
+      "end": 80.64,
+      "text": "En een AI-agent",
+      "words": [
+        {
+          "id": "caption-word-75-0",
+          "text": "En",
+          "start": 79.36,
+          "end": 79.44
+        },
+        {
+          "id": "caption-word-75-1",
+          "text": "een",
+          "start": 79.52,
+          "end": 79.68
+        },
+        {
+          "id": "caption-word-75-2",
+          "text": "AI-agent",
+          "start": 79.76,
+          "end": 80.56
+        }
+      ]
+    },
+    {
+      "id": "caption-group-76",
+      "frame": 9,
+      "start": 80.64,
+      "end": 81.64,
+      "text": "die alles mag",
+      "words": [
+        {
+          "id": "caption-word-76-0",
+          "text": "die",
+          "start": 80.64,
+          "end": 80.88
+        },
+        {
+          "id": "caption-word-76-1",
+          "text": "alles",
+          "start": 81.04,
+          "end": 81.2
+        },
+        {
+          "id": "caption-word-76-2",
+          "text": "mag",
+          "start": 81.28,
+          "end": 81.52
+        }
+      ]
+    },
+    {
+      "id": "caption-group-77",
+      "frame": 9,
+      "start": 81.68,
+      "end": 82.96,
+      "text": "zonder te vragen,",
+      "words": [
+        {
+          "id": "caption-word-77-0",
+          "text": "zonder",
+          "start": 81.68,
+          "end": 82
+        },
+        {
+          "id": "caption-word-77-1",
+          "text": "te",
+          "start": 82.08,
+          "end": 82.16
+        },
+        {
+          "id": "caption-word-77-2",
+          "text": "vragen,",
+          "start": 82.293,
+          "end": 82.88
+        }
+      ]
+    },
+    {
+      "id": "caption-group-78",
+      "frame": 9,
+      "start": 82.96,
+      "end": 83.52,
+      "text": "doet ook",
+      "words": [
+        {
+          "id": "caption-word-78-0",
+          "text": "doet",
+          "start": 82.96,
+          "end": 83.2
+        },
+        {
+          "id": "caption-word-78-1",
+          "text": "ook",
+          "start": 83.32,
+          "end": 83.44
+        }
+      ]
+    },
+    {
+      "id": "caption-group-79",
+      "frame": 9,
+      "start": 83.52,
+      "end": 85,
+      "text": "wat malware vraagt.",
+      "words": [
+        {
+          "id": "caption-word-79-0",
+          "text": "wat",
+          "start": 83.52,
+          "end": 83.6
+        },
+        {
+          "id": "caption-word-79-1",
+          "text": "malware",
+          "start": 83.68,
+          "end": 84.16
+        },
+        {
+          "id": "caption-word-79-2",
+          "text": "vraagt.",
+          "start": 84.2,
+          "end": 84.88
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+<section id="trucs-2026" data-transition="fade" style="background:#FFFFFF;color:#3C3B40;font-family:'Source Sans 3', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#E60005">2026 · van incident naar industrie</p>
+<h2 style="font-family:'League Gothic', 'Arial Narrow', sans-serif;font-size:80px;font-weight:400;line-height:1.05;letter-spacing:0;color:#232226">Wormen worden een commodity</h2>
+</div>
+<div style="display:grid;grid-template-columns:repeat(2, 1fr);gap:24px">
+<div style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border:1px solid #E1E1E1;border-radius:16px;padding:24px 32px">
+<h3 style="font-family:'Source Sans 3', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.2;color:#232226">TanStack, 11 mei</h3>
+<p style="font-size:28px;line-height:1.35">Vergiftigde CI-cache; de code las het OIDC-token uit de runner. Gevolg: 373 versies van 169 packages, mét geldige provenance.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border:1px solid #E1E1E1;border-radius:16px;padding:24px 32px">
+<h3 style="font-family:'Source Sans 3', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.2;color:#232226">AI-configuratie als schuilplaats</h3>
+<p style="font-size:28px;line-height:1.35">Wormen schrijven een SessionStart-hook in .claude/settings.json en een taak in .vscode/tasks.json, en starten zo opnieuw.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border:1px solid #E1E1E1;border-radius:16px;padding:24px 32px">
+<h3 style="font-family:'Source Sans 3', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.2;color:#232226">De dodemansknop</h3>
+<p style="font-size:28px;line-height:1.35">Trek je het gestolen token in, dan wist de malware je thuismap. Dus: eerst de persistentie verwijderen, dan pas roteren.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border:1px solid #E1E1E1;border-radius:16px;padding:24px 32px">
+<h3 style="font-family:'Source Sans 3', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.2;color:#232226">ChainDrop, 4 augustus</h3>
+<p style="font-size:28px;line-height:1.35">De grootste worm tot nu toe: minstens 444 packages, samen &gt;2 mld downloads per maand, op basis van publieke TeamPCP-code.</p>
+</div>
+</div>
+<p style="font-size:24px;line-height:1.4;color:#6B6A70">Verdieping in de cursustekst: de TeamPCP-cascade, Phantom Gyp en @joyfill.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1440px;font-size:24px;color:#6B6A70">Deel 4 — Tijdlijn en casestudies · 0:18–0:30</p>
+<img src="/_blob/4d3eecb01832b6f4111235aa00bb3842" alt="AP Hogeschool" style="position:absolute;right:128px;bottom:52px;height:56px;width:auto">
+<aside>In 2026 is er niet één groot incident, maar een stroom. Staatsactoren bereiden een aanval op één maintainer wekenlang voor, de broncode van een worm ligt publiek op GitHub, en aanvallers misbruiken precies de beveiligingsmaatregelen die na 2025 werden ingevoerd. Behandel deze slide in één minuut; de details zijn verdieping.
+
+TanStack (11 mei): een pull_request_target-job voerde code van een aanvaller uit en sloeg een vergiftigde pnpm-cache van 1,1 GB op onder de scope van de main-branch. Uren later laadde de echte release-workflow die cache in. De code las het OIDC-token uit het geheugen van de runner en publiceerde 84 versies van 42 TanStack-packages. Geen enkel npm-token werd gestolen, en de packages droegen geldige provenance. De worm (Mini Shai-Hulud) verspreidde zich dezelfde dag naar onder meer UiPath, Mistral AI en OpenSearch: Unit 42 telde 373 versies van 169 packages.
+
+AI-configuratie als schuilplaats: een SessionStart-hook is een commando dat de AI-assistent Claude Code bij elke start uitvoert; VS Code voert een taak in tasks.json uit bij het openen van de map. Commits worden vervalst onder de naam “claude” om onschuldig te lijken.
+
+De dodemansknop (TanStack, tensorlake): de malware controleert elke minuut of het gestolen token nog geldig is. Incidentrespons vraagt dus een vaste volgorde.
+
+ChainDrop (4 augustus) begon bij het gekaapte GitHub-account van de maintainer van keyv. De besmette versies droegen volgens Aikido geldige provenance.
+
+Les: wormen zijn een commodity geworden. De verdediging moet structureel zijn, niet afhankelijk van het snel herkennen van één bekende aanvaller.</aside>
+</section>

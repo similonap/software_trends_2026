@@ -1,0 +1,35 @@
+<section id="twofa" data-transition="fade" style="background:#FFFFFF;color:#3C3B40;font-family:'Source Sans 3', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#005078">Je account</p>
+<h2 style="font-family:'League Gothic', 'Arial Narrow', sans-serif;font-size:80px;font-weight:400;line-height:1.05;letter-spacing:0;color:#232226">Phishing-resistente 2FA</h2>
+</div>
+<div style="display:flex;gap:32px">
+<div style="flex:1;display:flex;flex-direction:column;gap:8px;background:#FDE8E8;border:1px solid #F5B8B9;border-top:6px solid #E60005;border-radius:16px;padding:32px 40px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#E60005">Te phishen</p>
+<h3 style="font-family:'Source Sans 3', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.2;color:#232226">TOTP-code uit een app</h3>
+<p style="font-size:28px;line-height:1.35;color:#232226">De nepsite vraagt je code en speelt die binnen seconden door aan de echte npmjs.com. Zo ging het bij chalk/debug, eslint-config-prettier en @solana/web3.js.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:8px;background:#E6EFF3;border:1px solid #B3CDD9;border-top:6px solid #005078;border-radius:16px;padding:32px 40px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#005078">Phishing-resistent</p>
+<h3 style="font-family:'Source Sans 3', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.2;color:#232226">WebAuthn of passkey</h3>
+<p style="font-size:28px;line-height:1.35;color:#232226">De browser ondertekent een uitdaging die aan het echte domein gebonden is. Op npmjs.help levert je sleutel niets bruikbaars op voor npmjs.com.</p>
+</div>
+</div>
+<ul style="font-size:28px;line-height:1.4;color:#232226">
+<li>Sinds oktober 2025 geen nieuwe TOTP-configuraties; sinds december 2025 is 2FA standaard</li>
+<li>Zet per package “Require two-factor authentication and disallow tokens” aan</li>
+<li>npm mailt nooit om je 2FA bij te werken: surf zelf naar de site en lees het domein</li>
+<li>Sinds juni 2026: 72 uur alleen-lezen na een wijziging van het e-mailadres</li>
+</ul>
+<p style="position:absolute;left:128px;bottom:64px;width:1440px;font-size:24px;color:#6B6A70">Deel 6 — Verdediging als maintainer en in CI/CD · 0:36–0:40</p>
+<img src="/_blob/4d3eecb01832b6f4111235aa00bb3842" alt="AP Hogeschool" style="position:absolute;right:128px;bottom:52px;height:56px;width:auto">
+<aside>Bij chalk/debug, eslint-config-prettier en @solana/web3.js gaf de maintainer zijn TOTP-code aan een nepsite, die de code in realtime doorspeelde. Een TOTP-code is gewoon zes cijfers: niets bindt ze aan het domein waar je ze intypt.
+
+WebAuthn (passkeys, hardwaresleutels, biometrie) werkt anders: de browser ondertekent een uitdaging die gebonden is aan het echte domein. Op npmjs.help levert je sleutel geen bruikbare handtekening op voor npmjs.com. Daarom heet dit phishing-resistent.
+
+npm laat sinds oktober 2025 geen nieuwe TOTP-configuraties meer toe en dwingt sinds december 2025 2FA standaard af voor nieuwe packages.
+
+Sinds juni 2026 zet npm accounts met veel impact 72 uur in alleen-lezenmodus na een wijziging van het e-mailadres. De aanvaller van axios veranderde precies dat.
+
+Maar onthoud de les van axios: 2FA beschermt je account, niet je laptop.</aside>
+</section>

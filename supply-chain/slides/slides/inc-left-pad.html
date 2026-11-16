@@ -1,0 +1,38 @@
+<section id="inc-left-pad" data-transition="fade" style="background:#FFFFFF;color:#3C3B40;font-family:'Source Sans 3', Arial, sans-serif;padding:120px 128px 150px;display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#E60005">Incident · 22 maart 2016 · beschikbaarheid</p>
+<h2 style="font-family:'League Gothic', 'Arial Narrow', sans-serif;font-size:80px;font-weight:400;line-height:1.05;letter-spacing:0;color:#232226">left-pad: elf regels die het internet braken</h2>
+</div>
+<div style="display:grid;grid-template-columns:300px 1fr;gap:12px 16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Toegang</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">Geen aanval. Na een naamsconflict over zijn package kik, dat npm in het voordeel van het bedrijf Kik besliste, verwijderde Azer Koçulu al zijn 273 packages.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Verspreiding</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">Builds haalden left-pad live van de registry, meestal transitief, onder meer via Babel. Was het package weg, dan faalde elke installatie.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Effect</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">Geen kwaadaardige code, wel wereldwijd gebroken builds. npm zag “hundreds of failures per minute”. De vrijgekomen namen kon bovendien iedereen claimen.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Detectie en respons</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">Binnen tien minuten publiceerde iemand een kopie; npm zette versie 0.0.3 na 2,5 uur terug. Sindsdien is unpublishen beperkt.</p>
+</div>
+<div style="display:flex;gap:24px;align-items:stretch">
+<div style="flex:1;background:#E6EFF3;border-left:6px solid #005078;border-radius:8px;padding:20px 32px">
+<p style="font-size:27px;line-height:1.35;color:#232226"><b><span style="color:#005078">Les.</span></b> Een build die live van de registry afhangt, hangt af van de goodwill van elke maintainer in de boom.</p>
+</div>
+<div style="width:440px;background:#F4F4F4;border:1px solid #E1E1E1;border-radius:8px;padding:20px 28px;display:flex;flex-direction:column;gap:6px;justify-content:center">
+<p style="font-size:20px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#6B6A70">Had dit tegengehouden</p>
+<p style="font-size:26px;line-height:1.3;font-weight:600;color:#232226">minder dependencies, een eigen mirror</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1440px;font-size:24px;color:#6B6A70">Deel 4 — Tijdlijn en casestudies · 0:18–0:30</p>
+<img src="/_blob/4d3eecb01832b6f4111235aa00bb3842" alt="AP Hogeschool" style="position:absolute;right:128px;bottom:52px;height:56px;width:auto">
+<aside>Verdieping: sla over bij tijdgebrek.
+
+Dinsdag 22 maart 2016. Azer Koçulu had een package met de naam kik. Het bedrijf achter de berichtenapp Kik wilde die naam, en npm gaf het bedrijf gelijk. Uit protest verwijderde Koçulu al zijn 273 packages, waaronder left-pad: elf regels code die een string links aanvullen met spaties.
+
+left-pad werd in de vier weken ervoor ongeveer 2,45 miljoen keer gedownload, meestal als transitieve dependency. Builds wereldwijd braken, ook die van grote projecten zoals Babel en React. npm zag “hundreds of failures per minute”. Binnen tien minuten publiceerde Cameron Westland een identieke versie 1.0.0, en npm zette na ongeveer 2,5 uur de oorspronkelijke versie 0.0.3 terug uit een backup.
+
+Les van npm zelf: “Unrestricted un-publishing caused a lot of pain.” Sindsdien geldt: unpublishen mag binnen 72 uur als niemand van het package afhangt, daarna alleen bij geen dependents, minder dan 300 downloads per week en één eigenaar.
+
+Vraag aan de zaal: helpt een lockfile hier? Nee: de lockfile wijst naar een tarball die niet meer bestaat. Wat wel helpt, is een eigen mirror of proxy-registry, of het package gewoon niet nodig hebben (vandaag doet String.prototype.padStart hetzelfde).
+
+Bronnen: npm-blog “kik, left-pad, and npm”; npm unpublish policy.</aside>
+</section>

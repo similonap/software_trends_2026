@@ -1,0 +1,21 @@
+<section id="matrix" data-transition="fade" style="background:#FFFFFF;color:#3C3B40;font-family:'Source Sans 3', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#005078">Gelaagde verdediging</p>
+<h2 style="font-family:'League Gothic', 'Arial Narrow', sans-serif;font-size:80px;font-weight:400;line-height:1.05;letter-spacing:0;color:#232226">Welke laag had wat gestopt?</h2>
+</div>
+<table style="font-size:28px;color:#3C3B40">
+<tr><th style="width:22%;color:#232226">Maatregel</th><th style="width:13%;color:#232226">event-stream</th><th style="width:13%;color:#232226">dep. confusion</th><th style="width:13%;color:#232226">Nx</th><th style="width:13%;color:#232226">chalk/debug</th><th style="width:13%;color:#232226">Shai-Hulud</th><th style="width:13%;color:#232226">axios</th></tr>
+<tr><td style="color:#232226">Cooldown van 7 dagen</td><td style="color:#E60005">nee ¹</td><td style="color:#E60005">nee</td><td style="color:#005078">ja</td><td style="color:#005078">ja</td><td style="color:#005078">ja</td><td style="color:#005078">ja</td></tr>
+<tr><td style="color:#232226">Install scripts uit</td><td style="color:#E60005">nee ²</td><td style="color:#005078">ja</td><td style="color:#005078">ja</td><td style="color:#E60005">nee ³</td><td style="color:#005078">ja</td><td style="color:#005078">ja</td></tr>
+<tr><td style="color:#232226">Scope vast aan registry</td><td style="color:#E60005">nee</td><td style="color:#005078">ja</td><td style="color:#E60005">nee</td><td style="color:#E60005">nee</td><td style="color:#E60005">nee</td><td style="color:#E60005">nee</td></tr>
+</table>
+<p style="font-size:24px;line-height:1.4;color:#6B6A70">¹ zes weken onontdekt · ² draaide bij de build · ³ draaide in de browser. Een lockfile beschermt in alle gevallen tot je zelf updatet; de tabel kijkt naar het moment waarop je dat doet.</p>
+<p style="font-family:'Source Sans 3', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.3;color:#232226">Geen enkele rij is overal “ja”. Daarom combineer je lagen.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1440px;font-size:24px;color:#6B6A70">Deel 5 — Verdediging als gebruiker · 0:30–0:36</p>
+<img src="/_blob/4d3eecb01832b6f4111235aa00bb3842" alt="AP Hogeschool" style="position:absolute;right:128px;bottom:52px;height:56px;width:auto">
+<aside>Laat de zaal eerst zelf invullen: had een cooldown van zeven dagen event-stream tegengehouden? (Nee: zes weken onontdekt.) Had install scripts uitzetten chalk/debug tegengehouden? (Nee: de code draaide in de browser.)
+
+Event-stream valt overal door de mand: de payload draaide bij de build van Copay en bleef zes weken onontdekt. Daar hadden alleen reproducible builds of het vergelijken van tarball en broncode geholpen.
+
+Kernpunt deel 5: leg vast (lockfile), wacht (cooldown), voer niets uit dat je niet goedkeurde (scripts), haal van de juiste bron (scopes), kijk mee (scanning) en beperk wat er te stelen valt. Wie dat doet, zou aan bijna elk incident uit dit college ontsnapt zijn.</aside>
+</section>

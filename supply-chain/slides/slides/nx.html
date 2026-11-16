@@ -1,0 +1,32 @@
+<section id="nx" data-transition="fade" style="background:#FFFFFF;color:#3C3B40;font-family:'Source Sans 3', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#E60005">Casestudie · augustus 2025 · ~6 mln downloads per week</p>
+<h2 style="font-family:'League Gothic', 'Arial Narrow', sans-serif;font-size:80px;font-weight:400;line-height:1.05;letter-spacing:0;color:#232226">Nx s1ngularity: je AI als handlanger</h2>
+</div>
+<div style="display:grid;grid-template-columns:320px 1fr;gap:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:18px 0 0 0">Toegang</p>
+<p style="font-size:28px;line-height:1.35;border-top:1px solid #CFCFD1;padding:16px 0 0 0">Een pull_request_target-workflow plakte de PR-titel in een bash-commando. Een titel met shellcode leverde een token op, en daarmee het NPM_TOKEN.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:18px 0 0 0">Verspreiding</p>
+<p style="font-size:28px;line-height:1.35;border-top:1px solid #CFCFD1;padding:16px 0 0 0">Acht kwaadaardige versies van nx en @nx/*-packages in ruim twee uur, gepubliceerd met het echte npm-token van het project.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:18px 0 0 0">Payload</p>
+<p style="font-size:28px;line-height:1.35;border-top:1px solid #CFCFD1;padding:16px 0 0 0">postinstall startte lokale AI-tools met de vangrails uit (claude --dangerously-skip-permissions, gemini --yolo) om naar secrets te laten zoeken.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:18px 0 0 0">Detectie en respons</p>
+<p style="font-size:28px;line-height:1.35;border-top:1px solid #CFCFD1;padding:16px 0 0 0">Na 4 à 5 uur verwijderd. GitGuardian telde 2.349 gelekte secrets; de AI-truc lukte op 95 van 366 systemen. Nx stapte over op trusted publishing.</p>
+</div>
+<div style="background:#E6EFF3;border-left:6px solid #005078;border-radius:8px;padding:24px 36px">
+<p style="font-size:28px;line-height:1.4;color:#232226"><b><span style="color:#005078">Les.</span></b> CI is een volwaardig aanvalsoppervlak. En een AI-agent die alles mag zonder te vragen, doet ook wat malware vraagt.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1440px;font-size:24px;color:#6B6A70">Deel 4 — Tijdlijn en casestudies · 0:18–0:30</p>
+<img src="/_blob/4d3eecb01832b6f4111235aa00bb3842" alt="AP Hogeschool" style="position:absolute;right:128px;bottom:52px;height:56px;width:auto">
+<aside>Ongeveer twee minuten.
+
+Nx is een populair build-systeem voor monorepo’s met ongeveer 6 miljoen downloads per week. Op 26 augustus 2025 verschenen kwaadaardige versies, gepubliceerd met het echte npm-token van het project.
+
+Toegang: een GitHub Actions-workflow die PR-titels controleerde, draaide op de trigger pull_request_target en plakte de titel van een pull request rechtstreeks in een bash-commando. Een PR met shellcode in de titel gaf de aanvaller een token met schrijfrechten. Daarmee startte hij de publicatie-workflow vanaf zijn eigen branch, die het NPM_TOKEN naar hem doorstuurde. Volgens Snyk was de kwetsbare workflow vermoedelijk door een AI-assistent geschreven, en de fout werd bij review niet opgemerkt. In deel 6 zie je precies deze workflow, fout en beter.
+
+Verspreiding: tussen 22:32 UTC op 26 augustus en 00:37 UTC op 27 augustus verschenen acht kwaadaardige versies.
+
+Payload: een postinstall-script, telemetry.js, zocht naar lokaal geïnstalleerde AI-commandlinetools en startte ze met vlaggen die alle veiligheidsvragen uitschakelen. Met een prompt liet het de AI zoeken naar wallets en secrets. Daarnaast verzamelde het tokens, SSH-sleutels en .env-bestanden, en zette het alles base64-gecodeerd in een publieke repository s1ngularity-repository op het GitHub-account van het slachtoffer zelf.
+
+Detectie en respons: in een tweede golf maakten de aanvallers met gestolen GitHub-tokens duizenden private repositories publiek. Nx stapte daarna over op trusted publishing en vereist nu goedkeuring voor workflows van externe bijdragers.</aside>
+</section>

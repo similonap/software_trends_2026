@@ -1,0 +1,314 @@
+<template id="02-thesis-template" data-composition-id="02-thesis" data-width="1920" data-height="1080" data-duration="7.22">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+
+<style>
+  @font-face { font-family: 'Barlow'; src: url('assets/fonts/Barlow-700.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: block; }
+  @font-face { font-family: 'Barlow'; src: url('assets/fonts/Barlow-900.woff2') format('woff2'); font-weight: 900; font-style: normal; font-display: block; }
+  @font-face { font-family: 'IBM Plex Mono'; src: url('assets/fonts/IBM_Plex_Mono-500.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: block; }
+
+  #root {
+    position: relative;
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+  }
+
+  /* full-bleed orange register ground (clip layer, not the root) */
+  .\30 2-thesis-ground {
+    position: absolute;
+    inset: 0;
+    background: #E85D26;
+  }
+
+  /* frame-relative container (container law) */
+  .\30 2-thesis-stage {
+    position: absolute;
+    inset: 0;
+    container-type: size;
+  }
+
+  .\30 2-thesis-camera {
+    position: absolute;
+    inset: 0;
+    transform-origin: 5.5cqw 30%;
+  }
+
+  .\30 2-thesis-kicker {
+    position: absolute;
+    left: 5.5cqw;
+    top: 7.6cqw;
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-weight: 500;
+    font-size: 0.95cqw;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(17, 17, 17, 0.55);
+    white-space: nowrap;
+  }
+
+  .\30 2-thesis-name {
+    position: absolute;
+    left: 5.1cqw;
+    top: 9.4cqw;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 900;
+    font-size: 13cqw;
+    line-height: 0.88;
+    letter-spacing: -0.04em;
+    color: #111111;
+    white-space: nowrap;
+    perspective: 1500px;
+  }
+
+  /* each cell reserves the target glyph's width; the live flap sits on top */
+  .\30 2-thesis-cell {
+    position: relative;
+    display: inline-block;
+  }
+  .\30 2-thesis-ghost {
+    visibility: hidden;
+  }
+  .\30 2-thesis-flap {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 2em;
+    margin-left: -1em;
+    text-align: center;
+    letter-spacing: 0;
+    transform-origin: 50% 100%;
+    transform-style: preserve-3d;
+    opacity: 0;
+  }
+
+  .\30 2-thesis-lines {
+    position: absolute;
+    left: 5.5cqw;
+    top: 26.4cqw;
+  }
+
+  .\30 2-thesis-line {
+    display: block;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
+    font-size: 4.5cqw;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: #111111;
+    white-space: nowrap;
+  }
+  .\30 2-thesis-line + .\30 2-thesis-line {
+    margin-top: 0.9cqw;
+  }
+
+  /* per-word mask: bottom-up slide */
+  .\30 2-thesis-mask {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+    padding: 0 0.04em 0.14em;
+    margin: 0 -0.04em -0.14em;
+  }
+  .\30 2-thesis-word {
+    display: inline-block;
+  }
+
+  .\30 2-thesis-ai {
+    position: relative;
+    display: inline-block;
+  }
+  .\30 2-thesis-rule {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0.02em;
+    height: 0.3cqw;
+    background: #111111;
+    transform-origin: 0 50%;
+  }
+</style>
+
+<div data-hf-id="hf-os5j"
+  id="root"
+  data-composition-id="02-thesis"
+  data-start="0"
+  data-duration="7.22"
+  data-width="1920"
+  data-height="1080"
+>
+  <div data-hf-id="hf-ae35" class="clip 02-thesis-ground" id="02-thesis-ground" data-start="0" data-duration="7.22" data-track-index="0"></div>
+
+  <div data-hf-id="hf-tglq" class="clip 02-thesis-stage" id="02-thesis-stage" data-start="0" data-duration="7.22" data-track-index="1">
+    <div data-hf-id="hf-ka7u" class="02-thesis-camera" id="02-thesis-camera">
+      <div data-hf-id="hf-8ksj" class="02-thesis-kicker" id="02-thesis-kicker">NX · 26 AUGUSTUS 2025</div>
+
+      <div data-hf-id="hf-nvgy" class="02-thesis-name" id="02-thesis-name" data-target="s1ngularity"></div>
+
+      <div data-hf-id="hf-jr0t" class="02-thesis-lines">
+        <div data-hf-id="hf-qto0" class="02-thesis-line" id="02-thesis-line-1"></div>
+        <div data-hf-id="hf-1p5n" class="02-thesis-line" id="02-thesis-line-2"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    window.__timelines = window.__timelines || {};
+    var tl = gsap.timeline({ paused: true });
+
+    // ---------- Scene 1 — hacker-flip-3d decode of the name ----------
+    var nameEl = document.getElementById("02-thesis-name");
+    var target = nameEl.getAttribute("data-target");
+    var GLYPHS = "abcdefghijklmnopqrstuvwxyz0123456789#%&";
+    var FLIP_START = 0.2;
+    var FLIP_DURATION = 0.6;
+    var CHAR_STAGGER = 0.06;
+    var REVEAL_THRESHOLD = 0.6;
+    var FLICKER_STEPS = 12;
+
+    function pseudoGlyph(seed) {
+      var h = ((seed * 9301 + 49297) % 233280) / 233280;
+      return GLYPHS[Math.floor(h * GLYPHS.length)];
+    }
+
+    var flaps = [];
+    target.split("").forEach(function (ch) {
+      var cell = document.createElement("span");
+      cell.className = "02-thesis-cell";
+      var ghost = document.createElement("span");
+      ghost.className = "02-thesis-ghost";
+      ghost.textContent = ch;
+      var flap = document.createElement("span");
+      flap.className = "02-thesis-flap";
+      flap.textContent = ch;
+      cell.appendChild(ghost);
+      cell.appendChild(flap);
+      nameEl.appendChild(cell);
+      flaps.push(flap);
+    });
+
+    // reveal order: every glyph left→right, the "1" lands last
+    var order = [];
+    target.split("").forEach(function (ch, i) { if (ch !== "1") order.push(i); });
+    target.split("").forEach(function (ch, i) { if (ch === "1") order.push(i); });
+
+    order.forEach(function (charIndex, slot) {
+      var el = flaps[charIndex];
+      var real = target.charAt(charIndex);
+      var isOne = real === "1";
+      var state = { p: 0 };
+      var lastShown = null;
+      tl.fromTo(
+        state,
+        { p: 0 },
+        {
+          p: 1,
+          duration: isOne ? FLIP_DURATION + 0.15 : FLIP_DURATION,
+          ease: "power3.out",
+          onUpdate: function () {
+            var glyph = state.p < REVEAL_THRESHOLD
+              ? pseudoGlyph(charIndex * 1000 + Math.floor(state.p * FLICKER_STEPS))
+              : real;
+            if (glyph !== lastShown) {
+              el.textContent = glyph;
+              lastShown = glyph;
+            }
+            el.style.transform = "rotateX(" + (90 - state.p * 90) + "deg)";
+            el.style.opacity = String(Math.min(1, state.p * 2));
+          }
+        },
+        FLIP_START + slot * CHAR_STAGGER + (isOne ? 0.12 : 0)
+      );
+    });
+
+    // kicker at hint opacity, just ahead of the decode
+    tl.fromTo(
+      document.getElementById("02-thesis-kicker"),
+      { opacity: 0, y: 10 },
+      { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
+      0.05
+    );
+
+    // ---------- Scenes 2 + 3 — per-word reveals sequenced on VO cues ----------
+    // dynamic-content-sequencing: content array → pre-computed absolute starts.
+    var LEAD = 0.06;          // land each word just ahead of the voice
+    var WORD_DURATION = 0.5;
+    var CONTENT = [
+      { line: "02-thesis-line-1", words: [
+        { text: "één", cue: 2.0 },
+        { text: "pr-titel", cue: 2.24 },
+        { text: "opende", cue: 3.68 },
+        { text: "de", cue: 4.08 },
+        { text: "deur", cue: 4.24 }
+      ] },
+      { line: "02-thesis-line-2", words: [
+        { text: "jouw", cue: 4.96 },
+        { text: "ai", cue: 5.28, accent: true },
+        { text: "deed", cue: 5.92 },
+        { text: "de", cue: 6.16 },
+        { text: "rest.", cue: 6.2 }
+      ] }
+    ];
+
+    var TIMELINE = [];
+    var ruleEl = null;
+    var ruleStart = 0;
+    CONTENT.forEach(function (entry) {
+      var lineEl = document.getElementById(entry.line);
+      entry.words.forEach(function (w, i) {
+        if (i > 0) lineEl.appendChild(document.createTextNode(" "));
+        var mask = document.createElement("span");
+        mask.className = "02-thesis-mask";
+        var word = document.createElement("span");
+        word.className = "02-thesis-word";
+        if (w.accent) {
+          var ai = document.createElement("span");
+          ai.className = "02-thesis-ai";
+          ai.textContent = w.text;
+          var rule = document.createElement("span");
+          rule.className = "02-thesis-rule";
+          ai.appendChild(rule);
+          word.appendChild(ai);
+          ruleEl = rule;
+          ruleStart = Math.max(0, w.cue - LEAD) + 0.22;
+        } else {
+          word.textContent = w.text;
+        }
+        mask.appendChild(word);
+        lineEl.appendChild(mask);
+        TIMELINE.push({ el: word, start: Math.max(0, w.cue - LEAD) });
+      });
+    });
+
+    TIMELINE.forEach(function (item) {
+      tl.fromTo(
+        item.el,
+        { yPercent: 115, opacity: 0 },
+        { yPercent: 0, opacity: 1, duration: WORD_DURATION, ease: "power3.out" },
+        item.start
+      );
+    });
+
+    // ink rule stub draws left→right under "ai"
+    if (ruleEl) {
+      tl.fromTo(
+        ruleEl,
+        { scaleX: 0 },
+        { scaleX: 1, duration: 0.45, ease: "power2.inOut" },
+        ruleStart
+      );
+    }
+
+    // ---------- macro camera — slow push underneath the whole shot ----------
+    tl.fromTo(
+      document.getElementById("02-thesis-camera"),
+      { scale: 1 },
+      { scale: 1.03, duration: 6.72, ease: "sine.inOut" },
+      0
+    );
+
+    window.__timelines["02-thesis"] = tl;
+  })();
+</script>
+</template>

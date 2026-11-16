@@ -1,0 +1,16 @@
+<section id="xkcd-authorization" data-transition="fade" style="background:#FFFFFF;color:#3C3B40;font-family:'Source Sans 3', Arial, sans-serif;padding:128px 128px 160px;display:flex;gap:64px;align-items:center">
+<img src="/_blob/7c88c02b6049ce7c3a01734fbeb202eb" alt="xkcd 1200 Authorization: wie mijn laptop steelt terwijl ik ingelogd ben, kan mijn mail lezen, mijn geld nemen en zich voor mij uitgeven, maar kan tenminste geen drivers installeren zonder mijn toestemming" style="width:667px;height:720px;object-fit:contain;border:1px solid #E1E1E1;border-radius:12px">
+<div style="flex:1;display:flex;flex-direction:column;gap:24px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#E60005">Intermezzo · xkcd 1200</p>
+<h2 style="font-family:'League Gothic', 'Arial Narrow', sans-serif;font-size:80px;font-weight:400;line-height:1.05;letter-spacing:0;color:#232226">Je hebt geen root nodig</h2>
+<p style="font-size:28px;line-height:1.4">Een install script draait met jouw gewone rechten. Dat volstaat: je npm-token, SSH-sleutels, cloudcredentials en browserprofielen staan allemaal in je eigen thuismap.</p>
+<p style="font-size:24px;line-height:1.4;color:#6B6A70">Randall Munroe · xkcd.com/1200 · CC BY-NC 2.5</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1440px;font-size:24px;color:#6B6A70">Deel 2 — Hoe npm werkt · 0:05–0:12</p>
+<img src="/_blob/4d3eecb01832b6f4111235aa00bb3842" alt="AP Hogeschool" style="position:absolute;right:128px;bottom:52px;height:56px;width:auto">
+<aside>Deze strip ontkracht een misverstand dat veel studenten hebben: “npm install draait toch niet als root, dus wat kan er gebeuren?”
+
+Alles wat waarde heeft, staat in je eigen thuismap: ~/.npmrc met je npm-token, ~/.ssh, ~/.aws, de cookies in je browserprofiel, je .env-bestanden. Een postinstall-script heeft geen beheerdersrechten nodig om dat allemaal te lezen en door te sturen. Shai-Hulud en s1ngularity deden precies dat.
+
+Hooguit vijftien seconden; dan door naar de vier momenten.</aside>
+</section>

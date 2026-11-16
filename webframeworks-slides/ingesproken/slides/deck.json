@@ -1,0 +1,139 @@
+{
+  "v": 4,
+  "createdOnFiles": {
+    "v": 1,
+    "at": "2026-10-24T09:00:00Z"
+  },
+  "lists": "css",
+  "title": "Trends in Web Frameworks 2026",
+  "order": [
+    "cover",
+    "zero-days",
+    "agenda",
+    "kb-framework",
+    "kb-spectrum",
+    "cijfers",
+    "kb-bundler",
+    "tooling",
+    "eigenaarschap",
+    "kb-csr-ssr",
+    "kb-hydration",
+    "kb-ssg-streaming",
+    "kb-rsc",
+    "kb-dom",
+    "kb-imperatief",
+    "kb-vdom",
+    "kb-render-commit",
+    "kb-reconciliation",
+    "kb-reconciliation-vb",
+    "kb-component-in-component",
+    "kb-keys",
+    "kb-signals",
+    "kb-signals-intern",
+    "kb-compiler",
+    "convergentie",
+    "div-1",
+    "kb-change-detection",
+    "kb-zoneless-onpush",
+    "angular",
+    "kb-rerender",
+    "kb-memo",
+    "kb-usememo-usecallback",
+    "react-compiler",
+    "kb-compiler-output",
+    "kb-rules-of-react",
+    "vue-svelte",
+    "div-2",
+    "kb-navigatie",
+    "kb-caching",
+    "next16",
+    "instant-nav",
+    "react-193",
+    "kb-islands-pe",
+    "tegenbeweging",
+    "wanneer-wat",
+    "div-3",
+    "kb-security",
+    "kb-server-action",
+    "kb-serialisatie",
+    "react2shell",
+    "security-2026",
+    "kb-supply-chain",
+    "supply-chain",
+    "div-4",
+    "kb-llm-agent",
+    "ai-cijfers",
+    "training-lag",
+    "kb-agents-md",
+    "kb-mcp",
+    "kb-skills",
+    "toolbox",
+    "actionable-errors",
+    "angular-ai",
+    "kb-prompt-injection",
+    "maintainer-agent",
+    "design-for-agents",
+    "div-5",
+    "default-stack",
+    "vibe-coding",
+    "mcp-apps",
+    "webmcp",
+    "builtin-ai",
+    "platform",
+    "studenten",
+    "kernbegrippen-1",
+    "kernbegrippen-react",
+    "kernbegrippen-2",
+    "conclusie",
+    "vragen"
+  ],
+  "sections": {
+    "s0": {
+      "description": "Intro: wat is een (meta-)framework en wat staat er op het programma",
+      "start": "cover"
+    },
+    "s1": {
+      "description": "Het landschap in 2026: cijfers, build tools en eigenaarschap",
+      "start": "cijfers"
+    },
+    "s2": {
+      "description": "De bouwstenen: rendering (CSR, SSR, hydration, SSG, streaming, RSC) en reactiviteit (DOM, virtual DOM, reconciliation, keys, signals, compilers)",
+      "start": "kb-csr-ssr"
+    },
+    "s3": {
+      "description": "Trend 1: signals en compilers hebben gewonnen (Angular, re-renders, memo, useMemo, useCallback, React Compiler, Vue, Svelte)",
+      "start": "div-1"
+    },
+    "s4": {
+      "description": "Trend 2: terug naar de server: navigatie, caching, streaming en de tegenbeweging",
+      "start": "div-2"
+    },
+    "s5": {
+      "description": "Trend 3: security: server actions, serialisatie, React2Shell en de supply chain",
+      "start": "div-3"
+    },
+    "s6": {
+      "description": "Trend 4: de AI-agent als gebruiker: LLM's, agents, AGENTS.md, MCP, skills en prompt injection",
+      "start": "div-4"
+    },
+    "s7": {
+      "description": "Trend 5: het AI-native web: standaardstack, vibe coding, MCP Apps en WebMCP",
+      "start": "div-5"
+    },
+    "s8": {
+      "description": "Het webplatform, lessen voor studenten, begrippenlijst en conclusie",
+      "start": "platform"
+    }
+  },
+  "faces": {
+    "questrial": {
+      "family": "Questrial",
+      "href": "https://fonts.googleapis.com/css2?family=Questrial&display=swap"
+    },
+    "source-code-pro": {
+      "family": "Source Code Pro",
+      "href": "https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600&display=swap"
+    }
+  },
+  "designSystems": []
+}

@@ -1,0 +1,34 @@
+<section id="event-stream" data-transition="fade" style="background:#FFFFFF;color:#3C3B40;font-family:'Source Sans 3', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#E60005">Casestudie · oktober 2018 · ~2 mln downloads per week</p>
+<h2 style="font-family:'League Gothic', 'Arial Narrow', sans-serif;font-size:80px;font-weight:400;line-height:1.05;letter-spacing:0;color:#232226">event-stream: de vriendelijke vrijwilliger</h2>
+</div>
+<div style="display:grid;grid-template-columns:320px 1fr;gap:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:18px 0 0 0">Toegang</p>
+<p style="font-size:28px;line-height:1.35;border-top:1px solid #CFCFD1;padding:16px 0 0 0">Geen hack: een onbekende (right9ctrl) bood aan het onderhoud over te nemen. De maintainer gebruikte het zelf niet meer en zei ja.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:18px 0 0 0">Verspreiding</p>
+<p style="font-size:28px;line-height:1.35;border-top:1px solid #CFCFD1;padding:16px 0 0 0">Hij voegde de dependency flatmap-stream toe; op 5 oktober verscheen daarvan 0.1.1 met kwaadaardige code. De ranges deden de rest.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:18px 0 0 0">Payload</p>
+<p style="font-size:28px;line-height:1.35;border-top:1px solid #CFCFD1;padding:16px 0 0 0">AES-versleuteld; ontcijferde zich alleen in de build van de Copay-wallet en roofde wallets met &gt;100 BTC leeg. Alleen in de geminificeerde tarball.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:18px 0 0 0">Detectie en respons</p>
+<p style="font-size:28px;line-height:1.35;border-top:1px solid #CFCFD1;padding:16px 0 0 0">Pas na ruim zes weken, op 20 november, via GitHub-issue #116. npm verwijderde de packages op 26 november.</p>
+</div>
+<div style="background:#E6EFF3;border-left:6px solid #005078;border-radius:8px;padding:24px 36px">
+<p style="font-size:28px;line-height:1.4;color:#232226"><b><span style="color:#005078">Les.</span></b> Een gerichte payload is onzichtbaar voor iedereen behalve het doelwit. De zwakste schakel is een uitgeputte vrijwilliger (zie ook xz-utils, 2024).</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1440px;font-size:24px;color:#6B6A70">Deel 4 — Tijdlijn en casestudies · 0:18–0:30</p>
+<img src="/_blob/4d3eecb01832b6f4111235aa00bb3842" alt="AP Hogeschool" style="position:absolute;right:128px;bottom:52px;height:56px;width:auto">
+<aside>Ongeveer twee minuten.
+
+event-stream was een populaire bibliotheek voor streams in Node.js, met ongeveer 2 miljoen downloads per week en 3.931 packages die ervan afhingen. De oorspronkelijke maintainer, Dominic Tarr, gebruikte het zelf al jaren niet meer en verdiende er niets aan. Toen een onbekende met de naam right9ctrl aanbood het onderhoud over te nemen, zei hij ja. Later schreef hij: “he emailed me and said he wanted to maintain the module, so I gave it to him.”
+
+Toegang: geen hack, maar sociale manipulatie. De aanvaller kreeg legitiem publicatierecht.
+
+Verspreiding: op 9 september 2018 voegde hij de dependency flatmap-stream toe. Op 5 oktober verscheen daarvan versie 0.1.1 met kwaadaardige code, die via de ranges automatisch bij gebruikers terechtkwam.
+
+Payload: de code was versleuteld met AES. De sleutel was de beschrijving van het project dat het package installeerde. Alleen bij “A Secure Bitcoin Wallet”, de beschrijving van de Copay-wallet, ontcijferde de code zichzelf. Tijdens de build van Copay (versies 5.0.2 tot 5.1.0) injecteerde ze code die wallets met meer dan 100 BTC of 1.000 BCH leegroofde. Voor alle andere projecten deed ze niets.
+
+Detectie: pas op 20 november 2018, ruim zes weken na de kwaadaardige release, opende een ontwikkelaar issue #116 op GitHub.
+
+Les: in 2024 zag de wereld exact hetzelfde patroon bij xz-utils, waar “Jia Tan” meer dan twee jaar vertrouwen opbouwde voor hij een backdoor plaatste.</aside>
+</section>

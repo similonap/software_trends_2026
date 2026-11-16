@@ -1,0 +1,38 @@
+<section id="inc-eslint-scope" data-transition="fade" style="background:#FFFFFF;color:#3C3B40;font-family:'Source Sans 3', Arial, sans-serif;padding:120px 128px 150px;display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#E60005">Incident · 12 juli 2018 · accountovername</p>
+<h2 style="font-family:'League Gothic', 'Arial Narrow', sans-serif;font-size:80px;font-weight:400;line-height:1.05;letter-spacing:0;color:#232226">eslint-scope: een hergebruikt wachtwoord</h2>
+</div>
+<div style="display:grid;grid-template-columns:300px 1fr;gap:12px 16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Toegang</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">De maintainer gebruikte een wachtwoord dat al in een ander datalek zat, en had geen 2FA. De aanvaller logde in en maakte een npm-token aan.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Verspreiding</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">eslint-scope@3.7.2 kwam via de gewone semver-range binnen, ook transitief via eslint zelf. Het package had ~2,3 mln downloads per week.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Payload</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">Een postinstall-script haalde code van pastebin.com, die ~/.npmrc met publicatietokens naar de aanvaller stuurde: tokens om verder te kunnen.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Detectie en respons</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">Een gebruiker meldde het na ongeveer een halfuur; npm haalde de versie na ~2 uur offline. Omdat tokens van ~4.500 accounts mogelijk gelekt waren, trok npm alle oudere tokens in.</p>
+</div>
+<div style="display:flex;gap:24px;align-items:stretch">
+<div style="flex:1;background:#E6EFF3;border-left:6px solid #005078;border-radius:8px;padding:20px 32px">
+<p style="font-size:27px;line-height:1.35;color:#232226"><b><span style="color:#005078">Les.</span></b> Eén hergebruikt wachtwoord zonder 2FA geeft toegang tot je hele achterban. Het idee achter Shai-Hulud bestond al in 2018.</p>
+</div>
+<div style="width:440px;background:#F4F4F4;border:1px solid #E1E1E1;border-radius:8px;padding:20px 28px;display:flex;flex-direction:column;gap:6px;justify-content:center">
+<p style="font-size:20px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#6B6A70">Had dit tegengehouden</p>
+<p style="font-size:26px;line-height:1.3;font-weight:600;color:#232226">2FA, install scripts blokkeren</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1440px;font-size:24px;color:#6B6A70">Deel 4 — Tijdlijn en casestudies · 0:18–0:30</p>
+<img src="/_blob/4d3eecb01832b6f4111235aa00bb3842" alt="AP Hogeschool" style="position:absolute;right:128px;bottom:52px;height:56px;width:auto">
+<aside>Verdieping: sla over bij tijdgebrek.
+
+12 juli 2018. Een maintainer van ESLint had op npm hetzelfde wachtwoord als bij een andere dienst die gelekt was, en geen 2FA. De aanvaller logde in, maakte een npm-token aan en publiceerde eslint-config-eslint@5.0.2 en eslint-scope@3.7.2.
+
+Het postinstall-script van eslint-scope haalde code op van pastebin.com. Die las ~/.npmrc, het bestand waarin npm je publicatietoken bewaart, en stuurde het naar de aanvaller. Met die tokens kon de aanvaller op zijn beurt de packages van de slachtoffers publiceren. Dat is precies het wormidee van Shai-Hulud, zeven jaar eerder.
+
+Tijdlijn (UTC): publicatie om 10:40, melding door een gebruiker om 11:17 (issue #39), unpublish door npm om 12:37. Volgens npm konden tokens van ongeveer 4.500 accounts buitgemaakt zijn. npm vond geen bewijs van misbruik, maar trok voor de zekerheid alle tokens in die vóór het incident waren aangemaakt.
+
+Les: hier volstond zelfs gewone 2FA. ESLint raadde achteraf ook lockfiles aan, en install scripts blokkeren had de payload tegengehouden.
+
+Bronnen: postmortem van ESLint; incidentrapport van npm (blog.npmjs.org, juli 2018).</aside>
+</section>

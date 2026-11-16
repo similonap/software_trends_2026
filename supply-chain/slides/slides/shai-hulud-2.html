@@ -1,0 +1,38 @@
+<section id="shai-hulud-2" data-transition="fade" style="background:#FFFFFF;color:#3C3B40;font-family:'Source Sans 3', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#E60005">Casestudie · 24 november 2025</p>
+<h2 style="font-family:'League Gothic', 'Arial Narrow', sans-serif;font-size:80px;font-weight:400;line-height:1.05;letter-spacing:0;color:#232226">Shai-Hulud 2.0: de worm leert bij</h2>
+</div>
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:28px;line-height:1.35;color:#232226;border-left:4px solid #E60005;padding:6px 0 6px 20px"><b>preinstall</b> in plaats van postinstall: de code draait nog eerder</p>
+<p style="font-size:28px;line-height:1.35;color:#232226;border-left:4px solid #E60005;padding:6px 0 6px 20px"><b>Eigen runtime (Bun)</b> via setup_bun.js: ontwijkt monitoring die op Node.js gericht is</p>
+<p style="font-size:28px;line-height:1.35;color:#232226;border-left:4px solid #E60005;padding:6px 0 6px 20px"><b>Tot 100 packages</b> per gestolen token in plaats van 20</p>
+<p style="font-size:28px;line-height:1.35;color:#232226;border-left:4px solid #E60005;padding:6px 0 6px 20px"><b>Backdoor:</b> de machine wordt een self-hosted GitHub-runner met de naam SHA1HULUD</p>
+<p style="font-size:28px;line-height:1.35;color:#232226;border-left:4px solid #E60005;padding:6px 0 6px 20px"><b>Wiper:</b> geen bruikbaar token gevonden? Dan wist de malware je thuismap</p>
+</div>
+<div style="display:flex;gap:32px">
+<div style="flex:1;display:flex;align-items:center;gap:24px">
+<p style="font-family:'League Gothic', 'Arial Narrow', sans-serif;font-size:80px;font-weight:400;line-height:1.05;color:#E60005">796</p>
+<p style="flex:1;font-size:28px;line-height:1.35">besmette packages, samen &gt;20 mln downloads per week (Datadog)</p>
+</div>
+<div style="flex:1;display:flex;align-items:center;gap:24px">
+<p style="font-family:'League Gothic', 'Arial Narrow', sans-serif;font-size:80px;font-weight:400;line-height:1.05;color:#E60005">25.000+</p>
+<p style="flex:1;font-size:28px;line-height:1.35">GitHub-repositories met gestolen data (Wiz)</p>
+</div>
+</div>
+<div style="background:#E6EFF3;border-left:6px solid #005078;border-radius:8px;padding:24px 36px">
+<p style="font-size:28px;line-height:1.4;color:#232226"><b><span style="color:#005078">Les.</span></b> Een langlevend npm-token op een laptop is een verspreidingsmechanisme voor het hele ecosysteem. Daarom draaide de respons van npm om het afschaffen van zulke tokens.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1440px;font-size:24px;color:#6B6A70">Deel 4 — Tijdlijn en casestudies · 0:18–0:30</p>
+<img src="/_blob/4d3eecb01832b6f4111235aa00bb3842" alt="AP Hogeschool" style="position:absolute;right:128px;bottom:52px;height:56px;width:auto">
+<aside>Op 24 november 2025 volgde “Sha1-Hulud: The Second Coming”, zo gespeld door de aanvallers en meestal Shai-Hulud 2.0 genoemd. Vijf verbeteringen voor de aanvaller:
+- preinstall in plaats van postinstall, zodat de code nog eerder draaide;
+- een eigen JavaScript-runtime (Bun) via setup_bun.js, om monitoring die op Node.js gericht is te ontwijken;
+- tot 100 packages per gestolen token in plaats van 20;
+- een backdoor: de machine werd geregistreerd als self-hosted GitHub-runner (een machine die workflows uitvoert) met de naam SHA1HULUD, zodat de aanvaller er later zelf commando’s op kon laten draaien;
+- een wiper als terugvaloptie: vond de malware geen bruikbaar token, dan wiste ze de thuismap van het slachtoffer.
+
+Datadog telde 796 besmette packages met samen meer dan 20 miljoen downloads per week; Wiz telde meer dan 25.000 GitHub-repositories met gestolen data. Getroffen organisaties waren onder meer Zapier, ENS Domains, PostHog en Postman. Bij PostHog begon het, net als bij Nx, met een pull_request_target-workflow die secrets lekte.
+
+De timing was geen toeval: op 9 december zou npm alle klassieke tokens intrekken.</aside>
+</section>

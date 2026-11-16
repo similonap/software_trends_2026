@@ -1,0 +1,43 @@
+<section id="sbom-cra" data-transition="fade" style="background:#FFFFFF;color:#3C3B40;font-family:'Source Sans 3', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#005078">Aantoonbaarheid</p>
+<h2 style="font-family:'League Gothic', 'Arial Narrow', sans-serif;font-size:80px;font-weight:400;line-height:1.05;letter-spacing:0;color:#232226">SBOM en de Cyber Resilience Act</h2>
+</div>
+<div style="display:flex;gap:64px;align-items:flex-start">
+<div style="flex:1;display:flex;flex-direction:column;gap:20px">
+<h3 style="font-family:'Source Sans 3', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.2;color:#232226">SBOM: de ingrediëntenlijst</h3>
+<p style="font-size:28px;line-height:1.4">Een machineleesbare lijst van alle componenten in je software. Standaarden: CycloneDX 1.7 (ECMA-424) en SPDX (ISO/IEC 5962).</p>
+<div style="background:#232226;border-radius:16px;padding:24px 32px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.5;color:#F1F1F1;white-space:nowrap">$ npm sbom --sbom-format cyclonedx &gt; sbom.json</p>
+</div>
+<p style="font-size:28px;line-height:1.4;color:#232226">31 maart 2026: “draaien wij ergens axios@1.14.1?” Met een SBOM is dat één zoekopdracht.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:20px">
+<h3 style="font-family:'Source Sans 3', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.2;color:#232226">Cyber Resilience Act (EU)</h3>
+<div style="display:flex;flex-direction:column;gap:4px;border-left:4px solid #7FA6BA;padding:4px 0 4px 24px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#005078">10 december 2024</p>
+<p style="font-size:28px;line-height:1.35">in werking</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:4px;border-left:4px solid #005078;padding:4px 0 4px 24px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#005078">11 september 2026</p>
+<p style="font-size:28px;line-height:1.35">meldplicht: waarschuwing binnen 24 uur, melding binnen 72 uur</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:4px;border-left:4px solid #232226;padding:4px 0 4px 24px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#005078">11 december 2027</p>
+<p style="font-size:28px;line-height:1.35">volledige toepassing, met een SBOM die minstens de directe dependencies dekt</p>
+</div>
+<p style="font-size:24px;line-height:1.4;color:#6B6A70">Open-source stewards krijgen een lichter regime; hobbyisten zonder commerciële activiteit vallen er grotendeels buiten.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1440px;font-size:24px;color:#6B6A70">Deel 7 — Geavanceerd en vooruitblik · 0:40–0:43</p>
+<img src="/_blob/4d3eecb01832b6f4111235aa00bb3842" alt="AP Hogeschool" style="position:absolute;right:128px;bottom:52px;height:56px;width:auto">
+<aside>Een Software Bill of Materials is een machineleesbare lijst van alle componenten in je software, vergelijkbaar met de ingrediëntenlijst op een verpakking. De twee standaarden zijn CycloneDX (OWASP, versie 1.7, ook gestandaardiseerd als ECMA-424) en SPDX (Linux Foundation, ISO/IEC 5962:2021). npm maakt er sinds versie 10.2 zelf een.
+
+De waarde zie je bij het volgende incident: op 31 maart 2026 wilde elk securityteam binnen het uur weten of het ergens axios@1.14.1 draaide. Met een SBOM per product en een tool als OSV-Scanner is dat een zoekopdracht in plaats van een week werk.
+
+De Cyber Resilience Act (Verordening (EU) 2024/2847) is in werking sinds 10 december 2024 en maakt supply chain security voor het eerst een wettelijke plicht voor fabrikanten van producten met digitale elementen die in de EU verkocht worden. Sinds 11 september 2026 geldt de meldplicht voor actief uitgebuite kwetsbaarheden en ernstige incidenten, via het meldplatform van ENISA. Op 11 december 2027 volgt de volledige toepassing.
+
+Drie punten voor dit college: fabrikanten moeten een SBOM opstellen die minstens de directe dependencies dekt; ze moeten zorgvuldig omgaan met componenten van derden, ook open source; en de wet introduceert de open-source software steward, een organisatie zoals een stichting die open source structureel ondersteunt, met een lichter regime zonder boetes.
+
+In de Verenigde Staten zette executive order 14028 (mei 2021) de SBOM al op de agenda voor leveranciers van de overheid.</aside>
+</section>

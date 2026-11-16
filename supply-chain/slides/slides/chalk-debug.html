@@ -1,0 +1,32 @@
+<section id="chalk-debug" data-transition="fade" style="background:#FFFFFF;color:#3C3B40;font-family:'Source Sans 3', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#E60005">Casestudie · september 2025 · &gt;2 mld downloads per week</p>
+<h2 style="font-family:'League Gothic', 'Arial Narrow', sans-serif;font-size:80px;font-weight:400;line-height:1.05;letter-spacing:0;color:#232226">chalk en debug: één phishingmail</h2>
+</div>
+<div style="display:grid;grid-template-columns:320px 1fr;gap:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:18px 0 0 0">Toegang</p>
+<p style="font-size:28px;line-height:1.35;border-top:1px solid #CFCFD1;padding:16px 0 0 0">Mail van support@npmjs.help, een domein van drie dagen oud. De nepsite gaf gebruikersnaam, wachtwoord en TOTP-code in realtime door aan npm.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:18px 0 0 0">Verspreiding</p>
+<p style="font-size:28px;line-height:1.35;border-top:1px solid #CFCFD1;padding:16px 0 0 0">18 packages in acht minuten. Volgens Wiz zat de code binnen twee uur in minstens 10% van de cloudomgevingen die het monitort.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:18px 0 0 0">Payload</p>
+<p style="font-size:28px;line-height:1.35;border-top:1px solid #CFCFD1;padding:16px 0 0 0">Geen install script: een crypto-clipper in de browser die fetch, XMLHttpRequest en window.ethereum onderschept en wallet-adressen vervangt.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:18px 0 0 0">Detectie en respons</p>
+<p style="font-size:28px;line-height:1.35;border-top:1px solid #CFCFD1;padding:16px 0 0 0">Aikido zag het binnen minuten; na ongeveer twee uur begon het opruimen. Amazon schreef de aanval in juli 2026 toe aan Noord-Korea (Sapphire Sleet).</p>
+</div>
+<div style="background:#E6EFF3;border-left:6px solid #005078;border-radius:8px;padding:24px 36px">
+<p style="font-size:28px;line-height:1.4;color:#232226"><b><span style="color:#005078">Les.</span></b> TOTP is te phishen; alleen WebAuthn of een passkey had dit gestopt. Met een payload die tokens had gestolen, was de schade enorm geweest. Een cooldown van één dag had volstaan.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1440px;font-size:24px;color:#6B6A70">Deel 4 — Tijdlijn en casestudies · 0:18–0:30</p>
+<img src="/_blob/4d3eecb01832b6f4111235aa00bb3842" alt="AP Hogeschool" style="position:absolute;right:128px;bottom:52px;height:56px;width:auto">
+<aside>Ongeveer twee minuten. Dit is het incident uit de opening van het college.
+
+Toegang: op 8 september 2025 kreeg maintainer Josh Junon een mail van support@npmjs.help, een domein dat drie dagen eerder was geregistreerd. De nepsite ving zijn gebruikersnaam, wachtwoord en de actuele TOTP-code op en gaf die meteen door aan de echte npm.
+
+Verspreiding: tussen 13:12 en 13:20 UTC verschenen kwaadaardige versies van 18 packages, waaronder debug@4.4.2, chalk@5.6.1, ansi-styles@6.2.2 en strip-ansi@7.1.1.
+
+Payload: geen install script, maar een crypto-clipper voor de browser. Zag de code een cryptoadres voorbijkomen, dan verving ze het door het adres van de aanvaller dat er het meest op leek (berekend met de Levenshtein-afstand), zodat het slachtoffer het verschil niet zag. Ze ondersteunde onder meer Ethereum, Bitcoin, Solana en Tron.
+
+Detectie en respons: de buit was opvallend klein: volgens de Security Alliance ongeveer 20 dollar, volgens Socket hielden de wallets van de aanvallers rond 600 dollar. In juli 2026 schreef Amazon Threat Intelligence de aanval met gemiddelde zekerheid toe aan de Noord-Koreaanse groep Sapphire Sleet. In dezelfde campagne werden ook de DuckDB-packages gekaapt.
+
+Les: merk op hoe kort het venster was. Daar komen we in deel 5 op terug bij de cooldown.</aside>
+</section>

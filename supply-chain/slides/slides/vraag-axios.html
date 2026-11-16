@@ -1,0 +1,13 @@
+<section id="vraag-axios" data-transition="fade" style="background:#232226;color:#D2D2D4;font-family:'Source Sans 3', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:center;gap:40px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#FF5A5F">Vraag aan de zaal</p>
+<h2 style="font-family:'League Gothic', 'Arial Narrow', sans-serif;font-size:80px;font-weight:400;line-height:1.05;letter-spacing:0;color:#FFFFFF;width:1500px">De aanvaller controleert de laptop van de axios-maintainer al. Welke maatregel uit deel 5 of 6 had de aanval nog tegengehouden?</h2>
+<p style="font-size:28px;line-height:1.4;color:#9A999F">Denk aan beide kanten: de maintainer én de gebruiker.</p>
+<img src="/_blob/5c8a265d7f39c38d2ce657c388eb0a73" alt="AP Hogeschool" style="position:absolute;right:128px;bottom:56px;height:64px;width:auto">
+<aside>Geef de zaal een halve minuut. Laat twee of drie antwoorden komen voor je het antwoord geeft.
+
+Antwoord. Aan maintainerkant: alleen tokens verbieden (disallow tokens), zodat elke publicatie, ook een klaargezette, een fysieke bevestiging met een hardwaresleutel vraagt. De aanvaller heeft wel de laptop, maar niet de sleutel. Wachtwoorden en TOTP-codes helpen niet: die kan malware op de laptop zien of onderscheppen.
+
+Aan gebruikerskant: de cooldown (axios stond ongeveer drie uur online) en het blokkeren van install scripts (de backdoor zat in een postinstall-script). pnpm met trustPolicy: no-downgrade had axios@1.14.1 ook geweigerd, omdat het zonder trusted publishing verscheen terwijl eerdere versies dat wel hadden.
+
+Wat niet had geholpen: 2FA met TOTP, npm audit, en de lockfile op zich (die beschermt alleen tot je updatet).</aside>
+</section>

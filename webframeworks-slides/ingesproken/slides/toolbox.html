@@ -1,0 +1,17 @@
+<section id="toolbox" data-transition="fade" style="background:#FFFFFF;color:#404040;font-family:Arial, Helvetica, sans-serif;padding:104px 128px 144px;display:flex;flex-direction:column;gap:40px">
+<h2 style="font-family:Questrial, 'Century Gothic', Arial, sans-serif;font-size:64px;font-weight:400;line-height:1.15;color:#C00000">Welk mechanisme waarvoor?</h2>
+<table style="font-size:36px;color:#404040;font-family:Arial, Helvetica, sans-serif"><tr style="background:#C00000"><th style="width:20%;text-align:left;color:#FFFFFF;font-weight:700">Mechanisme</th><th style="width:17%;text-align:left;color:#FFFFFF;font-weight:700">Noodzaak</th><th style="width:27%;text-align:left;color:#FFFFFF;font-weight:700">Wanneer geladen?</th><th style="width:36%;text-align:left;color:#FFFFFF;font-weight:700">Voorbeeld</th></tr><tr style="background:#F2F2F2"><td><b>AGENTS.md</b></td><td>Kennis</td><td>Altijd, bij de start</td><td>Stack, commando’s, docs in node_modules</td></tr><tr style="background:#FFFFFF"><td><b>llms.txt</b></td><td>Kennis</td><td>Wanneer de agent docs opzoekt</td><td>nextjs.org/docs/llms.txt</td></tr><tr style="background:#F2F2F2"><td><b>Skill</b></td><td>Workflow</td><td>Wanneer de taak past</td><td>next-dev-loop, angular-developer</td></tr><tr style="background:#FFFFFF"><td><b>MCP-server</b></td><td>Zichtbaarheid</td><td>Bij een tool-aanroep</td><td>next-devtools-mcp, Angular CLI MCP</td></tr><tr style="background:#F2F2F2"><td><b>agent-browser</b></td><td>Verificatie</td><td>Bij een tool-aanroep</td><td>Echte browser + React-tree inspecteren</td></tr></table>
+<p style="position:absolute;left:128px;bottom:48px;width:1480px;font-size:24px;color:#7F7F7F">Bronnen: nextjs.org/blog/agentic-future (12/02/2026), next-16-2-ai, next-16-3-ai-improvements, Angular 22</p>
+<p style="position:absolute;right:128px;bottom:48px;width:80px;text-align:right;font-size:24px;color:#7F7F7F">61</p>
+<aside>Deze tabel zet de mechanismen naast elkaar. Het Next.js-team vatte de noden van een agent samen in drie woorden: kennis, zichtbaarheid en verificatie.
+
+Voor kennis zijn er AGENTS.md en llms.txt. AGENTS.md wordt altijd bij de start geladen en bevat de projectregels plus een verwijzing naar de juiste documentatie. llms.txt gebruikt een agent wanneer hij iets moet opzoeken.
+
+Voor workflows zijn er skills, die enkel geladen worden wanneer de taak erbij past.
+
+Voor zichtbaarheid is er MCP. Een agent kan via een tool-aanroep vragen welke fouten er in de browser zijn, welke routes bestaan of of een route compileert.
+
+En voor verificatie is er agent-browser: een tool waarmee een agent zelf een echte browser bestuurt, de console leest, netwerkverkeer bekijkt en zelfs de React-componentenboom inspecteert. Zo kan de agent controleren of zijn wijziging echt werkt, in plaats van te hopen dat ze werkt.
+
+Een leerrijk detail: Next.js bouwde eerst een eigen chat-agent in de browser, Vector genaamd. Die werd geschrapt, omdat developers toch al Cursor of Claude Code gebruikten voor al hun projecten. De les die het team trok: bouw geen eigen agent, maar maak je framework zichtbaar en begrijpbaar voor de agents die developers al gebruiken. Je ziet ook dat de mechanismen elkaar aanvullen: zowel Next.js als Angular maakten hun MCP-server in 2026 kleiner, omdat kennis beter via docs en skills loopt en MCP vooral dient voor live informatie.</aside>
+</section>

@@ -1,0 +1,37 @@
+<section id="beperken" data-transition="fade" style="background:#FFFFFF;color:#3C3B40;font-family:'Source Sans 3', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#005078">Laag 6 · Beperken</p>
+<h2 style="font-family:'League Gothic', 'Arial Narrow', sans-serif;font-size:80px;font-weight:400;line-height:1.05;letter-spacing:0;color:#232226">Minder om te stelen</h2>
+</div>
+<div style="display:grid;grid-template-columns:repeat(2, 1fr);gap:24px">
+<div style="display:flex;flex-direction:column;gap:12px;background:#F4F4F4;border:1px solid #E1E1E1;border-radius:16px;padding:32px">
+<h3 style="font-family:'Source Sans 3', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.2;color:#232226">Minder dependencies</h3>
+<p style="font-size:28px;line-height:1.35">Kan je het zelf in tien regels? Node.js heeft nu fetch, een testrunner en util.styleText. Beoordeel packages met OpenSSF Scorecard of deps.dev.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;background:#F4F4F4;border:1px solid #E1E1E1;border-radius:16px;padding:32px">
+<h3 style="font-family:'Source Sans 3', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.2;color:#232226">Geen langlevende geheimen</h3>
+<p style="font-size:28px;line-height:1.35">npm login geeft sinds december 2025 kortlevende sessietokens. Geen cloudsleutels in platte tekst, geen productiecredentials op je laptop.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;background:#F4F4F4;border:1px solid #E1E1E1;border-radius:16px;padding:32px">
+<h3 style="font-family:'Source Sans 3', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.2;color:#232226">Onbekende code in een container</h3>
+<p style="font-size:28px;line-height:1.35">Zeker de “thuisopdracht” van een recruiter die je niet kent: Noord-Koreaanse groepen gebruiken dat scenario al sinds 2023.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;background:#F4F4F4;border:1px solid #E1E1E1;border-radius:16px;padding:32px">
+<h3 style="font-family:'Source Sans 3', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.2;color:#232226">AI-agents met vangrails</h3>
+<p style="font-size:28px;line-height:1.35">Nooit alle bevestigingen uit op een machine met secrets. Review .claude/settings.json en .vscode/tasks.json zoals code.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1440px;font-size:24px;color:#6B6A70">Deel 5 — Verdediging als gebruiker · 0:30–0:36</p>
+<img src="/_blob/4d3eecb01832b6f4111235aa00bb3842" alt="AP Hogeschool" style="position:absolute;right:128px;bottom:52px;height:56px;width:auto">
+<aside>Laag 6 gaat over de schade beperken als er toch iets binnenglipt.
+
+Elke dependency is een beslissing. Vraag je af of je het zelf in tien regels kan schrijven. Node.js heeft vandaag ingebouwde fetch, een testrunner en util.styleText voor gekleurde terminaloutput: je hebt chalk dus vaak niet meer nodig.
+
+Geen langlevende geheimen op je laptop: npm login geeft sinds december 2025 kortlevende sessietokens in plaats van permanente tokens.
+
+Onbetrouwbare code in een container: draai onbekende projecten, en zeker de “thuisopdracht” van een recruiter die je niet kent, in een dev container of VM.
+
+AI-agents met vangrails: draai een codeassistent nooit met alle bevestigingen uitgeschakeld op een machine met secrets, en bekijk wijzigingen aan .claude/settings.json en .vscode/tasks.json in pull requests even kritisch als code: daar nestelden de wormen van 2026 zich.
+
+Verdieping (cursustekst, “Als het toch misgaat”): isoleer de machine, verwijder eerst de persistentie, roteer daarna alle secrets, controleer je GitHub-account, bepaal de impact via de lockfile-geschiedenis en meld het (in België aan het CCB, in Nederland aan het NCSC).</aside>
+</section>

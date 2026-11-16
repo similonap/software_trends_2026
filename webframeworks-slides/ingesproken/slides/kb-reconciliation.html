@@ -1,0 +1,21 @@
+<section id="kb-reconciliation" data-transition="fade" style="background:#FFFFFF;color:#404040;font-family:Arial, Helvetica, sans-serif;padding:104px 128px 144px;display:flex;flex-direction:column;gap:40px">
+<h2 style="font-family:Questrial, 'Century Gothic', Arial, sans-serif;font-size:64px;font-weight:400;line-height:1.15;color:#C00000">Het reconciliation-algoritme</h2>
+<p style="font-size:42px;line-height:1.4"><b>Probleem:</b> de kleinste set wijzigingen tussen twee willekeurige bomen vinden kost O(n³). Bij 1.000 elementen zijn dat <b>1 miljard vergelijkingen</b>, bij elke update. Onbruikbaar.</p>
+<p style="font-size:42px;line-height:1.4"><b>Oplossing:</b> React gebruikt heuristieken in O(n) en vergelijkt van boven naar beneden:</p>
+<ol style="font-size:42px;line-height:1.4"><li><b>Ander type → vervangen.</b> &lt;div&gt; wordt &lt;section&gt;, of &lt;Counter&gt; wordt &lt;Timer&gt;: de hele oude deelboom gaat weg, <b>inclusief state</b>, en wordt opnieuw opgebouwd.</li><li><b>Zelfde element → bijwerken.</b> Zelfde HTML-tag: enkel de gewijzigde attributen aanpassen. Zelfde component: instantie en state blijven, het krijgt nieuwe props.</li><li><b>Kinderen → per positie of per key.</b> Daarna herhaalt React dit voor de kinderen: zonder keys op volgorde (1e met 1e …), met keys op naam.</li></ol>
+<p style="position:absolute;right:128px;top:48px;width:360px;text-align:right;font-size:24px;color:#C00000">Kernbegrip</p>
+<p style="position:absolute;right:128px;bottom:48px;width:80px;text-align:right;font-size:24px;color:#7F7F7F">18</p>
+<aside>De vergelijking tussen de oude en de nieuwe virtuele boom heet reconciliation. Dat is het hart van React, en een typische examenvraag.
+
+Eerst het probleem. In de informatica bestaat het tree edit distance-probleem: wat is het kleinste aantal operaties, zoals toevoegen, verwijderen of verplaatsen, om van boom A naar boom B te gaan? De beste algemene algoritmes daarvoor hebben een complexiteit van O(n³), met n het aantal nodes. Bij een pagina met duizend elementen is dat duizend tot de derde macht: een miljard vergelijkingen. En dat bij elke toetsaanslag of klik. Dat is onbruikbaar.
+
+Daarom gebruikt React een heuristiek: een vuistregel die niet altijd het absoluut minimale aantal operaties vindt, maar in de praktijk bijna altijd goed genoeg is, en lineair werkt, in O(n). Die heuristiek steunt op twee aannames. Eén: twee elementen van een verschillend type leveren verschillende bomen op. Twee: de developer kan met een key aangeven welke kinderen over renders heen hetzelfde blijven.
+
+Concreet levert dat drie regels op. React overloopt de bomen van boven naar beneden.
+
+Regel één: is het type verschillend, bijvoorbeeld een div die een section wordt, of een Counter-component dat een Timer wordt? Dan probeert React niets te hergebruiken. De volledige oude deelboom wordt verwijderd, inclusief alle state van de componenten erin, en de nieuwe wordt van nul opgebouwd.
+
+Regel twee: is het type hetzelfde? Bij een gewone HTML-tag vergelijkt React de attributen en past alleen de gewijzigde aan, bijvoorbeeld enkel className. Bij een component blijft de instantie bestaan, dus ook de state, en het component krijgt de nieuwe props en rendert opnieuw.
+
+Regel drie: daarna doet React hetzelfde voor de kinderen, recursief. Zonder keys vergelijkt React de kinderen op positie: het eerste oude kind met het eerste nieuwe kind, enzovoort. Met keys koppelt React ze op basis van hun key. Op de volgende slides zie je waarom dat verschil zo belangrijk is.</aside>
+</section>

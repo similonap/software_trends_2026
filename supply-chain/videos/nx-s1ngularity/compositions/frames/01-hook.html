@@ -1,0 +1,258 @@
+<template id="01-hook-template">
+<div data-hf-id="hf-wamh" id="root" data-composition-id="01-hook" data-width="1920" data-height="1080" data-start="0" data-duration="9.6">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    @font-face { font-family: 'Barlow'; src: url('assets/fonts/Barlow-900.woff2') format('woff2'); font-weight: 900; font-style: normal; font-display: block; }
+    @font-face { font-family: 'IBM Plex Mono'; src: url('assets/fonts/IBM_Plex_Mono-400.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: block; }
+    @font-face { font-family: 'IBM Plex Mono'; src: url('assets/fonts/IBM_Plex_Mono-500.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: block; }
+    @font-face { font-family: 'IBM Plex Mono'; src: url('assets/fonts/IBM_Plex_Mono-600.woff2') format('woff2'); font-weight: 600; font-style: normal; font-display: block; }
+
+    #root {
+      position: absolute;
+      left: 0; top: 0;
+      width: 1920px; height: 1080px;
+      overflow: hidden;
+      container-type: size;
+      --ink-black: #111111;
+      --fire-orange: #E85D26;
+      --cream: #F0ECE5;
+      --cream-muted: #888880;
+      --cream-hint: #505048;
+      --border-dark: #282826;
+    }
+    .h01-ground {
+      position: absolute; inset: 0;
+      background: var(--ink-black);
+    }
+    .h01-stage {
+      position: absolute; inset: 0;
+      transform-origin: 30% 40%;
+    }
+
+    /* kicker — mono chrome, uppercase, tracked */
+    .h01-kicker {
+      position: absolute;
+      left: 106px; top: 92px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 500;
+      font-size: 1.45cqw;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--fire-orange);
+      display: flex; align-items: center; gap: 22px;
+    }
+    .h01-stub { width: 36px; height: 2px; background: var(--fire-orange); }
+
+    /* terminal prompt group — authored at its centered position, moved via GSAP transform */
+    .h01-term {
+      position: absolute;
+      left: 355px; top: 330px;
+      width: 1210px;
+      transform-origin: 0 0;
+      font-family: 'IBM Plex Mono', monospace;
+    }
+    .h01-line {
+      display: flex; align-items: baseline;
+      font-size: 7.5cqw; /* 144px */
+      font-weight: 500;
+      line-height: 1.1;
+      color: var(--cream);
+      white-space: nowrap;
+    }
+    .h01-dollar { color: var(--fire-orange); }
+    .h01-wrap {
+      display: inline-flex; align-items: baseline;
+      min-width: 12ch; white-space: pre;
+    }
+    .h01-caret {
+      display: inline-block;
+      width: 0.55ch; height: 0.9em;
+      margin-left: 0.06ch;
+      background: var(--cream);
+      transform: translateY(0.12em);
+    }
+    .h01-post {
+      margin-top: 22px;
+      font-size: 3.1cqw; /* ~60px */
+      font-weight: 400;
+      color: var(--cream-muted);
+      white-space: nowrap;
+    }
+
+    /* scanned path column — left 60% */
+    .h01-list {
+      position: absolute;
+      left: 106px; top: 330px;
+      width: 1100px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 400;
+      font-size: 2.9cqw; /* ~56px */
+      line-height: 92px;
+      color: var(--cream);
+    }
+    .h01-path { height: 92px; white-space: pre; }
+    .h01-path .h01-slash { color: var(--cream-hint); }
+
+    /* right 40% — hairline + quiet scan status */
+    .h01-divider {
+      position: absolute;
+      left: 1250px; top: 336px;
+      width: 1px; height: 520px;
+      background: var(--border-dark);
+      transform-origin: 50% 0;
+    }
+    .h01-side {
+      position: absolute;
+      left: 1310px; top: 344px;
+      font-family: 'IBM Plex Mono', monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+    .h01-side-label {
+      font-weight: 500; font-size: 1.45cqw;
+      color: var(--cream-muted);
+    }
+    .h01-side-rule { width: 36px; height: 2px; background: var(--cream-hint); margin: 26px 0 30px; }
+    .h01-side-count {
+      font-weight: 600; font-size: 4.2cqw;
+      letter-spacing: 0.04em;
+      color: var(--cream);
+      line-height: 1;
+    }
+    .h01-side-sub {
+      margin-top: 18px;
+      font-weight: 500; font-size: 1.45cqw;
+      color: var(--cream-hint);
+    }
+
+    /* payoff word — Barlow display, lowercase, fire-orange */
+    .h01-word {
+      position: absolute;
+      left: 96px; top: 660px;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 900;
+      font-size: 10.5cqw; /* ~202px */
+      line-height: 1;
+      letter-spacing: -0.04em;
+      text-transform: lowercase;
+      color: var(--fire-orange);
+      white-space: nowrap;
+      transform-origin: 0% 60%;
+    }
+  </style>
+
+  <div data-hf-id="hf-d0bq" class="h01-ground clip" data-start="0" data-duration="9.6" data-track-index="0"></div>
+
+  <div data-hf-id="hf-mx70" class="h01-stage clip" id="h01-stage" data-start="0" data-duration="9.6" data-track-index="1">
+    <div data-hf-id="hf-3bcq" class="h01-kicker" id="h01-kicker"><span data-hf-id="hf-3ugf" class="h01-stub"></span>Augustus 2025</div>
+
+    <div data-hf-id="hf-d3tu" class="h01-list" id="h01-list">
+      <div data-hf-id="hf-5gt3" class="h01-path" id="h01-p0"></div>
+      <div data-hf-id="hf-1ip2" class="h01-path" id="h01-p1"></div>
+      <div data-hf-id="hf-xkl1" class="h01-path" id="h01-p2"></div>
+      <div data-hf-id="hf-wsx8" class="h01-path" id="h01-p3"></div>
+      <div data-hf-id="hf-kaer" class="h01-path" id="h01-p4"></div>
+    </div>
+
+    <div data-hf-id="hf-u1yw" class="h01-divider" id="h01-divider"></div>
+    <div data-hf-id="hf-30j6" class="h01-side" id="h01-side">
+      <div data-hf-id="hf-pkm5" class="h01-side-label">AI-assistent</div>
+      <div data-hf-id="hf-savy" class="h01-side-rule"></div>
+      <div data-hf-id="hf-lqiq" class="h01-side-count" id="h01-count">00</div>
+      <div data-hf-id="hf-03ri" class="h01-side-sub">bestanden</div>
+    </div>
+
+    <div data-hf-id="hf-m096" class="h01-term" id="h01-term">
+      <div data-hf-id="hf-8xh6" class="h01-line" id="h01-line"><span data-hf-id="hf-psx7" class="h01-dollar">$&nbsp;</span><span data-hf-id="hf-e8av" class="h01-wrap"><span data-hf-id="hf-g5o9" id="h01-text"></span><span data-hf-id="hf-wwpl" class="h01-caret" id="h01-caret"></span></span></div>
+      <div data-hf-id="hf-mwwt" class="h01-post" id="h01-post">&gt; postinstall: node telemetry.js</div>
+    </div>
+
+    <div data-hf-id="hf-b3gb" class="h01-word" id="h01-word">wachtwoorden</div>
+  </div>
+
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+      var DUR = 9.6;
+      var tl = gsap.timeline({ paused: true });
+
+      // ---- Scene 1 (0.0–2.4): kicker "AUGUSTUS 2025", prompt "$" + caret waiting ----
+      tl.fromTo("#h01-kicker", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.0);
+      tl.fromTo("#h01-line", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 0.2);
+
+      // ---- Scene 2 (2.9–4.0): "npm install" typed by a human (discrete-text-sequence) ----
+      var SEQ = [
+        { t: 0.0, text: "" },
+        { t: 2.90, text: "n" },
+        { t: 3.00, text: "np" },
+        { t: 3.12, text: "npm" },
+        { t: 3.30, text: "npm " },
+        { t: 3.46, text: "npm i" },
+        { t: 3.54, text: "npm in" },
+        { t: 3.62, text: "npm ins" },
+        { t: 3.72, text: "npm inst" },
+        { t: 3.80, text: "npm insta" },
+        { t: 3.88, text: "npm instal" },
+        { t: 3.98, text: "npm install" }
+      ];
+      function textAt(t) {
+        for (var i = SEQ.length - 1; i >= 0; i--) { if (t >= SEQ[i].t) return SEQ[i].text; }
+        return "";
+      }
+      var textEl = document.getElementById("h01-text");
+      var caretEl = document.getElementById("h01-caret");
+      var driver = { t: 0 };
+      tl.to(driver, {
+        t: DUR, duration: DUR, ease: "none",
+        onUpdate: function () {
+          var t = driver.t;
+          textEl.textContent = textAt(t);
+          // caret solid while typing, deterministic square-wave blink otherwise (0.8s period)
+          var typing = t >= 2.85 && t < 4.1;
+          var on = typing || Math.sin((t - 0.35) * Math.PI * 2 / 0.8 + Math.PI / 2) > -0.2;
+          caretEl.style.opacity = on ? "1" : "0";
+        }
+      }, 0);
+
+      // "En op je laptop" — the install quietly runs its postinstall hook
+      tl.fromTo("#h01-post", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 5.28);
+
+      // ---- Scene 3 (6.0–8.3): prompt slides up + shrinks to the upper third; scan list types in ----
+      // centered (left 355, top 330) -> upper-left (left 106, top 168) at 0.42
+      tl.fromTo("#h01-term", { x: 0, y: 0, scale: 1 }, { x: -249, y: -162, scale: 0.42, duration: 0.7, ease: "power3.inOut" }, 6.0);
+      tl.fromTo("#h01-divider", { scaleY: 0 }, { scaleY: 1, duration: 0.6, ease: "power3.out" }, 6.45);
+      tl.fromTo("#h01-side", { opacity: 0, x: 16 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 7.04);
+
+      var PATHS = ["~/.ssh/id_rsa", "~/.npmrc", ".env", "~/.config/gh/hosts.yml", "wallet.dat"];
+      var STARTS = [6.50, 6.84, 7.18, 7.52, 7.86];
+      var TYPE = 0.2;
+      var countEl = document.getElementById("h01-count");
+      PATHS.forEach(function (p, i) {
+        var el = document.getElementById("h01-p" + i);
+        var len = { v: 0 };
+        tl.fromTo(len, { v: 0 }, {
+          v: p.length, duration: TYPE, ease: "none",
+          onUpdate: function () { el.textContent = p.substring(0, Math.round(len.v)); }
+        }, STARTS[i]);
+        tl.fromTo(el, { opacity: 0 }, { opacity: 1, duration: 0.05, ease: "none" }, STARTS[i]);
+        // each path dims to ~40% as the next one lands
+        var dimAt = i + 1 < PATHS.length ? STARTS[i + 1] : 8.36;
+        tl.fromTo(el, { opacity: 1 }, { opacity: 0.4, duration: 0.18, ease: "power2.out", immediateRender: false }, dimAt);
+        tl.set(countEl, { textContent: "0" + (i + 1) }, STARTS[i]);
+      });
+      tl.set(countEl, { textContent: "00" }, 0);
+
+      // ---- Scene 4 (8.36–9.6): last path replaced by "wachtwoorden" (spring-pop-entrance, smooth) ----
+      tl.set("#h01-p4", { visibility: "hidden" }, 8.36);
+      tl.set("#h01-p4", { visibility: "visible" }, 0);
+      tl.fromTo("#h01-word", { scale: 0, opacity: 0, y: 12 }, { scale: 1, opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 8.36);
+      tl.fromTo("#h01-list", { opacity: 1 }, { opacity: 0.75, duration: 0.4, ease: "power2.out", immediateRender: false }, 8.36);
+
+      // macro camera drift underneath the whole shot
+      tl.fromTo("#h01-stage", { scale: 1 }, { scale: 1.035, duration: DUR, ease: "none" }, 0);
+
+      window.__timelines["01-hook"] = tl;
+    })();
+  </script>
+</div>
+</template>

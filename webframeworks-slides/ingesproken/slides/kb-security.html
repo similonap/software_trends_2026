@@ -1,0 +1,21 @@
+<section id="kb-security" data-transition="fade" style="background:#FFFFFF;color:#404040;font-family:Arial, Helvetica, sans-serif;padding:104px 128px 144px;display:flex;flex-direction:column;gap:32px">
+<h2 style="font-family:Questrial, 'Century Gothic', Arial, sans-serif;font-size:64px;font-weight:400;line-height:1.15;color:#C00000">Security-begrippen</h2>
+<table style="font-size:33px;color:#404040;font-family:Arial, Helvetica, sans-serif"><tr style="background:#C00000"><th style="width:28%;text-align:left;color:#FFFFFF;font-weight:700">Begrip</th><th style="width:72%;text-align:left;color:#FFFFFF;font-weight:700">Betekenis</th></tr><tr style="background:#F2F2F2"><td><b>Aanvalsoppervlak</b></td><td>Alle plaatsen waar een aanvaller input kan geven: endpoints, formulieren, uploads</td></tr><tr style="background:#FFFFFF"><td><b>Kwetsbaarheid / exploit</b></td><td>Een fout die misbruikt kan worden / de code of het request dat dat effectief doet</td></tr><tr style="background:#F2F2F2"><td><b>CVE</b></td><td>Common Vulnerabilities and Exposures: uniek nummer per lek, bv. CVE-2025-55182</td></tr><tr style="background:#FFFFFF"><td><b>CVSS</b></td><td>Score van 0 tot 10: laag (&lt; 4), medium (4–6,9), hoog (7–8,9), kritiek (9–10)</td></tr><tr style="background:#F2F2F2"><td><b>RCE</b></td><td>Remote code execution: de aanvaller voert eigen code uit op jouw server</td></tr><tr style="background:#FFFFFF"><td><b>DoS</b></td><td>Denial of service: de server zo belasten dat hij niet meer antwoordt</td></tr><tr style="background:#F2F2F2"><td><b>Patch</b></td><td>Update die een lek dicht; pas veilig als je hem ook installeert</td></tr><tr style="background:#FFFFFF"><td><b>Zero-day</b></td><td>Lek dat al misbruikt wordt voor er een patch bestaat</td></tr></table>
+<p style="position:absolute;right:128px;top:48px;width:360px;text-align:right;font-size:24px;color:#C00000">Kernbegrip</p>
+<p style="position:absolute;right:128px;bottom:48px;width:80px;text-align:right;font-size:24px;color:#7F7F7F">47</p>
+<aside>Om de security-incidenten te begrijpen, overlopen we eerst een aantal begrippen.
+
+Het aanvalsoppervlak, in het Engels attack surface, is de som van alle plaatsen waar een aanvaller input kan geven aan je systeem: API-endpoints, formulieren, file uploads, headers. Hoe meer code er op een server publiek bereikbaar is, hoe groter het aanvalsoppervlak.
+
+Een kwetsbaarheid is een fout in software die misbruikt kan worden. Een exploit is de concrete code of het concrete request dat die fout effectief misbruikt.
+
+Een CVE, wat staat voor Common Vulnerabilities and Exposures, is een uniek nummer dat aan een publiek bekende kwetsbaarheid wordt gegeven, zodat iedereen weet over welk lek het gaat. Het nummer bevat het jaartal en een volgnummer.
+
+CVSS, het Common Vulnerability Scoring System, geeft een ernstscore van nul tot tien. Daarbij wordt gekeken naar hoe makkelijk het lek te misbruiken is, bijvoorbeeld of je moet ingelogd zijn, en wat de impact is. Alles vanaf negen is kritiek.
+
+RCE, remote code execution, betekent dat een aanvaller van op afstand zijn eigen code op jouw server kan uitvoeren. Dan kan hij alles: data stelen, de database leegmaken, malware installeren. Dat is het ergste wat er kan gebeuren.
+
+DoS, denial of service, betekent dat een aanvaller je server zo zwaar belast dat hij niet meer antwoordt voor gewone gebruikers.
+
+Een patch is een update die een lek dicht. Belangrijk: een patch beschermt je pas als je hem ook installeert. En een zero-day is een lek dat al misbruikt wordt voordat de makers er een patch voor hebben.</aside>
+</section>

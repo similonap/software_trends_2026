@@ -1,0 +1,38 @@
+<section id="inc-polyfill-io" data-transition="fade" style="background:#FFFFFF;color:#3C3B40;font-family:'Source Sans 3', Arial, sans-serif;padding:120px 128px 150px;display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#E60005">Incident · juni 2024 · overname van een CDN-domein</p>
+<h2 style="font-family:'League Gothic', 'Arial Narrow', sans-serif;font-size:80px;font-weight:400;line-height:1.05;letter-spacing:0;color:#232226">polyfill.io: wie het domein koopt</h2>
+</div>
+<div style="display:grid;grid-template-columns:300px 1fr;gap:12px 16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Toegang</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">Geen hack. In februari 2024 werden het domein en het GitHub-account verkocht aan een nieuwe eigenaar, die bepaalt welke code de CDN serveert.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Verspreiding</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">Websites laadden het script live met een &lt;script&gt;-tag van cdn.polyfill.io. Elke bezoeker kreeg dus de versie van dat moment.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Payload</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">Mobiele bezoekers werden doorgestuurd naar gok- en sportweddensites. De code sloeg beheerders en sites met analytics over, om minder op te vallen.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Detectie en respons</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">Sansec sloeg alarm op 25 juni 2024. Binnen twee dagen blokkeerde Google de advertenties, zette Namecheap het domein stil en boden Cloudflare en Fastly mirrors aan.</p>
+</div>
+<div style="display:flex;gap:24px;align-items:stretch">
+<div style="flex:1;background:#E6EFF3;border-left:6px solid #005078;border-radius:8px;padding:20px 32px">
+<p style="font-size:27px;line-height:1.35;color:#232226"><b><span style="color:#005078">Les.</span></b> Een domein is ook een dependency: wie het domein koopt, koopt je bezoekers.</p>
+</div>
+<div style="width:440px;background:#F4F4F4;border:1px solid #E1E1E1;border-radius:8px;padding:20px 28px;display:flex;flex-direction:column;gap:6px;justify-content:center">
+<p style="font-size:20px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#6B6A70">Had dit tegengehouden</p>
+<p style="font-size:26px;line-height:1.3;font-weight:600;color:#232226">zelf hosten met SRI, minder dependencies</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1440px;font-size:24px;color:#6B6A70">Deel 4 — Tijdlijn en casestudies · 0:18–0:30</p>
+<img src="/_blob/4d3eecb01832b6f4111235aa00bb3842" alt="AP Hogeschool" style="position:absolute;right:128px;bottom:52px;height:56px;width:auto">
+<aside>Verdieping: geen npm-package, maar dezelfde vertrouwensvraag. Sla over bij tijdgebrek.
+
+polyfill.io serveerde polyfills: code die nieuwe browserfuncties nabootst in oude browsers. Websites laadden het met één regel: &lt;script src="https://cdn.polyfill.io/v3/polyfill.min.js"&gt;. In februari 2024 werden het domein en het GitHub-account verkocht. De maker, Andrew Betts, waarschuwde toen al: “If you own a website, loading a script implies an incredible relationship of trust with that third party … Do you actually trust them?”
+
+In juni 2024 ontdekte Sansec dat de CDN kwaadaardige code serveerde aan meer dan 100.000 websites, onder meer JSTOR, Intuit en het World Economic Forum. Mobiele bezoekers werden op bepaalde uren doorgestuurd naar gok- en sportweddensites. Beheerders (herkend aan hun cookies) en sites met webanalytics kregen schone code, zodat de eigenaars het niet snel zagen.
+
+Respons: Google blokkeerde advertenties voor de getroffen sites, Cloudflare herschreef verzoeken naar een eigen mirror, Namecheap zette het domein on hold. In mei 2025 sanctioneerde het Amerikaanse ministerie van Financiën het bedrijf Funnull, dat volgens de sanctie “a repository of code used by web developers” had gekocht en aangepast.
+
+Verdediging: host derde-partijcode zelf, met Subresource Integrity (een hash in het integrity-attribuut), of laat ze weg. Volgens de maker hadden moderne browsers deze polyfills niet meer nodig.
+
+Bronnen: Sansec; The Register; US Treasury.</aside>
+</section>

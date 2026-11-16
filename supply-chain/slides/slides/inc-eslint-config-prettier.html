@@ -1,0 +1,40 @@
+<section id="inc-eslint-config-prettier" data-transition="fade" style="background:#FFFFFF;color:#3C3B40;font-family:'Source Sans 3', Arial, sans-serif;padding:120px 128px 150px;display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#E60005">Incident · 18 juli 2025 · accountovername (phishing)</p>
+<h2 style="font-family:'League Gothic', 'Arial Narrow', sans-serif;font-size:80px;font-weight:400;line-height:1.05;letter-spacing:0;color:#232226">eslint-config-prettier: npnjs.com</h2>
+</div>
+<div style="display:grid;grid-template-columns:300px 1fr;gap:12px 16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Toegang</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">Een mail “van npm” vroeg de maintainer zijn account te verifiëren, via een link naar npnjs.com: één letter verschil. Daar gaf hij zijn gegevens prijs, en de aanvaller kreeg een token.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Verspreiding</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">Rechtstreeks gepubliceerd, zonder commits op GitHub: vier versies van eslint-config-prettier (~30 mln downloads per week) en packages van dezelfde maintainer.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Payload</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">Een install script startte op Windows een DLL met malware. Een dag later kreeg ook het package is een backdoor die op elk besturingssysteem draaide, bij require.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Detectie en respons</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">Een gebruiker opende na ongeveer een uur een issue; na 2,5 uur stond er een propere versie. De maintainer: “sorry for my negligence.”</p>
+</div>
+<div style="display:flex;gap:24px;align-items:stretch">
+<div style="flex:1;background:#E6EFF3;border-left:6px solid #005078;border-radius:8px;padding:20px 32px">
+<p style="font-size:27px;line-height:1.35;color:#232226"><b><span style="color:#005078">Les.</span></b> Eén letter verschil in een domein volstaat. Mensen lezen URL’s niet, een passkey controleert ze wel.</p>
+</div>
+<div style="width:440px;background:#F4F4F4;border:1px solid #E1E1E1;border-radius:8px;padding:20px 28px;display:flex;flex-direction:column;gap:6px;justify-content:center">
+<p style="font-size:20px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#6B6A70">Had dit tegengehouden</p>
+<p style="font-size:26px;line-height:1.3;font-weight:600;color:#232226">phishing-resistente 2FA, cooldown</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1440px;font-size:24px;color:#6B6A70">Deel 4 — Tijdlijn en casestudies · 0:18–0:30</p>
+<img src="/_blob/4d3eecb01832b6f4111235aa00bb3842" alt="AP Hogeschool" style="position:absolute;right:128px;bottom:52px;height:56px;width:auto">
+<aside>Verdieping: sla over bij tijdgebrek. De tweede grote phishinggolf van 2025, zeven weken vóór chalk en debug.
+
+Op 18 juli 2025 kreeg maintainer JounQin een mail die leek te komen van support@npmjs.com, met de vraag zijn account te verifiëren. De link wees naar npnjs.com, met een n in plaats van een m. Dat de afzender overtuigend leek, kwam ook doordat npmjs.org toen geen DMARC- of SPF-beleid had. De aanvaller kreeg zo een npm-token.
+
+Tussen 15:51 en 16:13 UTC verschenen vier kwaadaardige versies van eslint-config-prettier, plus versies van eslint-plugin-prettier, synckit, @pkgr/core en napi-postinstall. Er waren geen bijbehorende commits op GitHub: wie de repository bekeek, zag niets.
+
+Payload: install.js startte via een onschuldig klinkende functie logDiskSpace() een DLL met rundll32, alleen op Windows. Op 19 juli kreeg ook het package is (~2,6 miljoen downloads per week) kwaadaardige versies, via een oud-maintainer die op zijn verzoek opnieuw was toegevoegd. Die versie had geen install script nodig: een backdoor in JavaScript die bij require startte en elk bericht van de aanvaller als code uitvoerde.
+
+Een communitylid meldde het na ongeveer een uur. Na 2,5 uur stond de propere 10.1.8 online. JounQin: “Thanks all, and sorry for my negligence.”
+
+eslint-config-prettier is een devDependency: het draait niet in productie, maar wel op ontwikkelaarsmachines en in CI, waar de tokens zitten.
+
+Bronnen: Endor Labs; Socket; BleepingComputer.</aside>
+</section>

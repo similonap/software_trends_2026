@@ -1,0 +1,17 @@
+<section id="xkcd-sandboxing" data-transition="fade" style="background:#FFFFFF;color:#3C3B40;font-family:'Source Sans 3', Arial, sans-serif;padding:128px 128px 160px;display:flex;gap:64px;align-items:center">
+<img src="/_blob/128db8ad28ca6b92f543ba1be4d8b83d" alt="xkcd 2044 Sandboxing Cycle: een cyclus waarin we systemen verbinden om ze te laten samenwerken, ze dan voor de veiligheid isoleren, en ze opnieuw verbinden omdat dat handig is" style="width:702px;height:760px;object-fit:contain;border:1px solid #E1E1E1;border-radius:12px">
+<div style="flex:1;display:flex;flex-direction:column;gap:24px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#005078">Intermezzo · xkcd 2044</p>
+<h2 style="font-family:'League Gothic', 'Arial Narrow', sans-serif;font-size:80px;font-weight:400;line-height:1.05;letter-spacing:0;color:#232226">Verbinden, isoleren, opnieuw verbinden</h2>
+<p style="font-size:28px;line-height:1.4">Containers, VM’s en het Node.js-permissiemodel beperken de schade. Maar elke sandbox krijgt na een tijd gaatjes “voor het gemak”. Houd die gaatjes bewust klein.</p>
+<p style="font-size:28px;line-height:1.4;font-style:italic;color:#232226">“Alles wat ik wil, is een veilig systeem waarin ik makkelijk alles kan doen.”</p>
+<p style="font-size:24px;line-height:1.4;color:#6B6A70">Randall Munroe · xkcd.com/2044 · CC BY-NC 2.5</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1440px;font-size:24px;color:#6B6A70">Deel 5 — Verdediging als gebruiker · 0:30–0:36</p>
+<img src="/_blob/4d3eecb01832b6f4111235aa00bb3842" alt="AP Hogeschool" style="position:absolute;right:128px;bottom:52px;height:56px;width:auto">
+<aside>Laag 6 in één strip. Het citaat in cursief is de alt-tekst van de strip (“All I want is a secure system where it’s easy to do anything I want. Is that so much to ask?”).
+
+Herkenbaar voor studenten: je zet een dev container op, en een week later heb je je ~/.ssh en je cloudcredentials erin gemount omdat het anders onhandig is. Dan ben je terug bij af.
+
+Praktische tip: maak het gaatje expliciet en klein. Mount alleen de projectmap, geef de container geen productiecredentials, en gebruik bij Node.js --allow-fs-read voor alleen de mappen die echt nodig zijn.</aside>
+</section>

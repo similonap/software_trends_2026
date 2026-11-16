@@ -1,0 +1,20 @@
+<section id="kb-supply-chain" data-transition="fade" style="background:#FFFFFF;color:#404040;font-family:Arial, Helvetica, sans-serif;padding:104px 128px 144px;display:flex;flex-direction:column;gap:32px">
+<h2 style="font-family:Questrial, 'Century Gothic', Arial, sans-serif;font-size:64px;font-weight:400;line-height:1.15;color:#C00000">Dependencies en de supply chain</h2>
+<p style="font-size:40px;line-height:1.4"><b>Supply chain attack:</b> een aanval via een onderdeel waarop jouw software steunt (een npm-package, een build tool), in plaats van via je eigen code.</p>
+<table style="font-size:32px;color:#404040;font-family:Arial, Helvetica, sans-serif"><tr style="background:#C00000"><th style="width:30%;text-align:left;color:#FFFFFF;font-weight:700">Begrip</th><th style="width:70%;text-align:left;color:#FFFFFF;font-weight:700">Betekenis</th></tr><tr style="background:#F2F2F2"><td><b>Transitieve dependency</b></td><td>Een dependency van een dependency; een nieuw Next.js-project installeert al honderden packages</td></tr><tr style="background:#FFFFFF"><td><b>Semver (^1.4.2)</b></td><td>MAJOR.MINOR.PATCH; het dakje laat automatisch elke nieuwere 1.x-versie toe</td></tr><tr style="background:#F2F2F2"><td><b>Lockfile</b></td><td>package-lock.json legt de exacte versie van élk package vast; installeer met npm ci</td></tr><tr style="background:#FFFFFF"><td><b>Install-scripts</b></td><td>postinstall draait automatisch code op jouw machine bij npm install</td></tr><tr style="background:#F2F2F2"><td><b>Typosquatting</b></td><td>Malafide package met een naam die op een bekende lijkt (bv. reakt)</td></tr><tr style="background:#FFFFFF"><td><b>Slopsquatting</b></td><td>Aanvallers registreren package-namen die AI-modellen verzinnen</td></tr></table>
+<p style="position:absolute;right:128px;top:48px;width:360px;text-align:right;font-size:24px;color:#C00000">Kernbegrip</p>
+<p style="position:absolute;right:128px;bottom:48px;width:80px;text-align:right;font-size:24px;color:#7F7F7F">52</p>
+<aside>Er is nog een tweede aanvalsoppervlak, en dat is niet je eigen code, maar alle code waarop je steunt: je dependencies.
+
+Een dependency is een package dat je project nodig heeft, bijvoorbeeld React of zod. Maar die packages hebben zelf ook dependencies, en die weer andere. Een dependency van een dependency noemen we een transitieve dependency. Een gloednieuw Next.js-project installeert al honderden packages, geschreven door honderden verschillende mensen. Je vertrouwt ze allemaal.
+
+Een supply chain attack is een aanval via zo'n onderdeel. In plaats van jouw goed beveiligde applicatie aan te vallen, valt een aanvaller een klein package aan dat duizenden projecten gebruiken.
+
+Een paar begrippen die daarbij horen. Semantic versioning, of semver: versienummers in de vorm major, minor, patch. Een major-versie mag dingen breken, een minor voegt features toe, een patch lost bugs op. In package.json betekent het dakje voor een versie dat npm automatisch elke nieuwere 1.x-versie mag installeren. Handig voor updates, maar als iemand een kwaadaardige 1.4.3 publiceert, krijg je die automatisch.
+
+Daarom is er de lockfile, package-lock.json: die legt de exacte versie van elk package vast, ook van de transitieve. Met npm ci installeer je exact wat in de lockfile staat.
+
+Install-scripts, zoals postinstall, zijn stukjes code die automatisch draaien wanneer je een package installeert. Ideaal voor aanvallers.
+
+Typosquatting: een malafide package met een naam die bijna gelijk is aan een bekend package, in de hoop dat iemand een typfout maakt. En een nieuwe variant uit het AI-tijdperk: slopsquatting. AI-modellen verzinnen soms package-namen die niet bestaan. Aanvallers registreren precies die namen, zodat een agent die het verzonnen package installeert, malware binnenhaalt.</aside>
+</section>

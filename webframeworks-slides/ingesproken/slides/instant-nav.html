@@ -1,0 +1,18 @@
+<section id="instant-nav" data-transition="fade" style="background:#FFFFFF;color:#404040;font-family:Arial, Helvetica, sans-serif;padding:104px 128px 144px;display:flex;flex-direction:column;gap:40px">
+<h2 style="font-family:Questrial, 'Century Gothic', Arial, sans-serif;font-size:64px;font-weight:400;line-height:1.15;color:#C00000">Next.js 16.3: Instant Navigations</h2>
+<p style="font-size:42px;line-height:1.4;color:#595959;font-style:italic">“…the long-standing (and valid!) criticism that Server Components can make apps feel unresponsive.” (Next.js-team, juni 2026)</p>
+<p style="font-size:42px;line-height:1.4">Wacht een route op data, dan moet de developer kiezen:</p>
+<ul style="font-size:42px;line-height:1.4"><li><b>Stream</b>: &lt;Suspense&gt; rond de data, meteen een laadstatus</li><li><b>Cache</b>: 'use cache', meteen een eerder gerenderde versie</li><li><b>Block</b>: instant = false, bewust wachten op de server</li></ul>
+<p style="font-size:42px;line-height:1.4"><b>Partial Prefetching:</b> één herbruikbare shell (het skelet van een pagina) per route prefetchen, in plaats van een request per link.</p>
+<p style="position:absolute;left:128px;bottom:48px;width:1480px;font-size:24px;color:#7F7F7F">Bron: nextjs.org/blog/next-16-3-instant-navigations</p>
+<p style="position:absolute;right:128px;bottom:48px;width:80px;text-align:right;font-size:24px;color:#7F7F7F">41</p>
+<aside>Dit is een van de meest veelzeggende momenten van het jaar. Bij de aankondiging van Next.js 16.3 schreef het Next.js-team letterlijk over de al lang bestaande, en terechte, kritiek dat Server Components apps traag kunnen laten aanvoelen. Het uitroepteken staat er echt.
+
+Het probleem kennen we van het kernbegrip navigatie: in een server-gedreven app klik je, gebeurt er even niets, en verschijnt dan de volgende pagina. In een SPA zie je bij een klik meteen het skelet van de volgende pagina. Dat voelt sneller, ook al duurt het in totaal even lang.
+
+Next.js 16.3 lost dit op met Instant Navigations. Als een route op de server op data wacht, krijg je tijdens het ontwikkelen een foutmelding die je verplicht om te kiezen. Stream: je zet de trage data in een Suspense-boundary, zodat de gebruiker meteen een laadstatus ziet. Cache: je markeert de data met ‘use cache’, zodat de gebruiker meteen een eerder gerenderde versie ziet. Of Block: je zegt bewust dat deze navigatie mag wachten, bijvoorbeeld voor een blogpost waar je geen laadscherm wil.
+
+Daarnaast veranderde het prefetchen. Vroeger stuurde Next.js voor elke zichtbare link een apart prefetch-request: twintig chatgesprekken in een zijbalk betekende twintig requests. Het team gaf zelf toe dat dat er belachelijk uitzag. Met Partial Prefetching wordt per route één herbruikbare shell opgehaald: het skelet van de pagina, zoals de layout en de laadindicatoren. Die shell wordt voor alle links naar die route hergebruikt, net zoals een SPA de code per route één keer laadt.
+
+De les: de slinger zwaait niet gewoon terug naar de client. Frameworks proberen het beste van beide te combineren, maar de prijs is complexiteit: je moet per stukje UI een bewuste keuze maken.</aside>
+</section>

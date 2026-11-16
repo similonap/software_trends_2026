@@ -1,0 +1,40 @@
+<section id="inc-coa-rc" data-transition="fade" style="background:#FFFFFF;color:#3C3B40;font-family:'Source Sans 3', Arial, sans-serif;padding:120px 128px 150px;display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#E60005">Incident · 4 november 2021 · accountovername</p>
+<h2 style="font-family:'League Gothic', 'Arial Narrow', sans-serif;font-size:80px;font-weight:400;line-height:1.05;letter-spacing:0;color:#232226">coa en rc: de malware brak zichzelf</h2>
+</div>
+<div style="display:grid;grid-template-columns:300px 1fr;gap:12px 16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Toegang</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">Gecompromitteerde npm-accounts. Hoe precies is niet publiek bevestigd. coa had sinds december 2018 geen nieuwe versie meer gekregen.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Verspreiding</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">Nieuwe versies in elke versielijn, samen ~24 mln downloads per week. coa zat transitief in de React-toolchain, via svgo in react-scripts.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Payload</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">Een preinstall-script startte op Windows een batchbestand dat een DLL downloadde, vermoedelijk de wachtwoordsteler DanaBot. Bijna dezelfde code als bij ua-parser-js.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Detectie en respons</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">Ontdekt omdat het script faalde en React-builds wereldwijd braken. Op 15 november kondigde GitHub verplichte 2FA aan voor populaire packages.</p>
+</div>
+<div style="display:flex;gap:24px;align-items:stretch">
+<div style="flex:1;background:#E6EFF3;border-left:6px solid #005078;border-radius:8px;padding:20px 32px">
+<p style="font-size:27px;line-height:1.35;color:#232226"><b><span style="color:#005078">Les.</span></b> Een package dat drie jaar stil lag en plots nieuwe versies krijgt, is een alarmsignaal.</p>
+</div>
+<div style="width:440px;background:#F4F4F4;border:1px solid #E1E1E1;border-radius:8px;padding:20px 28px;display:flex;flex-direction:column;gap:6px;justify-content:center">
+<p style="font-size:20px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#6B6A70">Had dit tegengehouden</p>
+<p style="font-size:26px;line-height:1.3;font-weight:600;color:#232226">cooldown, install scripts blokkeren</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1440px;font-size:24px;color:#6B6A70">Deel 4 — Tijdlijn en casestudies · 0:18–0:30</p>
+<img src="/_blob/4d3eecb01832b6f4111235aa00bb3842" alt="AP Hogeschool" style="position:absolute;right:128px;bottom:52px;height:56px;width:auto">
+<aside>Verdieping: sla over bij tijdgebrek.
+
+Twee weken na ua-parser-js, op 4 november 2021, verschenen kwaadaardige versies van coa (een parser voor command-line opties, ~9 miljoen downloads per week) en rc (configuratiebestanden lezen, ~15 miljoen per week). coa had sinds december 2018 geen release meer gehad.
+
+De payload zat in een preinstall-script en downloadde op Windows een DLL, vermoedelijk de wachtwoordsteler DanaBot. De code leek sterk op die van ua-parser-js.
+
+Ironisch: het script faalde op veel systemen, waardoor CI-pipelines en React-builds wereldwijd braken. Zo werd de aanval snel opgemerkt. Een slordige aanvaller is een snel ontdekte aanvaller; de aanvallers van 2025 en 2026 testen hun code beter.
+
+Respons: npm verwijderde de versies. Op 15 november 2021 kondigde GitHub aan dat maintainers van populaire packages 2FA moesten gebruiken, te beginnen in het eerste kwartaal van 2022. Dat is de overgang naar fase 2 op de tijdlijn.
+
+Les voor gebruikers: een nieuwe versie van een package dat jarenlang stil lag, verdient wantrouwen. Een cooldown van een paar dagen had dit opgevangen.
+
+Bronnen: GitHub-advisories GHSA-73qr-pfmq-6rp8 (coa) en GHSA-g2q5-5433-rhrf (rc); BleepingComputer; GitHub-blog over verplichte 2FA.</aside>
+</section>

@@ -1,0 +1,16 @@
+<section id="angular-ai" data-transition="fade" style="background:#FFFFFF;color:#404040;font-family:Arial, Helvetica, sans-serif;padding:104px 128px 144px;display:flex;flex-direction:column;gap:40px">
+<h2 style="font-family:Questrial, 'Century Gothic', Arial, sans-serif;font-size:64px;font-weight:400;line-height:1.15;color:#C00000">Angular 22 en AI-agents</h2>
+<ul style="font-size:42px;line-height:1.4"><li><b>Skills</b>: angular-new-app en angular-developer, dé bron van Angular-kennis voor agents</li><li><b>MCP-server in de CLI</b>: sinds v20.1; in v22 kleiner gemaakt omdat skills de kennis overnemen</li><li><b>Signal-graph zichtbaar</b>: welke signal hangt van welke af? Een agent kan dat opvragen via de Chrome DevTools MCP-server</li></ul>
+<div style="background:#1E1E1E;padding:24px 32px"><p style="font-family:'Source Code Pro', 'Courier New', monospace;font-size:36px;line-height:1.45;color:#D4D4D4"><span style="color:#CE9178">$</span> npx skills add https://github.com/angular/skills</p></div>
+<p style="position:absolute;left:128px;bottom:48px;width:1480px;font-size:24px;color:#7F7F7F">Bron: blog.ninja-squad.com/2026/06/03/what-is-new-angular-22.0</p>
+<p style="position:absolute;right:128px;bottom:48px;width:80px;text-align:right;font-size:24px;color:#7F7F7F">63</p>
+<aside>Dit is geen verhaal van Next.js alleen. Angular volgt exact dezelfde strategie, met dezelfde mechanismen die we net zagen.
+
+Skills: met Angular 22 installeer je met één commando de officiële Angular-skills. Er zijn er twee: angular-new-app, om nieuwe projecten correct op te zetten, en angular-developer, voor het genereren van code en architectuurkeuzes. Volgens het Angular-team is die laatste dé bron van Angular-kennis voor agents. Daardoor genereert een agent moderne, signal-gebaseerde en zoneless code in plaats van de NgModules en constructor injection die in oudere trainingsdata domineren.
+
+MCP: de Angular CLI heeft sinds versie 20.1 een ingebouwde MCP-server. Opvallend: in versie 22 werden er tools uit verwijderd, zoals het zoeken naar voorbeelden en het moderniseren van code, omdat de skills die taak nu beter doen. Precies dezelfde beweging als bij Next.js: kennis via docs en skills, live informatie via MCP.
+
+En het derde punt is technisch mooi. In development stelt Angular de signal-graph, welke signal van welke andere afhangt, en de dependency injection-graph beschikbaar als tools in Chrome DevTools. Via de MCP-server van Chrome DevTools kan een agent die opvragen. Een agent die een bug zoekt, kan dus letterlijk zien welke waarden van welke andere afhangen, in plaats van te gokken.
+
+Angular 22 heeft ook experimentele ondersteuning voor WebMCP, maar dat bespreken we bij trend vijf.</aside>
+</section>

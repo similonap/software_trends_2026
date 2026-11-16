@@ -1,0 +1,53 @@
+<section id="lagen" data-transition="fade" style="background:#FFFFFF;color:#3C3B40;font-family:'Source Sans 3', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#005078">Verdediging in lagen</p>
+<h2 style="font-family:'League Gothic', 'Arial Narrow', sans-serif;font-size:80px;font-weight:400;line-height:1.05;letter-spacing:0;color:#232226">Zes lagen, elk stopt een ander deel</h2>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<div style="display:flex;align-items:center;gap:32px;background:#F4F4F4;border:1px solid #E1E1E1;border-left:6px solid #005078;border-radius:12px;padding:12px 28px">
+<p style="width:48px;font-size:28px;font-weight:700;color:#005078">1</p>
+<p style="width:380px;font-family:'Source Sans 3', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.2;color:#232226">Vastleggen</p>
+<p style="flex:1;font-size:28px;line-height:1.35">lockfile in Git, npm ci in CI</p>
+</div>
+<div style="display:flex;align-items:center;gap:32px;background:#F4F4F4;border:1px solid #E1E1E1;border-left:6px solid #005078;border-radius:12px;padding:12px 28px">
+<p style="width:48px;font-size:28px;font-weight:700;color:#005078">2</p>
+<p style="width:380px;font-family:'Source Sans 3', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.2;color:#232226">Wachten</p>
+<p style="flex:1;font-size:28px;line-height:1.35">een cooldown op nieuwe versies</p>
+</div>
+<div style="display:flex;align-items:center;gap:32px;background:#F4F4F4;border:1px solid #E1E1E1;border-left:6px solid #005078;border-radius:12px;padding:12px 28px">
+<p style="width:48px;font-size:28px;font-weight:700;color:#005078">3</p>
+<p style="width:380px;font-family:'Source Sans 3', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.2;color:#232226">Niet uitvoeren</p>
+<p style="flex:1;font-size:28px;line-height:1.35">install scripts alleen na goedkeuring</p>
+</div>
+<div style="display:flex;align-items:center;gap:32px;background:#F4F4F4;border:1px solid #E1E1E1;border-left:6px solid #7FA6BA;border-radius:12px;padding:12px 28px">
+<p style="width:48px;font-size:28px;font-weight:700;color:#005078">4</p>
+<p style="width:380px;font-family:'Source Sans 3', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.2;color:#232226">De juiste bron</p>
+<p style="flex:1;font-size:28px;line-height:1.35">een eigen scope, vast gekoppeld aan je registry</p>
+</div>
+<div style="display:flex;align-items:center;gap:32px;background:#F4F4F4;border:1px solid #E1E1E1;border-left:6px solid #7FA6BA;border-radius:12px;padding:12px 28px">
+<p style="width:48px;font-size:28px;font-weight:700;color:#005078">5</p>
+<p style="width:380px;font-family:'Source Sans 3', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.2;color:#232226">Kijken</p>
+<p style="flex:1;font-size:28px;line-height:1.35">scanners die gedrag analyseren, niet alleen databanken</p>
+</div>
+<div style="display:flex;align-items:center;gap:32px;background:#F4F4F4;border:1px solid #E1E1E1;border-left:6px solid #7FA6BA;border-radius:12px;padding:12px 28px">
+<p style="width:48px;font-size:28px;font-weight:700;color:#005078">6</p>
+<p style="width:380px;font-family:'Source Sans 3', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.2;color:#232226">Beperken</p>
+<p style="flex:1;font-size:28px;line-height:1.35">minder dependencies, minder geheimen</p>
+</div>
+</div>
+<p style="font-size:28px;line-height:1.4;color:#232226">Laag 1 tot 3 (donkere rand) stel je vandaag nog in.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1440px;font-size:24px;color:#6B6A70">Deel 5 — Verdediging als gebruiker · 0:30–0:36</p>
+<img src="/_blob/4d3eecb01832b6f4111235aa00bb3842" alt="AP Hogeschool" style="position:absolute;right:128px;bottom:52px;height:56px;width:auto">
+<aside>Zes lagen, van basis naar gevorderd. Geen enkele maatregel stopt alle aanvallen, maar elke laag stopt een ander deel.
+
+1. Vastleggen: lockfile en npm ci.
+2. Wachten: een cooldown op nieuwe versies.
+3. Niet uitvoeren: install scripts uitschakelen of alleen na goedkeuring.
+4. De juiste bron: tegen dependency confusion en typosquatting.
+5. Kijken: scannen en signalen opvangen.
+6. Beperken: minder dependencies, minder geheimen.
+
+Laag 1 in één zin: commit package-lock.json altijd mee, gebruik npm ci in CI, in Dockerfiles en bij deployments, en lees wijzigingen aan de lockfile in pull requests. Bij lockfile injection wijzigt een PR het resolved-veld zodat het naar een tarball van de aanvaller wijst; GitHub klapt grote lockfile-diffs standaard dicht, dus niemand kijkt. lockfile-lint controleert automatisch dat alle bronnen HTTPS zijn en van een toegelaten host komen.
+
+We gaan nu dieper in op laag 2 en 3, die samen de meeste aanvallen uit deel 4 hadden gestopt.</aside>
+</section>

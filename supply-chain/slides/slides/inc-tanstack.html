@@ -1,0 +1,38 @@
+<section id="inc-tanstack" data-transition="fade" style="background:#FFFFFF;color:#3C3B40;font-family:'Source Sans 3', Arial, sans-serif;padding:120px 128px 150px;display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#E60005">Incident · 11 mei 2026 · CI/CD-compromis en worm</p>
+<h2 style="font-family:'League Gothic', 'Arial Narrow', sans-serif;font-size:80px;font-weight:400;line-height:1.05;letter-spacing:0;color:#232226">TanStack: een vergiftigde cache</h2>
+</div>
+<div style="display:grid;grid-template-columns:300px 1fr;gap:12px 16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Toegang</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">Een pull request uit een fork startte een pull_request_target-job, die een vergiftigde pnpm-cache van 1,1 GB opsloeg onder een sleutel die de release-workflow op main later inlas.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Verspreiding</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">De code las het OIDC-token uit het geheugen van de runner en publiceerde 84 versies van 42 packages, met geldige provenance. Daarna besmette de worm UiPath, Mistral en anderen.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Payload</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">Een prepare-script startte onder Bun een steler voor cloud-, npm-, GitHub- en SSH-secrets. Persistentie via .claude/settings.json en .vscode/tasks.json.</p>
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;line-height:1.5;color:#E60005;border-top:1px solid #CFCFD1;padding:14px 0 0 0">Detectie en respons</p>
+<p style="font-size:27px;line-height:1.33;border-top:1px solid #CFCFD1;padding:12px 0 0 0">StepSecurity opende 26 minuten na de eerste publicatie een issue; TanStack zelf had “no internal alerting”. Unit 42 telde die dag 373 versies van 169 packages.</p>
+</div>
+<div style="display:flex;gap:24px;align-items:stretch">
+<div style="flex:1;background:#E6EFF3;border-left:6px solid #005078;border-radius:8px;padding:20px 32px">
+<p style="font-size:27px;line-height:1.35;color:#232226"><b><span style="color:#005078">Les.</span></b> Provenance bewijst waar iets gebouwd is, niet dat de build proper was. En een CI-cache is ook invoer.</p>
+</div>
+<div style="width:440px;background:#F4F4F4;border:1px solid #E1E1E1;border-radius:8px;padding:20px 28px;display:flex;flex-direction:column;gap:6px;justify-content:center">
+<p style="font-size:20px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#6B6A70">Had dit tegengehouden</p>
+<p style="font-size:26px;line-height:1.3;font-weight:600;color:#232226">geen pull_request_target, de cache als invoer, cooldown</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1440px;font-size:24px;color:#6B6A70">Deel 4 — Tijdlijn en casestudies · 0:18–0:30</p>
+<img src="/_blob/4d3eecb01832b6f4111235aa00bb3842" alt="AP Hogeschool" style="position:absolute;right:128px;bottom:52px;height:56px;width:auto">
+<aside>Verdieping: sla over bij tijdgebrek. Dit is de leerrijkste aanval van 2026 voor wie zelf packages publiceert.
+
+TanStack maakt onder meer @tanstack/react-router, met meer dan 12,7 miljoen downloads per week. Op 11 mei 2026 opende een aanvaller pull request #7378 vanuit een fork. Die PR startte de workflow bundle-size.yml, die onder pull_request_target draaide: met de rechten van de basisrepository. De job sloeg een vergiftigde pnpm-cache van 1,1 GB op onder een cachesleutel die de echte release-workflow op main later herstelde.
+
+Uren later draaide release.yml. Die laadde de cache in, en de code van de aanvaller las het OIDC-token uit het geheugen van de runner. Om 19:20 en 19:26 UTC verschenen 84 versies van 42 packages. Geen enkel npm-token werd gestolen, en de packages droegen geldige provenance: ze waren aantoonbaar gebouwd in de officiële pipeline. StepSecurity: “SLSA provenance confirms which pipeline produced the artifact, not whether the pipeline was behaving as intended.”
+
+De payload stal secrets en nestelde zich in de configuratie van Claude Code en VS Code. Het token dat de malware aanmaakte, had als omschrijving “IfYouRevokeThisTokenItWillWipeTheComputerOfTheOwner”.
+
+Om 19:46 opende een onderzoeker van StepSecurity issue #7383. Tegen het einde van de dag telde Unit 42 373 kwaadaardige versies van 169 packages. GitHub reageerde: actions/checkout weigert sindsdien fork-code onder pull_request_target, en de Actions-cache is alleen-lezen voor onvertrouwde triggers.
+
+Bronnen: postmortem van TanStack; StepSecurity; Unit 42.</aside>
+</section>

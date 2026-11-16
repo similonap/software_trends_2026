@@ -1,0 +1,13 @@
+import react from '@vitejs/plugin-react'
+// import { reactCompilerPreset } from '@vitejs/plugin-react'
+// import babel from '@rolldown/plugin-babel'
+import { defineConfig } from 'vite'
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [
+    react(),
+    // Opdracht 1.3: zet de React Compiler aan
+    // babel({ presets: [reactCompilerPreset()] }),
+  ],
+})

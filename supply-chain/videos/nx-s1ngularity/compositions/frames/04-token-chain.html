@@ -1,0 +1,205 @@
+<template id="04-token-chain-template">
+<div data-hf-id="hf-fp3s" id="root" data-composition-id="04-token-chain" data-width="1920" data-height="1080" data-duration="8.58">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    @font-face { font-family: 'Barlow'; src: url('assets/fonts/Barlow-900.woff2') format('woff2'); font-weight: 900; font-style: normal; font-display: block; }
+    @font-face { font-family: 'IBM Plex Mono'; src: url('assets/fonts/IBM_Plex_Mono-400.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: block; }
+    @font-face { font-family: 'IBM Plex Mono'; src: url('assets/fonts/IBM_Plex_Mono-500.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: block; }
+
+    #root {
+      position: relative;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+    }
+    #ground-04-token-chain {
+      position: absolute;
+      inset: 0;
+      background: #111111;
+      container-type: size;
+    }
+    #token-chain-04-kicker {
+      position: absolute;
+      left: 106px;
+      top: 106px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 500;
+      font-size: 18px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #E85D26;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    #token-chain-04-kicker .tc04-rule {
+      width: 36px;
+      height: 2px;
+      background: #E85D26;
+    }
+    #token-chain-04-stage {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1920px;
+      height: 1080px;
+      transform-origin: 960px 432px;
+    }
+    .tc04-svg {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: visible;
+    }
+    .tc04-svg path {
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: square;
+      stroke-linejoin: miter;
+    }
+    .tc04-arrow-cream { stroke: #F0ECE5; }
+    .tc04-arrow-orange { stroke: #E85D26; }
+
+    .tc04-stub {
+      position: absolute;
+      left: 106px;
+      top: 404px;
+      width: 100px;
+      height: 56px;
+      background: #E85D26;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 500;
+      font-size: 20px;
+      letter-spacing: 0.14em;
+      color: #111111;
+    }
+    .tc04-tag {
+      position: absolute;
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 500;
+      font-size: 16px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #888880;
+      white-space: nowrap;
+    }
+    .tc04-node {
+      position: absolute;
+      top: 372px;
+      height: 120px;
+      box-sizing: border-box;
+      border: 1px solid #F0ECE5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 500;
+      color: #F0ECE5;
+      white-space: nowrap;
+    }
+    #tc04-node1 { left: 368px; width: 440px; font-size: 30px; }
+    #tc04-node1 .tc04-dim { color: #888880; }
+    #tc04-node2 { left: 970px; width: 300px; font-size: 30px; }
+    #tc04-node3 {
+      left: 1432px;
+      width: 316px;
+      font-size: 40px;
+      font-weight: 500;
+      transform-origin: 50% 50%;
+    }
+    #tc04-note {
+      position: absolute;
+      left: 820px;
+      top: 516px;
+      width: 600px;
+      text-align: center;
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 400;
+      font-size: 22px;
+      color: #888880;
+    }
+    #tc04-note .tc04-slash { color: #E85D26; margin-right: 10px; }
+  </style>
+
+  <div data-hf-id="hf-4ub5" id="ground-04-token-chain" class="clip" data-start="0" data-duration="8.58" data-track-index="0"></div>
+
+  <div data-hf-id="hf-61gq" id="token-chain-04-kicker" class="clip" data-start="0" data-duration="8.58" data-track-index="1">
+    <span data-hf-id="hf-k7ax" class="tc04-rule"></span><span data-hf-id="hf-dutw">01 / TOEGANG</span>
+  </div>
+
+  <div data-hf-id="hf-5jxa" id="token-chain-04-stage" class="clip" data-start="0" data-duration="8.58" data-track-index="2">
+    <svg data-hf-id="hf-dgjr" class="tc04-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <path data-hf-id="hf-l3vj" id="tc04-arrow1" class="tc04-arrow-cream" d="M 222 432 L 352 432 M 338 418 L 352 432 L 338 446" />
+      <path data-hf-id="hf-9snw" id="tc04-arrow2" class="tc04-arrow-cream" d="M 824 432 L 954 432 M 940 418 L 954 432 L 940 446" />
+      <path data-hf-id="hf-k3mg" id="tc04-arrow3" class="tc04-arrow-orange" d="M 1286 432 L 1416 432 M 1402 418 L 1416 432 L 1402 446" />
+    </svg>
+
+    <div data-hf-id="hf-bifb" class="tc04-tag" id="tc04-tag0" style="left:106px; top:368px;">PR-titel</div>
+    <div data-hf-id="hf-vzko" class="tc04-stub" id="tc04-stub">PR</div>
+
+    <div data-hf-id="hf-0af5" class="tc04-tag" id="tc04-tag1" style="left:368px; top:336px;">01 · token</div>
+    <div data-hf-id="hf-sz25" class="tc04-node" id="tc04-node1">GITHUB_TOKEN<span data-hf-id="hf-ucjo" class="tc04-dim">&nbsp;·&nbsp;</span>write</div>
+
+    <div data-hf-id="hf-2v8e" class="tc04-tag" id="tc04-tag2" style="left:970px; top:336px;">02 · workflow</div>
+    <div data-hf-id="hf-8vjf" class="tc04-node" id="tc04-node2">publish.yml</div>
+    <div data-hf-id="hf-j1z0" id="tc04-note"><span data-hf-id="hf-otwb" class="tc04-slash">/</span>vanaf de branch van de aanvaller</div>
+
+    <div data-hf-id="hf-h3za" class="tc04-tag" id="tc04-tag3" style="left:1432px; top:336px;">03 · geheim</div>
+    <div data-hf-id="hf-d8u8" class="tc04-node" id="tc04-node3">NPM_TOKEN</div>
+  </div>
+
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+      var tl = gsap.timeline({ paused: true });
+
+      // svg-path-draw setup: measured lengths
+      var arrows = ["#tc04-arrow1", "#tc04-arrow2", "#tc04-arrow3"];
+      arrows.forEach(function (sel) {
+        var p = document.querySelector(sel);
+        var len = p.getTotalLength() * 1.05;
+        p.style.strokeDasharray = len + "";
+        p.style.strokeDashoffset = len + "";
+      });
+
+      // macro camera drift underneath the whole shot
+      tl.fromTo("#token-chain-04-stage",
+        { x: 24, scale: 1 },
+        { x: -16, scale: 1.025, duration: 8.08, ease: "none" }, 0);
+
+      // Scene 1 (0.0–2.8s): stub + kicker, then arrow to node 1 on "token met schrijfrechten"
+      tl.fromTo("#token-chain-04-kicker", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 0.1);
+      tl.fromTo("#tc04-stub", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.15);
+      tl.fromTo("#tc04-tag0", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.out" }, 0.35);
+      tl.to("#tc04-arrow1", { strokeDashoffset: 0, duration: 0.6, ease: "power2.out" }, 1.05);
+      tl.fromTo("#tc04-node1", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 1.45);
+      tl.fromTo("#tc04-tag1", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.out" }, 1.6);
+
+      // Scene 2 (2.8–5.4s): arrow to publish.yml on "startte hij de publicatie-workflow"
+      tl.to("#tc04-arrow2", { strokeDashoffset: 0, duration: 0.6, ease: "power2.out" }, 3.35);
+      tl.fromTo("#tc04-node2", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 3.8);
+      tl.fromTo("#tc04-tag2", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.out" }, 3.95);
+      tl.fromTo("#tc04-note", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 4.4);
+
+      // Scene 3 (5.4–8.08s): arrow to NPM_TOKEN on "gaf het npm-token af", fill orange + settle
+      tl.to("#tc04-arrow3", { strokeDashoffset: 0, duration: 0.55, ease: "power2.out" }, 6.05);
+      tl.fromTo("#tc04-node3", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 6.45);
+      tl.fromTo("#tc04-tag3", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.out" }, 6.55);
+      tl.fromTo("#tc04-node3",
+        { backgroundColor: "rgba(232,93,38,0)", color: "#F0ECE5", borderColor: "#F0ECE5", scale: 1 },
+        { backgroundColor: "rgba(232,93,38,1)", color: "#111111", borderColor: "#E85D26", scale: 1.08, duration: 0.7, ease: "power3.out" }, 6.7);
+      tl.fromTo("#tc04-tag3", { color: "#888880" }, { color: "#E85D26", duration: 0.4, ease: "power1.out" }, 6.8);
+
+      // hold to the end
+      tl.set({}, {}, 8.08);
+
+      window.__timelines["04-token-chain"] = tl;
+    })();
+  </script>
+</div>
+</template>

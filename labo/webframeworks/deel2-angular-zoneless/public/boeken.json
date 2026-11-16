@@ -1,0 +1,5 @@
+[
+  { "id": 1, "titel": "Clean Code", "auteur": "Robert C. Martin" },
+  { "id": 2, "titel": "The Pragmatic Programmer", "auteur": "Andrew Hunt en David Thomas" },
+  { "id": 3, "titel": "Refactoring", "auteur": "Martin Fowler" }
+]

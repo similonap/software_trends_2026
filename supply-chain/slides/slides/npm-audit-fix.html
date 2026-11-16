@@ -1,0 +1,37 @@
+<section id="npm-audit-fix" data-transition="fade" style="background:#FFFFFF;color:#3C3B40;font-family:'Source Sans 3', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#005078">Laag 5 · npm audit fix</p>
+<h2 style="font-family:'League Gothic', 'Arial Narrow', sans-serif;font-size:80px;font-weight:400;line-height:1.05;letter-spacing:0;color:#232226">Repareren, met of zonder --force</h2>
+</div>
+<div style="display:flex;gap:32px">
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#E6EFF3;border:1px solid #B3CDD9;border-top:6px solid #005078;border-radius:16px;padding:32px">
+<h3 style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:36px;font-weight:600;line-height:1.2;color:#005078">npm audit fix</h3>
+<p style="font-size:28px;line-height:1.35;font-weight:600;color:#232226">Blijft binnen je ranges</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.5;color:#232226">minimist 1.2.5 → 1.2.8<br>package.json: ongewijzigd</p>
+<p style="font-size:28px;line-height:1.35;color:#232226">Voert een volledige npm install uit en werkt alleen de lockfile bij.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#FDE8E8;border:1px solid #F5B8B9;border-top:6px solid #E60005;border-radius:16px;padding:32px">
+<h3 style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:36px;font-weight:600;line-height:1.2;color:#E60005">npm audit fix --force</h3>
+<p style="font-size:28px;line-height:1.35;font-weight:600;color:#232226">Mag naar een nieuwe major</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.5;color:#232226">"nth-check": "^1.0.2" → "^3.0.1"<br>boolbase 1.0.0 → 2.0.0</p>
+<p style="font-size:28px;line-height:1.35;color:#232226">Kan je code breken: eerst --dry-run, daarna je tests.</p>
+</div>
+</div>
+<div style="display:flex;gap:32px;align-items:center">
+<div style="background:#232226;border-radius:12px;padding:20px 28px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.4;color:#F1F1F1;white-space:nowrap"><span style="color:#9A999F"># in CI</span><br>npm audit --omit=dev --audit-level=high</p>
+</div>
+<p style="flex:1;font-size:28px;line-height:1.4;color:#232226"><b>audit fix is ook een update:</b> je cooldown en allowScripts gelden, en de lockfile-diff hoort in review.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1440px;font-size:24px;color:#6B6A70">Deel 5 — Verdediging als gebruiker · 0:30–0:36</p>
+<img src="/_blob/4d3eecb01832b6f4111235aa00bb3842" alt="AP Hogeschool" style="position:absolute;right:128px;bottom:52px;height:56px;width:auto">
+<aside>Wat doet npm audit fix? Het voert onder de motorkap een volledige npm install uit, en werkt elk kwetsbaar package bij naar een versie zonder advisory, maar alleen binnen de ranges van je package.json. In het testproject ging minimist in de lockfile van 1.2.5 naar 1.2.8; package.json bleef ongewijzigd. Voor nth-check bestaat geen oplossing binnen ^1.0.2, dus die bleef staan.
+
+npm audit fix --force mag ook buiten je ranges, tot een nieuwe major-versie. npm waarschuwt zelf: “using --force Recommended protections disabled” en “Updating nth-check to 3.0.1, which is a SemVer major change”. In het testproject veranderde package.json van ^1.0.2 naar ^3.0.1, en de transitieve dependency boolbase sprong mee van 1.0.0 naar 2.0.0. Een nieuwe major mag per definitie je code breken. Dus: eerst npm audit fix --force --dry-run, dan je tests.
+
+Zit een transitieve dependency vast, omdat een package dat jij gebruikt zelf een kwetsbare versie vereist? Dan wacht je op een nieuwe versie, stap je over op een alternatief, of dwing je met overrides in package.json een andere versie af. Dat laatste moet je goed testen.
+
+In CI: npm audit eindigt met een foutcode als het kwetsbaarheden vindt. --audit-level=high laat de build alleen falen vanaf high; het rapport zelf blijft volledig. --omit=dev laat devDependencies weg.
+
+De securityles: audit fix installeert nieuwe versies, en dus nieuwe code. Het houdt rekening met je cooldown (min-release-age) en op npm 12 met je allowScripts; sinds npm 11.18 waarschuwt npm als de cooldown een fix tegenhoudt. Lees de lockfile-diff in de pull request, net als bij elke andere update.</aside>
+</section>

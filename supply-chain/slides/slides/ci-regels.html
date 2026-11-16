@@ -1,0 +1,46 @@
+<section id="ci-regels" data-transition="fade" style="background:#FFFFFF;color:#3C3B40;font-family:'Source Sans 3', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#005078">Je pipeline beveiligen</p>
+<h2 style="font-family:'League Gothic', 'Arial Narrow', sans-serif;font-size:80px;font-weight:400;line-height:1.05;letter-spacing:0;color:#232226">Zes regels voor elke workflow</h2>
+</div>
+<div style="display:grid;grid-template-columns:repeat(2, 1fr);gap:24px">
+<div style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border:1px solid #E1E1E1;border-radius:16px;padding:24px 32px">
+<h3 style="font-family:'Source Sans 3', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.2;color:#232226"><span style="color:#005078">1</span> Geen pull_request_target</h3>
+<p style="font-size:28px;line-height:1.35">en nooit code uit de PR onder die trigger. Nx, PostHog, Trivy en TanStack vielen hierdoor.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border:1px solid #E1E1E1;border-radius:16px;padding:24px 32px">
+<h3 style="font-family:'Source Sans 3', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.2;color:#232226"><span style="color:#005078">2</span> Invoer via env:</h3>
+<p style="font-size:28px;line-height:1.35">nooit via ${{ }} in een run-stap. Titels, branchnamen en comments zijn onvertrouwd.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border:1px solid #E1E1E1;border-radius:16px;padding:24px 32px">
+<h3 style="font-family:'Source Sans 3', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.2;color:#232226"><span style="color:#005078">3</span> Minimale permissions</h3>
+<p style="font-size:28px;line-height:1.35">contents: read als standaard; id-token: write alleen in de publicatiejob.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border:1px solid #E1E1E1;border-radius:16px;padding:24px 32px">
+<h3 style="font-family:'Source Sans 3', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.2;color:#232226"><span style="color:#005078">4</span> Pin Actions op een commit-SHA</h3>
+<p style="font-size:28px;line-height:1.35">niet op een tag. Bij tj-actions en Trivy werden bestaande tags gewoon verplaatst.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border:1px solid #E1E1E1;border-radius:16px;padding:24px 32px">
+<h3 style="font-family:'Source Sans 3', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.2;color:#232226"><span style="color:#005078">5</span> De cache is invoer</h3>
+<p style="font-size:28px;line-height:1.35">Onvertrouwde triggers schrijven geen cache die je release-workflow leest (TanStack).</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border:1px solid #E1E1E1;border-radius:16px;padding:24px 32px">
+<h3 style="font-family:'Source Sans 3', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.2;color:#232226"><span style="color:#005078">6</span> Kijk mee</h3>
+<p style="font-size:28px;line-height:1.35">zizmor op je workflows, Harden-Runner op je runners, een melding bij elke publicatie.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1440px;font-size:24px;color:#6B6A70">Deel 6 — Verdediging als maintainer en in CI/CD · 0:36–0:40</p>
+<img src="/_blob/4d3eecb01832b6f4111235aa00bb3842" alt="AP Hogeschool" style="position:absolute;right:128px;bottom:52px;height:56px;width:auto">
+<aside>De regels die je moet kennen. In de cursustekst staan er acht; deze zes zijn de kern.
+
+1. Vermijd pull_request_target, en voer onder die trigger nooit code uit een pull request uit.
+2. Geef onvertrouwde invoer door via env:, nooit via ${{ }} in een run-stap.
+3. Least privilege: permissions standaard op contents: read, id-token: write alleen voor de publicatiejob.
+4. Pin Actions op een volledige commit-SHA. GitHub kan SHA-pinning afdwingen via een beleid, en sinds 14 oktober 2026 bestaan workflow-lockfiles in public preview.
+5. Behandel de cache als invoer. GitHub reageerde in juni 2026 op TanStack: de Actions-cache is alleen-lezen voor onvertrouwde triggers.
+6. Kijk mee: zizmor analyseert workflows statisch op deze fouten, StepSecurity Harden-Runner bewaakt het netwerkverkeer van runners (zo werd tj-actions ontdekt). Axios en TanStack hadden geen alarm bij een onverwachte publicatie.
+
+De twee extra regels uit de tekst: bescherm publicatie met een environment met verplichte reviewers, en roteer secrets na een incident in één keer. Bij Trivy hield de aanvaller toegang omdat de rotatie gespreid verliep.
+
+Kernpunt deel 6: als maintainer bescherm je niet alleen jezelf, maar iedereen die van je afhangt. Phishing-resistente 2FA, trusted publishing zonder tokens, staged publishing en een beveiligde pipeline maken van jouw package een saai doelwit.</aside>
+</section>
