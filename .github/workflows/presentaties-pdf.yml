@@ -1,6 +1,7 @@
 name: Presentaties als pdf
 
-# Bouwt van elke presentatie een pdf en bewaart ze als artifact bij de run.
+# Bouwt van elke presentatie een pdf en zet ze bij de release "presentaties",
+# zodat iedereen ze zonder login kan downloaden.
 # Start vanzelf als de slides op main wijzigen, of met de hand via "Run workflow".
 on:
   push:
@@ -13,7 +14,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write  # nodig om de release bij te werken
 
 # Een nieuwe push maakt de run van de vorige push overbodig.
 concurrency:
@@ -41,3 +42,17 @@ jobs:
           name: presentaties-pdf
           path: pdf/*.pdf
           if-no-files-found: error
+
+      # Eén vaste release met telkens de nieuwste pdf's: de downloadlinks blijven dezelfde.
+      - name: Pdf's publiceren bij de release
+        if: github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          notities="De slides van elke les als pdf. Laatst gebouwd op $(TZ=Europe/Brussels date '+%d-%m-%Y om %H:%M') uit commit ${GITHUB_SHA::7}."
+          if gh release view presentaties > /dev/null 2>&1; then
+            gh release edit presentaties --notes "$notities"
+          else
+            gh release create presentaties --target "$GITHUB_SHA" --title "Presentaties (pdf)" --notes "$notities"
+          fi
+          gh release upload presentaties pdf/*.pdf --clobber
