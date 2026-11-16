@@ -15,7 +15,9 @@
 
 ## Het project
 
-Open de map `deel3-nextjs` als projectmap en start een nieuwe sessie in je agent. Het project is gemaakt met `create-next-app` (Next.js 16.4, met Cache Components en de React Compiler aan, zie `next.config.ts`).
+Open de map `deel3-nextjs` als projectmap. Voer in een eigen terminal `npm install` uit als je dat bij de voorbereiding nog niet deed. Start daarna een nieuwe sessie in je agent.
+
+Het project is gemaakt met `create-next-app` (Next.js 16.4, met Cache Components en de React Compiler aan, zie `next.config.ts`).
 
 | Bestand | Wat |
 |---|---|

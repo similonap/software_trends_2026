@@ -10,7 +10,7 @@
 
 ## Het project
 
-Open de map `deel2-angular-zoneless` als projectmap. Start in een eigen terminal `npm start` en open http://localhost:4200. Start een nieuwe sessie in je agent.
+Open de map `deel2-angular-zoneless` als projectmap. Voer in een eigen terminal `npm install` uit als je dat bij de voorbereiding nog niet deed. Start daarna `npm start` en open http://localhost:4200. Start een nieuwe sessie in je agent.
 
 Het dashboard van een bibliotheek heeft vier componenten in `src/app/`:
 

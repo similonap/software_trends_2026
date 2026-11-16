@@ -17,7 +17,7 @@
 
 ## Het project
 
-Open de map `deel1-react-compiler` als projectmap. Start in een eigen terminal `npm run dev`, open http://localhost:5173 en open de console (F12). Start een nieuwe sessie in je agent.
+Open de map `deel1-react-compiler` als projectmap. Voer in een eigen terminal `npm install` uit als je dat bij de voorbereiding nog niet deed. Start daarna `npm run dev`, open http://localhost:5173 en open de console (F12). Start een nieuwe sessie in je agent.
 
 *Takenbord* toont 3000 taken. `App` heeft drie stukken state: een koffieteller, de lijst taken en een filter. `TakenLijst` filtert met `traagFilter`, die bewust 15 ms extra rekenwerk doet.
 
