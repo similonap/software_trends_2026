@@ -35,4 +35,12 @@ Wat je uit de bron opnieuw kunt maken, staat niet in git (zie `.gitignore`). Na 
 for d in graphql-slides webassembly-slides webframeworks-slides; do (cd $d/presentatie && python3 maak.py); done
 ```
 
+## Presentaties als pdf
+
+`python3 tools/maak_pdf.py` maakt van elke presentatie een pdf in `pdf/` (één slide per pagina, zonder notities). Je hebt Google Chrome en internet nodig.
+
+Op GitHub doet de workflow *Presentaties als pdf* dat bij elke wijziging aan de slides op `main`. De pdf's staan als artifact `presentaties-pdf` bij de run, onder het tabblad *Actions*.
+
+## Ingesproken video's
+
 De ingesproken video's (`*-slides/ingesproken-*.mp4`) en de opnames in `ingesproken/audio/` staan ook niet in git. `python3 maak.py` in `ingesproken/` maakt ze opnieuw, maar spreekt dan elke slide opnieuw in met ElevenLabs. Dat kost credits en vraagt de `elevenlabs` CLI, `ffmpeg` en Google Chrome.
