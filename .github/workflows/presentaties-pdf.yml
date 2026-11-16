@@ -1,0 +1,38 @@
+name: Presentaties als pdf
+
+# Bouwt van elke presentatie een pdf en bewaart ze als artifact bij de run.
+# Start vanzelf als de slides op main wijzigen, of met de hand via "Run workflow".
+on:
+  push:
+    branches: [main]
+    paths:
+      - '*-slides/**'
+      - 'supply-chain/slides/**'
+      - 'tools/maak_pdf.py'
+      - '.github/workflows/presentaties-pdf.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pdf:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      # Arial bestaat niet op Linux: Liberation Sans heeft dezelfde afmetingen.
+      # DejaVu en Noto Color Emoji leveren de tekens ✓ ✗ en de emoji.
+      - name: Lettertypes installeren
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends fonts-liberation fonts-dejavu-core fonts-noto-color-emoji
+
+      - name: Pdf's bouwen
+        run: python3 tools/maak_pdf.py
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: presentaties-pdf
+          path: pdf/*.pdf
+          if-no-files-found: error

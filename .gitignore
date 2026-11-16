@@ -36,6 +36,9 @@ __pycache__/
 # --- Presentatie in één bestand: uitvoer van presentatie/maak.py ---
 /*-slides/presentatie/presentatie.html
 
+# --- Presentaties als pdf: uitvoer van tools/maak_pdf.py ---
+/pdf/
+
 # --- Ingesproken video: uitvoer van ingesproken/maak.py ---
 # audio/ = ElevenLabs-opnames (opnieuw maken kost credits), build/ = tussenresultaten.
 /*-slides/ingesproken/audio/
