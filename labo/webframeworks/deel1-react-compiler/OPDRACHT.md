@@ -31,7 +31,7 @@ Rond `TakenLijst` staat een `<Profiler>`. Na elke render toont die in het **meet
 
 ## 1.1 [Zelf] Meten zonder optimalisatie (4 min)
 
-1. **Voorspel:** welke componenten renderen opnieuw als je op *Koffie gedronken* klikt?
+1. **Voorspelling:** welke componenten renderen opnieuw als je op *Koffie gedronken* klikt?
 2. Klik drie keer op *Koffie gedronken*, kies daarna de filter *open* en vink tot slot een taak aan.
 
 **Noteer** de metingen. Je vult deze tabel verder aan in 1.2 en 1.3:
