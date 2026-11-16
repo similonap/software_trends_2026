@@ -54,3 +54,8 @@ __pycache__/
 /supply-chain/videos/*/assets/voice/*.mp3
 /supply-chain/videos/*/renders/
 /supply-chain/videos/*/err.txt
+
+# --- Oude slides van vorige jaren (blijven lokaal) ---
+/Introductie tot WebAssembly.pptx
+/Slides_Software_Trends_GraphQL_2025.pdf
+/webframeworks-slides/web frameworks (1).pdf
