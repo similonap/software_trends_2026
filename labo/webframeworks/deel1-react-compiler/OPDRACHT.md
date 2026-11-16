@@ -62,7 +62,7 @@ Los de onnodige re-renders van TakenLijst op met React.memo, useMemo en useCallb
 1. Zet de startcode terug (zie *Nakijken en terugzetten* in de [README](../README.md)). Controleer dat `memo`, `useMemo` en `useCallback` weg zijn.
 2. Zet de compiler zelf aan in `vite.config.js`. Dat gaat sneller dan een prompt: haal het commentaar weg bij de twee imports en bij `babel({ presets: [reactCompilerPreset()] })`.
 3. Herstart `npm run dev`, meet opnieuw en vul de kolom *1.3 Compiler* in.
-4. Open http://localhost:5173/src/TakenLijst.jsx. Zo toont Vite het bestand nadat de compiler het bewerkt heeft.
+4. Open de directe URL van het bestand niet: die toont de originele broncode. Open http://localhost:5173, druk op F12, ga naar het tabblad **Network**, filter op `TakenLijst` en klik op `TakenLijst.jsx`. Bekijk het tabblad **Response**: daar staat de gecompileerde code.
    **Noteer** de `_c(…)`-regel en de `if`-test waarin `traagFilter` wordt aangeroepen: welke waarden worden vergeleken? Vergelijk met slide 34.
 
 ## 1.4 De Rules of React (5 min)
@@ -75,7 +75,7 @@ Voer npm run lint uit en los enkel de fouten op die de linter meldt. Verander ni
 
 **[Zelf]**
 1. Bekijk de diff. **Noteer** de fout en de naam van de lintregel.
-2. Open http://localhost:5173/src/Statistiek.jsx. Is het component nu gecompileerd (staat er `_c(` in)?
+2. Open http://localhost:5173, druk op F12, ga naar **Network**, filter op `Statistiek` en klik op `Statistiek.jsx`. Is het component nu gecompileerd (staat er `_c(` in het tabblad **Response**)? Open de directe URL van het bestand niet: die toont altijd de broncode.
 
 Als `_c(` er nog niet in staat:
 
