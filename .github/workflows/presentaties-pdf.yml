@@ -15,6 +15,11 @@ on:
 permissions:
   contents: read
 
+# Een nieuwe push maakt de run van de vorige push overbodig.
+concurrency:
+  group: presentaties-pdf-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   pdf:
     runs-on: ubuntu-latest
