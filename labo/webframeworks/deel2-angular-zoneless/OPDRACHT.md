@@ -30,7 +30,7 @@ Alles is geschreven zoals je dat jarenlang in Angular deed: met gewone velden, z
 
 ## 2.1 [Zelf] Observeren (5 min)
 
-**Voorspel** eerst, test daarna:
+Schrijf eerst je **voorspelling** op, test daarna:
 
 | Test | Voorspelling | Resultaat |
 |---|---|---|
@@ -44,7 +44,7 @@ Alles is geschreven zoals je dat jarenlang in Angular deed: met gewone velden, z
 
 Twee onafhankelijke mechanismen: **wanneer** Angular kijkt (zone.js of zoneless) en **welke** componenten het dan controleert (Eager of OnPush). De agent doet het omschakelen; jij voorspelt en test.
 
-**[Zelf]** Voorspel eerst alle vier de cellen:
+**[Zelf]** Schrijf eerst je voorspelling op voor alle vier de cellen:
 
 | | OnPush (standaard in v22) | Eager (vroeger *Default*) |
 |---|---|---|

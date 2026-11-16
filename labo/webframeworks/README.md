@@ -73,13 +73,13 @@ Terwijl de agent werkt, werk jij aan je verslag: begin dan al aan de reflectievr
 
 Je hebt dat logboek nodig voor de reflectievragen.
 
-## Voorspel, test, verklaar
+## Voorspellen, testen, verklaren
 
 Bij elke opdracht werk je in drie stappen:
 
-1. **Voorspel** wat er gaat gebeuren, vóór je iets uitvoert.
-2. **Test** het en noteer wat je ziet.
-3. **Verklaar** het verschil met de begrippen uit de theorie.
+1. **Voorspellen**: schrijf op wat je verwacht, vóór je iets uitvoert.
+2. **Testen**: voer het uit en noteer wat je ziet.
+3. **Verklaren**: leg het verschil uit met de begrippen uit de theorie.
 
 Alles wat je moet opschrijven, staat aangeduid met **Noteer**. Elk deel eindigt met **reflectievragen**: daar koppel je je resultaten aan de theorie, en dat is het belangrijkste deel van je verslag. Een goed antwoord gebruikt de juiste begrippen en verwijst naar iets wat je zelf gemeten of gezien hebt. De agent mag code schrijven, maar je reflecties schrijf je zelf.
 
